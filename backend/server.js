@@ -23,7 +23,7 @@ app.use("/api/user", userRoute)
 connectDb();
 
 // routes
-app.use("/api/admin", adminRoute)
+app.use("/api/admin", adminRoute);
 app.use("/api/result", resultRoute)
 
 app.get("/", (req, res) => {

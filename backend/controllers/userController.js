@@ -1,7 +1,6 @@
-import { User } from "../models/userModel.js";
 import { getAuth } from "@clerk/express";
+import { User } from "../models/userModel.js";
 
-// get stats of a user
 export const getStats = async (req, res) => {
   try {
     const { userId } = getAuth(req);
@@ -12,19 +11,20 @@ export const getStats = async (req, res) => {
 
     const totalUsers = await User.countDocuments();
 
-    const loggedInUser = await User.countDocuments({
+    const loggedInUsers = await User.countDocuments({
       isLoggedIn: true,
     });
 
-    res.json({
+    return res.json({
       totalUsers,
-      loggedInUser,
+      loggedInUsers,
       loggedInPercentage: totalUsers
-        ? ((loggedInUser / totalUsers) * 100).toFixed(2)
+        ? ((loggedInUsers / totalUsers) * 100).toFixed(2)
         : "0.00",
     });
+
   } catch (error) {
-    console.log("Admin Stats error");
-    res.status(500).json({ message: "Internal Server Error" });
+    console.log("Admin Stats error:", error);
+    return res.status(500).json({ message: error.message });
   }
 };

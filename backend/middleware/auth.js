@@ -1,47 +1,36 @@
-import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import { clerkMiddleware, getAuth } from "@clerk/express";
 import { User } from "../models/userModel.js";
 
-// 🔐 Protect middleware (checks if user is logged in)
-export const protect = ClerkExpressRequireAuth();
+// ✅ Must pass request to middleware properly
+export const protect = clerkMiddleware();
 
-// 🛡️ Admin middleware
+// Admin middleware
 export const isAdmin = async (req, res, next) => {
   try {
-    // ✅ Safe access (prevents crash)
-    const clerkId = req.auth?.userId;
+    const { userId } = getAuth(req); // ✅ correct
 
-    if (!clerkId) {
-      return res.status(401).json({
-        message: "Unauthorized. No userId found.",
-      });
+    if (!userId) {
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
-    // 🔍 Find user in DB
-    const user = await User.findOne({ clerkId });
+    const user = await User.findOne({ clerkId: userId });
 
-    // ❗ If user not in DB
     if (!user) {
-      return res.status(404).json({
+      return res.status(401).json({
         message: "User not found in database",
       });
     }
 
-    // ❗ If not admin
     if (user.role !== "admin") {
       return res.status(403).json({
-        message: "Access denied. Admin only.",
+        message: "Access denied. Admin only",
       });
     }
 
-    // ✅ All good
     next();
 
   } catch (error) {
-    // 🔥 IMPORTANT: show real error
-    console.error("isAdmin middleware error:", error);
-
-    return res.status(500).json({
-      message: "Internal server error",
-    });
+    console.error("isAdmin error:", error);
+    return res.status(500).json({ message: "Server error" });
   }
 };

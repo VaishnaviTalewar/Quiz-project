@@ -11,7 +11,9 @@ const questionSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) =>
-        v.length === 4 && v.every((opt) => opt && opt.trim()),
+        Array.isArray(v) &&
+        v.length === 4 &&
+        v.every((opt) => opt && opt.trim()),
       message: "Each question must contain 4 valid options",
     },
   },
@@ -30,7 +32,7 @@ const quizSchema = new mongoose.Schema(
       required: true,
       trim: true,
       lowercase: true,
-    }, // html css js
+    },
 
     level: {
       type: String,
@@ -49,11 +51,10 @@ const quizSchema = new mongoose.Schema(
       required: true,
     },
 
+    
     totalQuestions: {
       type: Number,
-      default: function () {
-        return this.questions.length;
-      },
+      default: 0,
     },
 
     createdBy: {
@@ -64,7 +65,13 @@ const quizSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// UNIQUE INDEX
+//  Auto-calculate totalQuestions safely
+quizSchema.pre("save", function (next) {
+  this.totalQuestions = this.questions ? this.questions.length : 0;
+  next();
+});
+
+
 quizSchema.index({ technology: 1, level: 1 }, { unique: true });
 
 export default mongoose.model("Quiz", quizSchema);

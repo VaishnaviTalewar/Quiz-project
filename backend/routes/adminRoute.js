@@ -8,8 +8,9 @@ const router = express.Router();
 
 router.post("/upload-quiz", protect, isAdmin, uploadQuiz);
 
-router.get("/stats", getStats);
-router.get("/quizzes", getAllQuizzes);
-router.delete("/quiz/:id", deleteQuiz);
+router.get("/stats", protect, isAdmin, getStats);
 
+router.get("/quizzes", protect, isAdmin, getAllQuizzes);
+
+router.delete("/quiz/:id", protect, isAdmin, deleteQuiz);
 export default router;

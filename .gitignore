@@ -1,2 +1,11 @@
+# dependencies
+node_modules/
+
+# environment
 .env
-node_modules
+
+# csv files
+*.csv
+
+# zip files (optional if you don't want them too)
+*.zip
