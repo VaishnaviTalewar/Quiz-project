@@ -1,0 +1,19 @@
+import mongoose from "mongoose";
+
+const resultSchema = new mongoose.Schema({
+    userId: {
+        type: String,
+        required: true
+    },
+
+    technology: String,
+    level: String,
+    totalQuestions: Number,
+    correct: Number,
+    wrong: Number,
+    timeTaken: Number,
+    startDate: Date
+
+}, { timestamps: true });
+
+export const Result = mongoose.model("Result", resultSchema);

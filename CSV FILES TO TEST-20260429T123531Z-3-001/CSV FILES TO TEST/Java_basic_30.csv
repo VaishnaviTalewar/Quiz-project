@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which keyword is used to define a class in Java?,module,object,class,struct,C
+What method signature starts a standalone Java program?,public static void main(String[] args),public main(String args[]),public void main(String[] args),static void start(String[] args),A
+Which operator is used for equality comparison of primitives?,equals==,==,===,equals(),B
+Which primitive type holds a 32-bit signed integer in Java?,long,short,Integer,int,D
+Which keyword is used to create a constant reference (cannot be reassigned)?,static,immutable,final,const,C
+Which library class prints text to standard output?,Print.write(),System.out.println(),System.print(),Console.print(),B
+Which symbol is used to end a statement in Java?,",",:,.,;,D
+Which type is used to represent true/false values?,bit,boolean,BooleanType,int,B
+How do you declare an array of integers?,int arr = new int[5];,array<int> arr;,int arr[] = {5};,int[] arr = new int[5];,D
+Which keyword creates a new object instance?,construct,new,create,instanceof,B
+Which keyword restricts access to the same class only?,package-private,public,private,protected,C
+Which loop is used when the number of iterations is known?,for,foreach,do-while,while,A
+Which statement exits the current loop immediately?,break,exit,continue,return,A
+Which exception type must be declared or caught (checked exception)?,NullPointerException,IOException,Error,RuntimeException,B
+Which collection holds key-value pairs?,List,Set,Map,Queue,C
+Which keyword ensures a method cannot be overridden by subclasses?,final,static,sealed,private,A
+What is the default value of object references in Java fields?,undefined,,nil,0,B
+Which interface represents a sequence of characters? (class),Chars,CharSequence (or String class),Text,CharacterSequence,B
+Which access modifier allows visibility within the same package?,default (no modifier),protected,private,public,A
+Which keyword is used to inherit from another class?,implements,inherits,uses,extends,D
+Which keyword is used to implement interfaces?,extends,interface,implements,uses,C
+Which wrapper class corresponds to primitive int?,Int,Integer,Number,IntWrapper,B
+Which numeric type is 64-bit in Java?,short,long,double,int,B
+Which method checks if two objects are equal by value (when overridden)?,isEqual(),equals(),==,compare(),B
+Which keyword signals that a variable may be accessed by multiple threads safely (visibility)?,threadsafe,synchronized,atomic,volatile,D
+Which package contains commonly used utility classes like ArrayList?,java.io,java.util,java.lang,java.net,B
+Which operator checks if an object is an instance of a class?,instanceof,isa,typeof,is,A
+Which construct handles exceptions thrown in a try block?,handle,catch,finally,except,B
+Which method on String returns its length?,length(),count(),size(),getLength(),A
+Which keyword is used to declare an interface in Java?,abstract,implements,class,interface,D

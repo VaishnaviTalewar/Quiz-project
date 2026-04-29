@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What is server-side rendering (SSR) in React?,Rendering components only in client,Rendering React components on the server to send HTML to the client,Compiling components to native code,Rendering only CSS on server,B
+What is Concurrent Mode (concept) in React?,A CSS feature,A way to run components on multiple servers,Ability for React to interrupt and prioritize work to improve responsiveness,Deprecated API only,C
+What are React hooks rules?,Call hooks inside loops,Call hooks in nested functions,Only call hooks at the top level and from React functions/components,Call hooks conditionally,C
+What is the purpose of useImperativeHandle?,Manage imperative UI updates,Handle events,Replace useRef,Customize refs exposed by forwardRef to parent components,D
+What does React.memo do when provided with a custom comparison function?,Throw error,Decide whether to re-render based on the function's return value,Always render,Always skip render,B
+Which technique helps reduce bundle size?,Inlining everything,Code-splitting + tree-shaking + avoiding large libs,Importing entire lodash,Using eval,B
+What is hydration mismatch?,Bundle size issue,When server-rendered HTML doesn't match client render causing warnings/errors,Different network speeds,CSS mismatch,B
+What is reconciliation in React?,A state manager,A git merge tool,A network protocol,Algorithm that compares trees and efficiently updates the DOM,D
+What is a custom hook?,A special component,A reuseable function using hooks to share logic between components,A library only function,A built-in hook,B
+What is an Error Boundary limitation?,It catches everything,It catches network errors only,It handles styling errors,"It only catches errors in lifecycle methods and render, not in event handlers",D
+What is the purpose of useTransition/useDeferredValue?,Throttle events,Replace useEffect,Help mark updates as non-urgent and avoid blocking UI,Manage network calls,C
+What is Suspense for Data Fetching? (experimental/advanced),Only for code splitting,For styling,"Let components suspend rendering while waiting for data, used with concurrent features",For error handling,C
+What is render props pattern?,A lifecycle method,A hook,A CSS prop,Passing a function prop to control what to render inside a component,D
+What is the role of portals in advanced UI?,Render children into a DOM node outside the DOM hierarchy of the parent,Style isolation,Event batching,Data fetching,A
+How do you optimize large lists in React?,Use CSS only,Render all items,"Windowing/virtualization (e.g., react-window, react-virtualized)",Use large images,C
+What is the difference between client and server components (React Server Components)?,Server components run in browser,Only for styling,They are identical,Server components render on server and can send serialized UI to client without client JS for them,D
+Which API helps manage side effects that shouldn't block painting in React?,useDeferredEffect,useEffect / useLayoutEffect differences; useLayoutEffect blocks paint,usePassiveEffect,useRender,B
+What is the significance of keys in reconciliation for nested lists?,They can be random,Duplicate keys are fine,Keys must be stable and unique among siblings to avoid incorrect re-use,Indexes are always fine,C
+What is 'hydration' optimization tip to avoid mismatch?,Use random ids,Ensure render output deterministic and avoid non-deterministic code (like Math.random) during SSR,Delay scripts,Inline CSS,B
+How can you memoize a component that accepts children effectively?,Always pass new objects,Use indexes as keys,Wrap children in JSON.stringify,Use React.memo and ensure children are stable (avoid inline functions/objects),D
+What is server-side rendering (SSR) in React?,Rendering only CSS on server,Rendering components only in client,Rendering React components on the server to send HTML to the client,Compiling components to native code,C
+What is Concurrent Mode (concept) in React?,Deprecated API only,Ability for React to interrupt and prioritize work to improve responsiveness,A way to run components on multiple servers,A CSS feature,B
+What are React hooks rules?,Call hooks inside loops,Call hooks in nested functions,Call hooks conditionally,Only call hooks at the top level and from React functions/components,D
+What is the purpose of useImperativeHandle?,Customize refs exposed by forwardRef to parent components,Handle events,Replace useRef,Manage imperative UI updates,A
+What does React.memo do when provided with a custom comparison function?,Throw error,Always render,Always skip render,Decide whether to re-render based on the function's return value,D
+Which technique helps reduce bundle size?,Inlining everything,Using eval,Importing entire lodash,Code-splitting + tree-shaking + avoiding large libs,D
+What is hydration mismatch?,CSS mismatch,Bundle size issue,Different network speeds,When server-rendered HTML doesn't match client render causing warnings/errors,D
+What is reconciliation in React?,Algorithm that compares trees and efficiently updates the DOM,A git merge tool,A state manager,A network protocol,A
+What is a custom hook?,A library only function,A built-in hook,A special component,A reuseable function using hooks to share logic between components,D
+What is an Error Boundary limitation?,"It only catches errors in lifecycle methods and render, not in event handlers",It handles styling errors,It catches network errors only,It catches everything,A
+What is the purpose of useTransition/useDeferredValue?,Throttle events,Manage network calls,Replace useEffect,Help mark updates as non-urgent and avoid blocking UI,D
+What is Suspense for Data Fetching? (experimental/advanced),For error handling,For styling,Only for code splitting,"Let components suspend rendering while waiting for data, used with concurrent features",D
+What is render props pattern?,Passing a function prop to control what to render inside a component,A lifecycle method,A CSS prop,A hook,A
+What is the role of portals in advanced UI?,Render children into a DOM node outside the DOM hierarchy of the parent,Data fetching,Event batching,Style isolation,A
+How do you optimize large lists in React?,Use CSS only,"Windowing/virtualization (e.g., react-window, react-virtualized)",Use large images,Render all items,B
+What is the difference between client and server components (React Server Components)?,Server components run in browser,They are identical,Only for styling,Server components render on server and can send serialized UI to client without client JS for them,D
+Which API helps manage side effects that shouldn't block painting in React?,useEffect / useLayoutEffect differences; useLayoutEffect blocks paint,useDeferredEffect,usePassiveEffect,useRender,A
+What is the significance of keys in reconciliation for nested lists?,They can be random,Indexes are always fine,Keys must be stable and unique among siblings to avoid incorrect re-use,Duplicate keys are fine,C
+What is 'hydration' optimization tip to avoid mismatch?,Ensure render output deterministic and avoid non-deterministic code (like Math.random) during SSR,Inline CSS,Delay scripts,Use random ids,A
+How can you memoize a component that accepts children effectively?,Wrap children in JSON.stringify,Use indexes as keys,Use React.memo and ensure children are stable (avoid inline functions/objects),Always pass new objects,C
+What is server-side rendering (SSR) in React?,Compiling components to native code,Rendering React components on the server to send HTML to the client,Rendering only CSS on server,Rendering components only in client,B
+What is Concurrent Mode (concept) in React?,A way to run components on multiple servers,Ability for React to interrupt and prioritize work to improve responsiveness,Deprecated API only,A CSS feature,B
+What are React hooks rules?,Only call hooks at the top level and from React functions/components,Call hooks inside loops,Call hooks in nested functions,Call hooks conditionally,A
+What is the purpose of useImperativeHandle?,Replace useRef,Handle events,Manage imperative UI updates,Customize refs exposed by forwardRef to parent components,D
+What does React.memo do when provided with a custom comparison function?,Throw error,Always render,Always skip render,Decide whether to re-render based on the function's return value,D
+Which technique helps reduce bundle size?,Using eval,Importing entire lodash,Code-splitting + tree-shaking + avoiding large libs,Inlining everything,C
+What is hydration mismatch?,When server-rendered HTML doesn't match client render causing warnings/errors,Bundle size issue,Different network speeds,CSS mismatch,A
+What is reconciliation in React?,Algorithm that compares trees and efficiently updates the DOM,A git merge tool,A network protocol,A state manager,A
+What is a custom hook?,A special component,A reuseable function using hooks to share logic between components,A library only function,A built-in hook,B
+What is an Error Boundary limitation?,"It only catches errors in lifecycle methods and render, not in event handlers",It handles styling errors,It catches everything,It catches network errors only,A
+What is the purpose of useTransition/useDeferredValue?,Help mark updates as non-urgent and avoid blocking UI,Replace useEffect,Throttle events,Manage network calls,A
+What is Suspense for Data Fetching? (experimental/advanced),For styling,Only for code splitting,"Let components suspend rendering while waiting for data, used with concurrent features",For error handling,C
+What is render props pattern?,A CSS prop,A hook,Passing a function prop to control what to render inside a component,A lifecycle method,C
+What is the role of portals in advanced UI?,Event batching,Style isolation,Data fetching,Render children into a DOM node outside the DOM hierarchy of the parent,D
+How do you optimize large lists in React?,Use large images,Render all items,Use CSS only,"Windowing/virtualization (e.g., react-window, react-virtualized)",D
+What is the difference between client and server components (React Server Components)?,Server components render on server and can send serialized UI to client without client JS for them,Only for styling,Server components run in browser,They are identical,A
+Which API helps manage side effects that shouldn't block painting in React?,useRender,usePassiveEffect,useEffect / useLayoutEffect differences; useLayoutEffect blocks paint,useDeferredEffect,C
+What is the significance of keys in reconciliation for nested lists?,They can be random,Keys must be stable and unique among siblings to avoid incorrect re-use,Indexes are always fine,Duplicate keys are fine,B
+What is 'hydration' optimization tip to avoid mismatch?,Use random ids,Inline CSS,Ensure render output deterministic and avoid non-deterministic code (like Math.random) during SSR,Delay scripts,C
+How can you memoize a component that accepts children effectively?,Always pass new objects,Use indexes as keys,Use React.memo and ensure children are stable (avoid inline functions/objects),Wrap children in JSON.stringify,C
+What is server-side rendering (SSR) in React?,Rendering components only in client,Compiling components to native code,Rendering React components on the server to send HTML to the client,Rendering only CSS on server,C
+What is Concurrent Mode (concept) in React?,Ability for React to interrupt and prioritize work to improve responsiveness,A CSS feature,A way to run components on multiple servers,Deprecated API only,A
+What are React hooks rules?,Call hooks conditionally,Only call hooks at the top level and from React functions/components,Call hooks inside loops,Call hooks in nested functions,B
+What is the purpose of useImperativeHandle?,Handle events,Manage imperative UI updates,Replace useRef,Customize refs exposed by forwardRef to parent components,D
+What does React.memo do when provided with a custom comparison function?,Always render,Decide whether to re-render based on the function's return value,Always skip render,Throw error,B
+Which technique helps reduce bundle size?,Importing entire lodash,Inlining everything,Code-splitting + tree-shaking + avoiding large libs,Using eval,C
+What is hydration mismatch?,Different network speeds,When server-rendered HTML doesn't match client render causing warnings/errors,Bundle size issue,CSS mismatch,B
+What is reconciliation in React?,Algorithm that compares trees and efficiently updates the DOM,A git merge tool,A network protocol,A state manager,A
+What is a custom hook?,A built-in hook,A special component,A reuseable function using hooks to share logic between components,A library only function,C
+What is an Error Boundary limitation?,"It only catches errors in lifecycle methods and render, not in event handlers",It handles styling errors,It catches network errors only,It catches everything,A
+What is the purpose of useTransition/useDeferredValue?,Replace useEffect,Throttle events,Manage network calls,Help mark updates as non-urgent and avoid blocking UI,D
+What is Suspense for Data Fetching? (experimental/advanced),Only for code splitting,"Let components suspend rendering while waiting for data, used with concurrent features",For styling,For error handling,B
+What is render props pattern?,Passing a function prop to control what to render inside a component,A lifecycle method,A CSS prop,A hook,A
+What is the role of portals in advanced UI?,Style isolation,Event batching,Data fetching,Render children into a DOM node outside the DOM hierarchy of the parent,D
+How do you optimize large lists in React?,Use large images,"Windowing/virtualization (e.g., react-window, react-virtualized)",Use CSS only,Render all items,B
+What is the difference between client and server components (React Server Components)?,Only for styling,Server components render on server and can send serialized UI to client without client JS for them,They are identical,Server components run in browser,B
+Which API helps manage side effects that shouldn't block painting in React?,useEffect / useLayoutEffect differences; useLayoutEffect blocks paint,usePassiveEffect,useRender,useDeferredEffect,A
+What is the significance of keys in reconciliation for nested lists?,Duplicate keys are fine,Keys must be stable and unique among siblings to avoid incorrect re-use,Indexes are always fine,They can be random,B
+What is 'hydration' optimization tip to avoid mismatch?,Use random ids,Inline CSS,Delay scripts,Ensure render output deterministic and avoid non-deterministic code (like Math.random) during SSR,D
+How can you memoize a component that accepts children effectively?,Wrap children in JSON.stringify,Use indexes as keys,Always pass new objects,Use React.memo and ensure children are stable (avoid inline functions/objects),D
+What is server-side rendering (SSR) in React?,Compiling components to native code,Rendering React components on the server to send HTML to the client,Rendering only CSS on server,Rendering components only in client,B
+What is Concurrent Mode (concept) in React?,Deprecated API only,A CSS feature,A way to run components on multiple servers,Ability for React to interrupt and prioritize work to improve responsiveness,D
+What are React hooks rules?,Only call hooks at the top level and from React functions/components,Call hooks inside loops,Call hooks in nested functions,Call hooks conditionally,A
+What is the purpose of useImperativeHandle?,Manage imperative UI updates,Replace useRef,Handle events,Customize refs exposed by forwardRef to parent components,D
+What does React.memo do when provided with a custom comparison function?,Always render,Throw error,Always skip render,Decide whether to re-render based on the function's return value,D
+Which technique helps reduce bundle size?,Using eval,Importing entire lodash,Code-splitting + tree-shaking + avoiding large libs,Inlining everything,C
+What is hydration mismatch?,Different network speeds,Bundle size issue,CSS mismatch,When server-rendered HTML doesn't match client render causing warnings/errors,D
+What is reconciliation in React?,Algorithm that compares trees and efficiently updates the DOM,A git merge tool,A state manager,A network protocol,A
+What is a custom hook?,A special component,A library only function,A built-in hook,A reuseable function using hooks to share logic between components,D
+What is an Error Boundary limitation?,It catches network errors only,It catches everything,It handles styling errors,"It only catches errors in lifecycle methods and render, not in event handlers",D
+What is the purpose of useTransition/useDeferredValue?,Replace useEffect,Manage network calls,Throttle events,Help mark updates as non-urgent and avoid blocking UI,D
+What is Suspense for Data Fetching? (experimental/advanced),Only for code splitting,For error handling,For styling,"Let components suspend rendering while waiting for data, used with concurrent features",D
+What is render props pattern?,Passing a function prop to control what to render inside a component,A lifecycle method,A CSS prop,A hook,A
+What is the role of portals in advanced UI?,Style isolation,Event batching,Render children into a DOM node outside the DOM hierarchy of the parent,Data fetching,C
+How do you optimize large lists in React?,Use large images,Render all items,"Windowing/virtualization (e.g., react-window, react-virtualized)",Use CSS only,C
+What is the difference between client and server components (React Server Components)?,They are identical,Server components run in browser,Server components render on server and can send serialized UI to client without client JS for them,Only for styling,C
+Which API helps manage side effects that shouldn't block painting in React?,useEffect / useLayoutEffect differences; useLayoutEffect blocks paint,useDeferredEffect,usePassiveEffect,useRender,A
+What is the significance of keys in reconciliation for nested lists?,Duplicate keys are fine,Keys must be stable and unique among siblings to avoid incorrect re-use,They can be random,Indexes are always fine,B
+What is 'hydration' optimization tip to avoid mismatch?,Delay scripts,Ensure render output deterministic and avoid non-deterministic code (like Math.random) during SSR,Inline CSS,Use random ids,B
+How can you memoize a component that accepts children effectively?,Always pass new objects,Use indexes as keys,Use React.memo and ensure children are stable (avoid inline functions/objects),Wrap children in JSON.stringify,C

@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which CSS property sets the text color of an element?,fg,font-color,color,text-color,C
+How do you select an element with id 'header' in CSS?,#header,*header,.header,header,A
+Which property controls the space inside an element (between content and border)?,gap,padding,spacing,margin,B
+Which property is used to change the font size?,size,font-style,text-size,font-size,D
+How do you make text bold using CSS?,text-weight: bold,font: bold,font-weight: bold,font-style: bold,C
+Which unit is relative to the root element's font size?,px,rem,%,em,B
+Which property adds space outside an element (between elements)?,space,gap,padding,margin,D
+Which property sets the background color?,color-background,background-color,bg-color,background,B
+Which property controls the element's width?,size,max-width,box-width,width,D
+Which property is used to hide overflow content?,clip: hide,overflow: hidden,display: none,visibility: hidden,B
+How do you make a CSS rule apply to all <p> elements?,p + p { },p > * { },p { ... },.p { ... },C
+Which declaration groups multiple font families for fallback?,font-family,font-fallback,font-list,font-stack,A
+Which property sets the line height of text?,line-height,text-height,height,leading,A
+How to apply italic style to text?,font-weight: italic,font-style: italic,text-style: italic,font-variant: italic,B
+"Which property controls how an element is displayed (block, inline, none)?",visibility,position,display,float,C
+Which CSS property adds a border around an element?,border,outline,stroke,frame,A
+Which value makes an element not visible but still take up space?,opacity: 0,visibility: hidden,hidden: true,display: none,B
+Which property would you use to set an element's max width?,width-max,max-width,limit-width,width-limit,B
+Which property allows you to set the transparency of an element?,opacity,visibility,alpha,transparent,A
+Which selector selects all elements of a class 'btn'?,#btn,btn,*btn,.btn,D
+Which property controls the order of flex items along the main axis?,flex-order,position,order,z-index,C
+Which CSS at-rule imports external style sheets?,@include,@import,@link,@use,B
+Which property sets rounded corners on a box?,radius,border-radius,box-round,corner-radius,B
+Which property changes the cursor to a pointer when hovering?,pointer: true,cursor: pointer,hover: pointer,cursor: hand,B
+How do you write a CSS comment?,# comment,// comment,<!-- comment -->,/* comment */,D
+Which property is used to create space between rows/columns in grid or gap for flex?,spacing,gap,grid-gap,gutter,B
+Which property sets the background image of an element?,background-image,background-src,bg-image,image-src,A
+Which property controls whether an element floats left or right?,display,float,position,align,B
+Which pseudo-class applies when the user hovers over an element?,:hover,:focus,:active,:visited,A
+Which shorthand property sets padding on all four sides?,space,gap,margin,padding,D

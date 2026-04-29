@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which keyword declares a function in Kotlin?,fun,fn,function,def,A
+Which type represents a nullable String in Kotlin?,NullableString,String?,Optional<String>,String!,B
+Which collection type is ordered and allows duplicates in Kotlin?,Array,List,Set,Map,B
+Which keyword declares an immutable read-only variable in Kotlin?,val,var,let,const,A
+Which keyword declares a mutable variable in Kotlin?,let,var,val,mutable,B
+How do you define a class in Kotlin?,class: MyClass,class MyClass { },define class MyClass,object MyClass { },B
+Which operator checks structural equality in Kotlin?,===,is,==,equals(),C
+Which type is used for integer numbers in Kotlin?,Int,int,Integer,Long,A
+Which function is the entry point of a Kotlin application?,public static void main(),start(),fun main() { },main(),C
+Which keyword declares a singleton object in Kotlin?,companion,static,object,singleton,C
+Which type is used for boolean values in Kotlin?,boolean,Boolean,Bool,bool,B
+How do you create an immutable list in Kotlin?,arrayListOf(),immutableList(),mutableListOf(),listOf(...),D
+Which syntax denotes string templates in Kotlin?,$$,${},%{},#{},B
+Which null-safety operator provides a default when value is null?,?: (Elvis operator),orElse,?:?,??,A
+Which visibility modifier makes member visible only inside the same class?,internal,public,protected,private,D
+Which construct declares a data class for value objects?,data class,record,value class,class,A
+Which keyword specifies that a function can be overridden?,virtual,override,abstract,open,D
+Which syntax declares an interface in Kotlin?,trait,protocol,interface:,interface MyInterface { },D
+Which collection maps keys to values in Kotlin?,AssociativeArray,Hashtable,Map,Dictionary,C
+Which function converts a list to a mutable list?,toMutableList(),copyToMutable(),mutableList(),asMutable(),A
+Which annotation marks a deprecated element in Kotlin?,@deprecated,@Obsolete,@Deprecated,@Remove,C
+Which operator checks reference equality in Kotlin?,==,equals(),is,===,D
+Which extension function lets you run code if value is null?,ifNull,whenNull,ifPresent,let / ?.let or ?: (various patterns),D
+Which keyword creates an inline function to avoid allocation overhead?,crossinline,inline,inlineOnly,noinline,B
+Which package contains Kotlin standard library core types?,java.*,kotlin.core,"kotlin.* (kotlin.collections, kotlin.text)",kotlin.std,C
+Which function iterates over elements with index and value?,forEach,mapIndexed,forEachIndexed,forIndexed,C
+Which type is used for 64-bit integers in Kotlin?,Int64,BigInt,long,Long,D
+Which declaration creates a companion object inside a class?,companion object { },class companion,object companion,static object,A
+Which keyword marks a method as overriding a superclass method?,override,implements,super,overrides,A
+Which keyword marks a method as overriding a superclass method?,super,override,overrides,implements,B

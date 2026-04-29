@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What does the Global Interpreter Lock (GIL) in CPython affect?,Blocks multiprocessing,Prevents IO operations,Prevents multiple native threads from executing Python bytecode simultaneously,Disables threading entirely,C
+Which module provides low-level threading primitives and higher-level pools?,multiprocessing,threadpool,threading / concurrent.futures,asyncio,C
+Which feature allows asynchronous programming with event loop?,threading,callbacks,multiprocessing,asyncio and async/await,D
+Which technique creates classes that customize attribute access and behavior?,Reflection,Descriptors and __get__/__set__,Metaprogramming via macros,Decorators only,B
+Which construct lets you create classes that modify class creation?,decorators,metaclasses (type),class factories,abcs,B
+Which module helps profile and analyze CPU time usage?,pdb,cProfile / profile,trace,timeit,B
+Which library can compile Python to efficient native code (ahead-of-time) in some contexts?,IronPython,Jython,MicroPython,Cython / PyPy / Numba,D
+Which protocol allows zero-copy serialization for complex objects (binary)?,pickle,memoryview / buffer protocol,marshal,json,B
+Which approach is recommended for IO-bound concurrency in Python?,multiprocessing only,threading always,use sleep,asyncio or threading depending on libs; asyncio for scalable IO,D
+Which tool isolates project dependencies and interpreters?,systempython,site-packages,virtual environments (venv/virtualenv/conda),global installs,C
+Which module provides high-performance inter-process communication and pools?,subprocess,concurrent.futures,multiprocessing,threading,C
+Which feature helps create efficient binary protocols and struct packing?,marshal,binaryio,pickle,struct module / memoryview,D
+Which technique is used to write context managers easily?,contextlib.contextmanager or __enter__/__exit__,with statement only,try/finally,decorators only,A
+Which typing feature supports gradual typing in Python?,typechecked,strict types,type hints (typing module),mypy only,C
+Which function schedules coroutine execution in asyncio?,await task(),loop.run_until_complete(),asyncio.run(),asyncio.create_task(),D
+Which serialization avoids Python-specific binary format for cross-language?,shelve,"JSON, protobuf, MessagePack (not pickle)",marshal,pickle,B
+Which tool helps build wheels and distribution packages?,pip install,easy_install,setuptools / wheel / build,distutils only,C
+Which advanced feature allows function wrappers preserving metadata?,wraps(),functools.wraps,preserve(),functools.decorate,B
+Which async primitive coordinates multiple coroutines to run and gather results?,await_all(),concurrent.futures.gather(),asyncio.wait(),asyncio.gather(),D
+Which method helps prevent blocking the event loop when doing CPU work?,Use asyncio.sleep(),Use time.sleep(),Run CPU work in ProcessPoolExecutor or separate process,Use threading,C
+Which module helps manipulate bytecode and AST in Python?,codeop,ast and dis modules,inspect,inspect.getsource,B
+Which technique helps avoid memory leaks in long-running Python apps?,Avoid GC,Disable modules,Use global variables,"Break reference cycles, use weakrefs, manage large caches",D
+Which approach helps speed up numeric computations in Python?,"Use numpy, vectorized operations or C extensions",Pickle optimization,String parsing,Pure Python loops,A
+Which feature allows creating lightweight immutable data classes?,attrs,tuple,namedtuple,dataclasses.dataclass(frozen=True),D
+Which module provides asynchronous HTTP client tools commonly used?,requests,httplib,urllib,aiohttp / httpx (async),D
+What does the Global Interpreter Lock (GIL) in CPython affect?,Prevents IO operations,Disables threading entirely,Blocks multiprocessing,Prevents multiple native threads from executing Python bytecode simultaneously,D
+Which module provides low-level threading primitives and higher-level pools?,threading / concurrent.futures,multiprocessing,threadpool,asyncio,A
+Which feature allows asynchronous programming with event loop?,callbacks,multiprocessing,threading,asyncio and async/await,D
+Which technique creates classes that customize attribute access and behavior?,Descriptors and __get__/__set__,Reflection,Metaprogramming via macros,Decorators only,A
+Which construct lets you create classes that modify class creation?,abcs,decorators,class factories,metaclasses (type),D
+Which module helps profile and analyze CPU time usage?,trace,pdb,timeit,cProfile / profile,D
+Which library can compile Python to efficient native code (ahead-of-time) in some contexts?,Cython / PyPy / Numba,MicroPython,Jython,IronPython,A
+Which protocol allows zero-copy serialization for complex objects (binary)?,memoryview / buffer protocol,json,marshal,pickle,A
+Which approach is recommended for IO-bound concurrency in Python?,threading always,asyncio or threading depending on libs; asyncio for scalable IO,use sleep,multiprocessing only,B
+Which tool isolates project dependencies and interpreters?,site-packages,global installs,systempython,virtual environments (venv/virtualenv/conda),D
+Which module provides high-performance inter-process communication and pools?,multiprocessing,concurrent.futures,threading,subprocess,A
+Which feature helps create efficient binary protocols and struct packing?,pickle,marshal,struct module / memoryview,binaryio,C
+Which technique is used to write context managers easily?,contextlib.contextmanager or __enter__/__exit__,try/finally,decorators only,with statement only,A
+Which typing feature supports gradual typing in Python?,strict types,typechecked,type hints (typing module),mypy only,C
+Which function schedules coroutine execution in asyncio?,await task(),asyncio.create_task(),loop.run_until_complete(),asyncio.run(),B
+Which serialization avoids Python-specific binary format for cross-language?,pickle,"JSON, protobuf, MessagePack (not pickle)",shelve,marshal,B
+Which tool helps build wheels and distribution packages?,setuptools / wheel / build,pip install,easy_install,distutils only,A
+Which advanced feature allows function wrappers preserving metadata?,preserve(),functools.decorate,wraps(),functools.wraps,D
+Which async primitive coordinates multiple coroutines to run and gather results?,await_all(),concurrent.futures.gather(),asyncio.wait(),asyncio.gather(),D
+Which method helps prevent blocking the event loop when doing CPU work?,Use asyncio.sleep(),Use threading,Run CPU work in ProcessPoolExecutor or separate process,Use time.sleep(),C
+Which module helps manipulate bytecode and AST in Python?,ast and dis modules,codeop,inspect.getsource,inspect,A
+Which technique helps avoid memory leaks in long-running Python apps?,"Break reference cycles, use weakrefs, manage large caches",Avoid GC,Use global variables,Disable modules,A
+Which approach helps speed up numeric computations in Python?,Pure Python loops,"Use numpy, vectorized operations or C extensions",Pickle optimization,String parsing,B
+Which feature allows creating lightweight immutable data classes?,dataclasses.dataclass(frozen=True),attrs,namedtuple,tuple,A
+Which module provides asynchronous HTTP client tools commonly used?,aiohttp / httpx (async),urllib,httplib,requests,A
+What does the Global Interpreter Lock (GIL) in CPython affect?,Disables threading entirely,Prevents IO operations,Prevents multiple native threads from executing Python bytecode simultaneously,Blocks multiprocessing,C
+Which module provides low-level threading primitives and higher-level pools?,multiprocessing,threadpool,threading / concurrent.futures,asyncio,C
+Which feature allows asynchronous programming with event loop?,callbacks,threading,multiprocessing,asyncio and async/await,D
+Which technique creates classes that customize attribute access and behavior?,Reflection,Decorators only,Metaprogramming via macros,Descriptors and __get__/__set__,D
+Which construct lets you create classes that modify class creation?,metaclasses (type),abcs,class factories,decorators,A
+Which module helps profile and analyze CPU time usage?,timeit,trace,cProfile / profile,pdb,C
+Which library can compile Python to efficient native code (ahead-of-time) in some contexts?,Jython,Cython / PyPy / Numba,MicroPython,IronPython,B
+Which protocol allows zero-copy serialization for complex objects (binary)?,pickle,marshal,memoryview / buffer protocol,json,C
+Which approach is recommended for IO-bound concurrency in Python?,use sleep,threading always,asyncio or threading depending on libs; asyncio for scalable IO,multiprocessing only,C
+Which tool isolates project dependencies and interpreters?,global installs,site-packages,virtual environments (venv/virtualenv/conda),systempython,C
+Which module provides high-performance inter-process communication and pools?,multiprocessing,threading,subprocess,concurrent.futures,A
+Which feature helps create efficient binary protocols and struct packing?,marshal,struct module / memoryview,pickle,binaryio,B
+Which technique is used to write context managers easily?,try/finally,with statement only,decorators only,contextlib.contextmanager or __enter__/__exit__,D
+Which typing feature supports gradual typing in Python?,typechecked,type hints (typing module),strict types,mypy only,B
+Which function schedules coroutine execution in asyncio?,await task(),asyncio.run(),asyncio.create_task(),loop.run_until_complete(),C
+Which serialization avoids Python-specific binary format for cross-language?,marshal,"JSON, protobuf, MessagePack (not pickle)",shelve,pickle,B
+Which tool helps build wheels and distribution packages?,setuptools / wheel / build,pip install,distutils only,easy_install,A
+Which advanced feature allows function wrappers preserving metadata?,preserve(),wraps(),functools.wraps,functools.decorate,C
+Which async primitive coordinates multiple coroutines to run and gather results?,asyncio.gather(),await_all(),concurrent.futures.gather(),asyncio.wait(),A
+Which method helps prevent blocking the event loop when doing CPU work?,Use threading,Use asyncio.sleep(),Use time.sleep(),Run CPU work in ProcessPoolExecutor or separate process,D
+Which module helps manipulate bytecode and AST in Python?,inspect,ast and dis modules,codeop,inspect.getsource,B
+Which technique helps avoid memory leaks in long-running Python apps?,"Break reference cycles, use weakrefs, manage large caches",Use global variables,Avoid GC,Disable modules,A
+Which approach helps speed up numeric computations in Python?,Pure Python loops,Pickle optimization,String parsing,"Use numpy, vectorized operations or C extensions",D
+Which feature allows creating lightweight immutable data classes?,attrs,dataclasses.dataclass(frozen=True),tuple,namedtuple,B
+Which module provides asynchronous HTTP client tools commonly used?,httplib,aiohttp / httpx (async),requests,urllib,B
+What does the Global Interpreter Lock (GIL) in CPython affect?,Prevents multiple native threads from executing Python bytecode simultaneously,Blocks multiprocessing,Prevents IO operations,Disables threading entirely,A
+Which module provides low-level threading primitives and higher-level pools?,threadpool,threading / concurrent.futures,asyncio,multiprocessing,B
+Which feature allows asynchronous programming with event loop?,threading,callbacks,multiprocessing,asyncio and async/await,D
+Which technique creates classes that customize attribute access and behavior?,Decorators only,Metaprogramming via macros,Reflection,Descriptors and __get__/__set__,D
+Which construct lets you create classes that modify class creation?,class factories,metaclasses (type),abcs,decorators,B
+Which module helps profile and analyze CPU time usage?,pdb,trace,timeit,cProfile / profile,D
+Which library can compile Python to efficient native code (ahead-of-time) in some contexts?,Cython / PyPy / Numba,Jython,IronPython,MicroPython,A
+Which protocol allows zero-copy serialization for complex objects (binary)?,pickle,json,marshal,memoryview / buffer protocol,D
+Which approach is recommended for IO-bound concurrency in Python?,threading always,use sleep,multiprocessing only,asyncio or threading depending on libs; asyncio for scalable IO,D
+Which tool isolates project dependencies and interpreters?,systempython,site-packages,virtual environments (venv/virtualenv/conda),global installs,C
+Which module provides high-performance inter-process communication and pools?,threading,concurrent.futures,subprocess,multiprocessing,D
+Which feature helps create efficient binary protocols and struct packing?,struct module / memoryview,pickle,binaryio,marshal,A
+Which technique is used to write context managers easily?,with statement only,try/finally,decorators only,contextlib.contextmanager or __enter__/__exit__,D
+Which typing feature supports gradual typing in Python?,typechecked,strict types,mypy only,type hints (typing module),D
+Which function schedules coroutine execution in asyncio?,await task(),asyncio.run(),loop.run_until_complete(),asyncio.create_task(),D
+Which serialization avoids Python-specific binary format for cross-language?,pickle,marshal,shelve,"JSON, protobuf, MessagePack (not pickle)",D
+Which tool helps build wheels and distribution packages?,setuptools / wheel / build,distutils only,pip install,easy_install,A
+Which advanced feature allows function wrappers preserving metadata?,wraps(),functools.decorate,functools.wraps,preserve(),C
+Which async primitive coordinates multiple coroutines to run and gather results?,await_all(),asyncio.wait(),asyncio.gather(),concurrent.futures.gather(),C
+Which method helps prevent blocking the event loop when doing CPU work?,Use time.sleep(),Use threading,Run CPU work in ProcessPoolExecutor or separate process,Use asyncio.sleep(),C
+Which module helps manipulate bytecode and AST in Python?,ast and dis modules,codeop,inspect.getsource,inspect,A
+Which technique helps avoid memory leaks in long-running Python apps?,Disable modules,"Break reference cycles, use weakrefs, manage large caches",Avoid GC,Use global variables,B
+Which approach helps speed up numeric computations in Python?,String parsing,"Use numpy, vectorized operations or C extensions",Pickle optimization,Pure Python loops,B
+Which feature allows creating lightweight immutable data classes?,attrs,tuple,dataclasses.dataclass(frozen=True),namedtuple,C
+Which module provides asynchronous HTTP client tools commonly used?,aiohttp / httpx (async),httplib,requests,urllib,A

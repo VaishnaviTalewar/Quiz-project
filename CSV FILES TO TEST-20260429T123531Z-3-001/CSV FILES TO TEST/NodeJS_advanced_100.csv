@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What is the main advantage of Node.js event-driven architecture?,Non-blocking asynchronous I/O,Multi-threading,Static typing,Compiled execution,A
+Which API allows clustering Node.js processes?,cluster module,fork module,thread module,worker module,A
+Which module enables worker threads?,worker_threads,workers,threads,thread,A
+Which concept prevents blocking of the event loop?,Parallel loops,Sync code,Async non-blocking operations,Blocking IO,C
+Which Node.js feature improves performance by using multiple CPU cores?,Event loop,Clustering,Promises,Callbacks,B
+Which tool monitors Node.js performance?,Watcher,NodeWatch,MonitorJS,PM2,D
+Which function handles unhandled promise rejections globally?,process.catch(),process.on('unhandledRejection'),handleRejection(),promise.catchAll(),B
+Which library helps build scalable backend with TypeScript?,Loopback,NestJS,Feathers,Koa,B
+Which module handles streams in Node.js?,stream,data,buffer,pipe,A
+Which stream type is readable only?,Transform,Duplex,Readable,Writable,C
+Which Node.js mechanism helps manage asynchronous operations elegantly?,Promises and async/await,Threads,Callbacks only,Loops,A
+Which feature allows building microservices architecture in Node?,Single server,Monolith only,Message queues and event-driven services,Static apps,C
+Which tool helps load balancing Node.js apps?,Rollup,Webpack,NGINX,Parcel,C
+Which protocol often used with Node.js for real-time apps?,Telnet,FTP,WebSocket,SMTP,C
+Which library enables WebSocket communication easily?,RealtimeJS,Socket.IO,NodeSocket,WebSock,B
+Which debugging tool comes with Node.js?,Node Inspector / Chrome DevTools,Node Debugger,JS Debugger,Console Watch,A
+Which module helps manage memory buffers?,Buffer,Memory,ArrayBuffer,Cache,A
+Which architecture style often used with Node microservices?,Static architecture,Monolithic architecture,Layered only,Event-driven architecture,D
+Which tool helps containerize Node.js apps?,Docker,Vagrant,Hypervisor,VMware,A
+Which protocol is commonly used for REST APIs?,SSH,HTTP/HTTPS,FTP,SMTP,B
+What is the main advantage of Node.js event-driven architecture?,Non-blocking asynchronous I/O,Compiled execution,Multi-threading,Static typing,A
+Which API allows clustering Node.js processes?,worker module,cluster module,fork module,thread module,B
+Which module enables worker threads?,workers,threads,thread,worker_threads,D
+Which concept prevents blocking of the event loop?,Blocking IO,Sync code,Async non-blocking operations,Parallel loops,C
+Which Node.js feature improves performance by using multiple CPU cores?,Promises,Clustering,Callbacks,Event loop,B
+Which tool monitors Node.js performance?,MonitorJS,Watcher,NodeWatch,PM2,D
+Which function handles unhandled promise rejections globally?,process.on('unhandledRejection'),promise.catchAll(),handleRejection(),process.catch(),A
+Which library helps build scalable backend with TypeScript?,Loopback,NestJS,Koa,Feathers,B
+Which module handles streams in Node.js?,stream,pipe,data,buffer,A
+Which stream type is readable only?,Readable,Transform,Writable,Duplex,A
+Which Node.js mechanism helps manage asynchronous operations elegantly?,Loops,Callbacks only,Promises and async/await,Threads,C
+Which feature allows building microservices architecture in Node?,Monolith only,Message queues and event-driven services,Static apps,Single server,B
+Which tool helps load balancing Node.js apps?,Rollup,Webpack,Parcel,NGINX,D
+Which protocol often used with Node.js for real-time apps?,SMTP,WebSocket,FTP,Telnet,B
+Which library enables WebSocket communication easily?,NodeSocket,RealtimeJS,WebSock,Socket.IO,D
+Which debugging tool comes with Node.js?,Console Watch,Node Inspector / Chrome DevTools,Node Debugger,JS Debugger,B
+Which module helps manage memory buffers?,Buffer,ArrayBuffer,Memory,Cache,A
+Which architecture style often used with Node microservices?,Event-driven architecture,Static architecture,Monolithic architecture,Layered only,A
+Which tool helps containerize Node.js apps?,VMware,Hypervisor,Vagrant,Docker,D
+Which protocol is commonly used for REST APIs?,HTTP/HTTPS,SMTP,SSH,FTP,A
+What is the main advantage of Node.js event-driven architecture?,Multi-threading,Compiled execution,Static typing,Non-blocking asynchronous I/O,D
+Which API allows clustering Node.js processes?,fork module,thread module,cluster module,worker module,C
+Which module enables worker threads?,threads,worker_threads,thread,workers,B
+Which concept prevents blocking of the event loop?,Sync code,Blocking IO,Async non-blocking operations,Parallel loops,C
+Which Node.js feature improves performance by using multiple CPU cores?,Event loop,Callbacks,Clustering,Promises,C
+Which tool monitors Node.js performance?,MonitorJS,NodeWatch,Watcher,PM2,D
+Which function handles unhandled promise rejections globally?,handleRejection(),promise.catchAll(),process.catch(),process.on('unhandledRejection'),D
+Which library helps build scalable backend with TypeScript?,NestJS,Loopback,Koa,Feathers,A
+Which module handles streams in Node.js?,data,stream,pipe,buffer,B
+Which stream type is readable only?,Readable,Writable,Duplex,Transform,A
+Which Node.js mechanism helps manage asynchronous operations elegantly?,Callbacks only,Threads,Promises and async/await,Loops,C
+Which feature allows building microservices architecture in Node?,Message queues and event-driven services,Single server,Static apps,Monolith only,A
+Which tool helps load balancing Node.js apps?,Webpack,Rollup,NGINX,Parcel,C
+Which protocol often used with Node.js for real-time apps?,FTP,WebSocket,SMTP,Telnet,B
+Which library enables WebSocket communication easily?,NodeSocket,Socket.IO,WebSock,RealtimeJS,B
+Which debugging tool comes with Node.js?,JS Debugger,Node Debugger,Console Watch,Node Inspector / Chrome DevTools,D
+Which module helps manage memory buffers?,Buffer,ArrayBuffer,Memory,Cache,A
+Which architecture style often used with Node microservices?,Event-driven architecture,Monolithic architecture,Layered only,Static architecture,A
+Which tool helps containerize Node.js apps?,VMware,Vagrant,Hypervisor,Docker,D
+Which protocol is commonly used for REST APIs?,FTP,SMTP,SSH,HTTP/HTTPS,D
+What is the main advantage of Node.js event-driven architecture?,Multi-threading,Non-blocking asynchronous I/O,Static typing,Compiled execution,B
+Which API allows clustering Node.js processes?,cluster module,worker module,fork module,thread module,A
+Which module enables worker threads?,threads,workers,worker_threads,thread,C
+Which concept prevents blocking of the event loop?,Sync code,Blocking IO,Async non-blocking operations,Parallel loops,C
+Which Node.js feature improves performance by using multiple CPU cores?,Clustering,Promises,Event loop,Callbacks,A
+Which tool monitors Node.js performance?,MonitorJS,Watcher,PM2,NodeWatch,C
+Which function handles unhandled promise rejections globally?,handleRejection(),promise.catchAll(),process.catch(),process.on('unhandledRejection'),D
+Which library helps build scalable backend with TypeScript?,Feathers,Koa,Loopback,NestJS,D
+Which module handles streams in Node.js?,buffer,pipe,data,stream,D
+Which stream type is readable only?,Readable,Transform,Writable,Duplex,A
+Which Node.js mechanism helps manage asynchronous operations elegantly?,Loops,Promises and async/await,Threads,Callbacks only,B
+Which feature allows building microservices architecture in Node?,Monolith only,Message queues and event-driven services,Static apps,Single server,B
+Which tool helps load balancing Node.js apps?,Rollup,NGINX,Parcel,Webpack,B
+Which protocol often used with Node.js for real-time apps?,Telnet,WebSocket,SMTP,FTP,B
+Which library enables WebSocket communication easily?,WebSock,RealtimeJS,NodeSocket,Socket.IO,D
+Which debugging tool comes with Node.js?,Node Debugger,JS Debugger,Console Watch,Node Inspector / Chrome DevTools,D
+Which module helps manage memory buffers?,Cache,Memory,ArrayBuffer,Buffer,D
+Which architecture style often used with Node microservices?,Static architecture,Monolithic architecture,Layered only,Event-driven architecture,D
+Which tool helps containerize Node.js apps?,VMware,Vagrant,Docker,Hypervisor,C
+Which protocol is commonly used for REST APIs?,FTP,SMTP,HTTP/HTTPS,SSH,C
+What is the main advantage of Node.js event-driven architecture?,Non-blocking asynchronous I/O,Compiled execution,Static typing,Multi-threading,A
+Which API allows clustering Node.js processes?,worker module,fork module,cluster module,thread module,C
+Which module enables worker threads?,workers,threads,worker_threads,thread,C
+Which concept prevents blocking of the event loop?,Async non-blocking operations,Sync code,Parallel loops,Blocking IO,A
+Which Node.js feature improves performance by using multiple CPU cores?,Callbacks,Event loop,Promises,Clustering,D
+Which tool monitors Node.js performance?,Watcher,PM2,NodeWatch,MonitorJS,B
+Which function handles unhandled promise rejections globally?,promise.catchAll(),process.catch(),handleRejection(),process.on('unhandledRejection'),D
+Which library helps build scalable backend with TypeScript?,Loopback,Feathers,Koa,NestJS,D
+Which module handles streams in Node.js?,pipe,buffer,data,stream,D
+Which stream type is readable only?,Transform,Writable,Duplex,Readable,D
+Which Node.js mechanism helps manage asynchronous operations elegantly?,Callbacks only,Promises and async/await,Threads,Loops,B
+Which feature allows building microservices architecture in Node?,Single server,Monolith only,Static apps,Message queues and event-driven services,D
+Which tool helps load balancing Node.js apps?,Parcel,Rollup,Webpack,NGINX,D
+Which protocol often used with Node.js for real-time apps?,Telnet,FTP,SMTP,WebSocket,D
+Which library enables WebSocket communication easily?,WebSock,NodeSocket,RealtimeJS,Socket.IO,D
+Which debugging tool comes with Node.js?,Console Watch,Node Debugger,Node Inspector / Chrome DevTools,JS Debugger,C
+Which module helps manage memory buffers?,Cache,Buffer,Memory,ArrayBuffer,B
+Which architecture style often used with Node microservices?,Event-driven architecture,Layered only,Static architecture,Monolithic architecture,A
+Which tool helps containerize Node.js apps?,Hypervisor,VMware,Docker,Vagrant,C
+Which protocol is commonly used for REST APIs?,HTTP/HTTPS,SMTP,SSH,FTP,A

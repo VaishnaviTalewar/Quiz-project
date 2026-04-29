@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which keyword is used to define a function in Python?,def,func,fn,function,A
+How do you print text to standard output in Python?,print(),console.log(),echo(),puts(),A
+Which symbol is used for comments in Python?,//,#,/*,<!--,B
+"Which data type is an ordered, immutable sequence of characters?",list,str (string),tuple,bytes,B
+Which data type is mutable ordered collection?,dict,list,set,tuple,B
+Which structure stores key-value pairs in Python?,map,dict,set,list,B
+Which statement checks a condition?,switch,if,case,when,B
+Which loop iterates while a condition is True?,loop,repeat,while,for,C
+Which keyword exits a function and optionally returns a value?,exit,return,stop,break,B
+How do you import a module named math?,require math,import math,include math,using math,B
+Which operator is used for exponentiation?,pow(),**,exp(),^,B
+Which method adds an element to the end of a list?,add(),push(),insert(),append(),D
+Which built-in returns the number of elements in a sequence?,count(),len(),size(),length(),B
+Which keyword creates an anonymous function?,anonymous,def,lambda,func,C
+Which value represents no value in Python?,None,nil,undefined,null,A
+Which boolean values exist in Python?,Yes and No,true and false,1 and 0,True and False,D
+Which method returns a substring by slicing?,slice(),s[start:stop],substring(),substr(),B
+Which statement is used to handle exceptions?,try...except,begin...rescue,try...finally,try...catch,A
+Which keyword defines a class in Python?,object,class,module,struct,B
+Which operator concatenates strings?,&,.,+,concat(),C
+Which function converts a string to an integer?,int(),toInt(),parseInt(),Number(),A
+Which built-in type is used for decimal numbers with fractions?,float,real,decimal,double,A
+Which method removes and returns the last item from a list?,pop(),pop_last(),delete(),remove(),A
+Which container stores unique unordered elements?,dict,list,tuple,set,D
+Which module is commonly used for regular expressions?,pyre,regexp,regex,re,D
+Which file mode opens a file for reading?,'w','rw','a','r',D
+Which operator checks equality of values?,==,=,equals,is,A
+Which method converts a value to string?,str(),String(),stringify(),toString(),A
+Which keyword is used to create a generator function?,return,yielded,yield,generate,C
+Which built-in helps iterate with index and value together?,enumerate(),items(),zip(),index(),A

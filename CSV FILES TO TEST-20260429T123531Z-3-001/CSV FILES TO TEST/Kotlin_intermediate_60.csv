@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which coroutine builder launches a new coroutine without blocking the current thread?,async,runBlocking,launch,startCoroutine,C
+Which scope is commonly used in Android for lifecycle-aware coroutines?,lifecycleScope / viewModelScope,CoroutineScope,GlobalScope,activityScope,A
+Which function awaits the result of an async coroutine and retrieves its value?,join(),result(),await(),get(),C
+Which keyword marks a parameter as vararg (variable number of args)?,...,vararg,args,params,B
+Which collection type is backed by a mutable list with synchronization options?,Vector,Collections.synchronizedList(...) or mutableList with locks,CopyOnWriteArrayList,ConcurrentList,B
+Which Kotlin feature allows creating DSL-like builders with lambda receivers?,build(),DSL keyword,apply / with / run / let (scope functions),lambdaDSL,C
+Which function runs a blocking coroutine for testing or main thread?,launchBlocking,sync,block,runBlocking,D
+Which operator is used for safe cast returning null if cast fails?,as?,safeCast(),cast,as,A
+Which library helps with serialization in Kotlin multiplatform?,Jackson,kotlinx.serialization,Gson,Moshi,B
+Which construct helps define sealed hierarchies for exhaustive when statements?,abstract class,sealed class,data class,enum,B
+Which function creates a sequence (lazy collection) in Kotlin?,seq(),sequence { },lazySequence(),generateSequence(),B
+Which qualifier restricts visibility to the module in Kotlin?,internal,private,public,protected,A
+Which tool provides Kotlin code style and lint checks?,eslint,checkstyle,ktlint / detekt,pylint,C
+Which extension allows interoperability with Java streams?,streamify(),asSequence() and toList()/toSet(),toStream(),javaStream(),B
+Which annotation generates builder-like methods in data classes (from libs)?,@Data,@AutoValue,@Builder (via Lombok or other libs),@Parcelize,C
+Which function yields sequence values lazily and can be combined with map/filter?,generateSequence or sequence builders,list generators,flow,channel,A
+Which concurrency primitive offers atomic operations for numbers?,Mutex,AtomicInteger / AtomicLong (from java.util.concurrent.atomic),Synchronized,Volatile,B
+Which API provides reactive streams support in Kotlin?,Reactor,Channels,Kotlin Flow (kotlinx.coroutines.flow),RxJava,C
+Which library helps dependency injection in Kotlin/Android?,Guice,Koin or Hilt (Dagger-Hilt),Spring DI,Dagger2 only,B
+Which extension function helps convert a nullable receiver into action if not null?,ifNotNull,whenNotNull,ifPresent,?.let { },D
+Which operator or function helps collect flow elements?,collect(),toList(),awaitCollect(),consume(),A
+Which annotation marks function for JVM static behavior in companion object?,@JvmName,@JvmField,@JvmStatic,@JvmOverloads,C
+Which testing library is commonly used for unit tests in Kotlin on JVM?,mocha,jest,JUnit (with Kotlin support) and kotlin.test,pytest,C
+Which function can be used to lazily initialize a property thread-safely?,lazy(LazyThreadSafetyMode.SYNCHRONIZED),lazy(),lazyThread,by lazy,A
+Which coroutine builder launches a new coroutine without blocking the current thread?,launch,startCoroutine,runBlocking,async,A
+Which scope is commonly used in Android for lifecycle-aware coroutines?,GlobalScope,activityScope,CoroutineScope,lifecycleScope / viewModelScope,D
+Which function awaits the result of an async coroutine and retrieves its value?,result(),get(),join(),await(),D
+Which keyword marks a parameter as vararg (variable number of args)?,vararg,...,args,params,A
+Which collection type is backed by a mutable list with synchronization options?,Collections.synchronizedList(...) or mutableList with locks,ConcurrentList,Vector,CopyOnWriteArrayList,A
+Which Kotlin feature allows creating DSL-like builders with lambda receivers?,build(),apply / with / run / let (scope functions),DSL keyword,lambdaDSL,B
+Which function runs a blocking coroutine for testing or main thread?,block,launchBlocking,sync,runBlocking,D
+Which operator is used for safe cast returning null if cast fails?,safeCast(),cast,as?,as,C
+Which library helps with serialization in Kotlin multiplatform?,Moshi,kotlinx.serialization,Gson,Jackson,B
+Which construct helps define sealed hierarchies for exhaustive when statements?,sealed class,abstract class,enum,data class,A
+Which function creates a sequence (lazy collection) in Kotlin?,sequence { },seq(),generateSequence(),lazySequence(),A
+Which qualifier restricts visibility to the module in Kotlin?,protected,internal,public,private,B
+Which tool provides Kotlin code style and lint checks?,checkstyle,ktlint / detekt,eslint,pylint,B
+Which extension allows interoperability with Java streams?,javaStream(),asSequence() and toList()/toSet(),streamify(),toStream(),B
+Which annotation generates builder-like methods in data classes (from libs)?,@Parcelize,@AutoValue,@Data,@Builder (via Lombok or other libs),D
+Which function yields sequence values lazily and can be combined with map/filter?,generateSequence or sequence builders,channel,flow,list generators,A
+Which concurrency primitive offers atomic operations for numbers?,Synchronized,Volatile,Mutex,AtomicInteger / AtomicLong (from java.util.concurrent.atomic),D
+Which API provides reactive streams support in Kotlin?,Kotlin Flow (kotlinx.coroutines.flow),Reactor,RxJava,Channels,A
+Which library helps dependency injection in Kotlin/Android?,Spring DI,Koin or Hilt (Dagger-Hilt),Guice,Dagger2 only,B
+Which extension function helps convert a nullable receiver into action if not null?,ifNotNull,ifPresent,whenNotNull,?.let { },D
+Which operator or function helps collect flow elements?,consume(),collect(),toList(),awaitCollect(),B
+Which annotation marks function for JVM static behavior in companion object?,@JvmName,@JvmOverloads,@JvmStatic,@JvmField,C
+Which testing library is commonly used for unit tests in Kotlin on JVM?,JUnit (with Kotlin support) and kotlin.test,jest,mocha,pytest,A
+Which function can be used to lazily initialize a property thread-safely?,lazy(LazyThreadSafetyMode.SYNCHRONIZED),by lazy,lazy(),lazyThread,A
+Which coroutine builder launches a new coroutine without blocking the current thread?,launch,startCoroutine,async,runBlocking,A
+Which scope is commonly used in Android for lifecycle-aware coroutines?,GlobalScope,activityScope,lifecycleScope / viewModelScope,CoroutineScope,C
+Which function awaits the result of an async coroutine and retrieves its value?,await(),result(),get(),join(),A
+Which keyword marks a parameter as vararg (variable number of args)?,...,params,vararg,args,C
+Which collection type is backed by a mutable list with synchronization options?,Collections.synchronizedList(...) or mutableList with locks,CopyOnWriteArrayList,ConcurrentList,Vector,A
+Which Kotlin feature allows creating DSL-like builders with lambda receivers?,lambdaDSL,build(),apply / with / run / let (scope functions),DSL keyword,C
+Which function runs a blocking coroutine for testing or main thread?,launchBlocking,block,sync,runBlocking,D
+Which operator is used for safe cast returning null if cast fails?,as,cast,as?,safeCast(),C
+Which library helps with serialization in Kotlin multiplatform?,Moshi,Gson,kotlinx.serialization,Jackson,C
+Which construct helps define sealed hierarchies for exhaustive when statements?,abstract class,data class,enum,sealed class,D
+Which function creates a sequence (lazy collection) in Kotlin?,generateSequence(),lazySequence(),sequence { },seq(),C
+Which qualifier restricts visibility to the module in Kotlin?,private,public,internal,protected,C

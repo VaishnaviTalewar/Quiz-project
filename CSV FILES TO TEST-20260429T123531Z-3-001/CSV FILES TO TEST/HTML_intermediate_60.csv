@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which HTML element is appropriate for marking up a block of navigation links?,navlist,nav,div,section,B
+Which attribute would you use to give an element a custom data-* attribute name?,custom-*,data-*,meta-*,aria-*,B
+What is the purpose of the <figure> element in HTML5?,To create forms,To define icons,To group media and their caption (figcaption),To display images only,C
+Which attribute would you use to give an element a custom data-* attribute name?,custom-*,data-*,meta-*,aria-*,B
+What is the purpose of the <figure> element in HTML5?,To display images only,To define icons,To group media and their caption (figcaption),To create forms,C
+Which HTML element is appropriate for marking up a block of navigation links?,div,nav,section,navlist,B
+Which input type should be used for selecting a date in a form?,datetime-local,date,text,time,B
+Which HTML element is appropriate for marking up a block of navigation links?,section,navlist,div,nav,D
+Which input type should be used for selecting a date in a form?,date,time,text,datetime-local,A
+Which HTML element is appropriate for marking up a block of navigation links?,section,navlist,div,nav,D
+Which input type should be used for selecting a date in a form?,date,text,datetime-local,time,A
+Which HTML element is appropriate for marking up a block of navigation links?,section,div,nav,navlist,C
+Which attribute would you use to give an element a custom data-* attribute name?,data-*,meta-*,custom-*,aria-*,A
+What is the purpose of the <figure> element in HTML5?,To group media and their caption (figcaption),To create forms,To display images only,To define icons,A
+Which input type should be used for selecting a date in a form?,time,text,date,datetime-local,C
+Which attribute would you use to give an element a custom data-* attribute name?,meta-*,data-*,aria-*,custom-*,B
+What is the purpose of the <figure> element in HTML5?,To create forms,To display images only,To group media and their caption (figcaption),To define icons,C
+Which input type should be used for selecting a date in a form?,time,datetime-local,date,text,C
+Which input type should be used for selecting a date in a form?,time,date,text,datetime-local,B
+Which input type should be used for selecting a date in a form?,text,datetime-local,time,date,D
+Which attribute would you use to give an element a custom data-* attribute name?,meta-*,data-*,aria-*,custom-*,B
+What is the purpose of the <figure> element in HTML5?,To define icons,To display images only,To create forms,To group media and their caption (figcaption),D
+Which attribute would you use to give an element a custom data-* attribute name?,custom-*,meta-*,aria-*,data-*,D
+Which HTML element is appropriate for marking up a block of navigation links?,div,nav,section,navlist,B
+Which HTML element is appropriate for marking up a block of navigation links?,div,navlist,section,nav,D
+Which input type should be used for selecting a date in a form?,time,date,datetime-local,text,B
+Which input type should be used for selecting a date in a form?,date,time,text,datetime-local,A
+What is the purpose of the <figure> element in HTML5?,To define icons,To display images only,To group media and their caption (figcaption),To create forms,C
+Which input type should be used for selecting a date in a form?,date,text,datetime-local,time,A
+Which input type should be used for selecting a date in a form?,datetime-local,date,text,time,B
+Which attribute would you use to give an element a custom data-* attribute name?,data-*,custom-*,meta-*,aria-*,A
+What is the purpose of the <figure> element in HTML5?,To define icons,To create forms,To group media and their caption (figcaption),To display images only,C
+Which input type should be used for selecting a date in a form?,time,datetime-local,date,text,C
+Which HTML element is appropriate for marking up a block of navigation links?,navlist,section,div,nav,D
+Which attribute would you use to give an element a custom data-* attribute name?,custom-*,aria-*,meta-*,data-*,D
+Which input type should be used for selecting a date in a form?,time,datetime-local,text,date,D
+Which input type should be used for selecting a date in a form?,text,date,time,datetime-local,B
+Which HTML element is appropriate for marking up a block of navigation links?,section,nav,div,navlist,B
+Which HTML element is appropriate for marking up a block of navigation links?,nav,div,section,navlist,A
+Which HTML element is appropriate for marking up a block of navigation links?,navlist,section,nav,div,C
+Which HTML element is appropriate for marking up a block of navigation links?,navlist,nav,div,section,B
+Which input type should be used for selecting a date in a form?,time,datetime-local,text,date,D
+What is the purpose of the <figure> element in HTML5?,To display images only,To define icons,To group media and their caption (figcaption),To create forms,C
+Which attribute would you use to give an element a custom data-* attribute name?,data-*,custom-*,meta-*,aria-*,A
+Which input type should be used for selecting a date in a form?,datetime-local,text,time,date,D
+Which HTML element is appropriate for marking up a block of navigation links?,div,navlist,section,nav,D
+Which HTML element is appropriate for marking up a block of navigation links?,section,nav,div,navlist,B
+Which attribute would you use to give an element a custom data-* attribute name?,aria-*,meta-*,data-*,custom-*,C
+Which attribute would you use to give an element a custom data-* attribute name?,meta-*,data-*,custom-*,aria-*,B
+Which HTML element is appropriate for marking up a block of navigation links?,navlist,section,nav,div,C
+Which attribute would you use to give an element a custom data-* attribute name?,meta-*,aria-*,custom-*,data-*,D
+What is the purpose of the <figure> element in HTML5?,To define icons,To create forms,To group media and their caption (figcaption),To display images only,C
+Which HTML element is appropriate for marking up a block of navigation links?,div,nav,navlist,section,B
+What is the purpose of the <figure> element in HTML5?,To create forms,To define icons,To display images only,To group media and their caption (figcaption),D
+Which input type should be used for selecting a date in a form?,time,date,datetime-local,text,B
+Which input type should be used for selecting a date in a form?,date,time,datetime-local,text,A
+Which attribute would you use to give an element a custom data-* attribute name?,custom-*,meta-*,data-*,aria-*,C
+Which HTML element is appropriate for marking up a block of navigation links?,section,div,nav,navlist,C
+Which attribute would you use to give an element a custom data-* attribute name?,custom-*,data-*,meta-*,aria-*,B
+What is the purpose of the <figure> element in HTML5?,To group media and their caption (figcaption),To display images only,To create forms,To define icons,A

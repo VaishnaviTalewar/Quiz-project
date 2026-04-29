@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What type of database is MongoDB?,Graph database,In-memory key-value store,NoSQL document database,Relational SQL DB,C
+Which data storage format does MongoDB use for documents?,BSON (binary JSON),YAML,XML,CSV,A
+Which command inserts a single document into a collection in Mongo shell?,db.collection.insert(),db.collection.insertOne(),db.collection.save(),db.collection.add(),B
+How are groups of documents stored in MongoDB?,Buckets,Schemas,Tables,Collections,D
+Which field in a MongoDB document is automatically added as a unique identifier?,uuid,objectId,_id,id,C
+Which operator is used to match documents where a field equals a value?,$is,$eq,$equals,$match,B
+Which method returns all documents matching a query in the shell?,select(),query(),get(),find(),D
+Which method returns a single document matching the query?,getOne(),findOne(),findFirst(),findSingle(),B
+Which command removes documents matching a filter?,remove(),truncate(),drop(),deleteMany() or deleteOne(),D
+Which operator selects documents where a field value is greater than a value?,$moreThan,$gt,$greater,$gte,B
+Which index type improves equality query performance on a single field?,Geo index,Text index,Single field index,Multi key index,C
+Which shell method shows indexes on a collection?,getIndexes(),listIndexes(),indexes(),showIndexes(),A
+Which storage engine is default in modern MongoDB versions?,WiredTiger,InMemory,MMAPv1,RocksDB,A
+Which command creates a new collection explicitly in the shell?,db.collection.create(),db.createCollection(),db.addCollection(),db.newCollection(),B
+Which operator checks if a field's value is in a list of values?,$contains,$has,$in,$within,C
+Which replica set feature helps with high availability?,Automatic failover with replica set members,Sharding only,Primary-only writes,Manual backup,A
+Which command shows current databases in the shell?,dbs(),show dbs,show databases(),list dbs,B
+Which command switches to a specific database in the shell?,db <dbname>,use <dbname>,switch <dbname>,connect <dbname>,B
+Which operator negates a query condition in MongoDB?,$not,$except,$nor,$ne,A
+Which method updates a single document by filter?,update(),modifyOne(),saveOne(),updateOne(),D
+Which option enforces unique values for a field at the database level?,Validation rule,Unique constraint (SQL),Unique index,Schema,C
+Which query language feature does MongoDB provide for complex aggregations?,SQL JOIN,Aggregation Pipeline,Stored Procedures,MapReduce only,B
+Which command drops a collection from the database?,drop collection,db.collection.drop(),removeCollection(),db.dropCollection(),B
+Which operator is used to project fields (include/exclude) in query results?,$fields,projection (specify fields in find()),$project (aggregation),$select,B
+Which method replaces an entire document matching a filter?,save(),updateOne(),set(),replaceOne(),D
+Which data model allows schema-less documents in MongoDB?,Fixed schema,Flexible schema (schema-less documents),Strict schema,Relational schema,B
+Which operator matches documents that satisfy all given conditions?,$and,$every,$all,$or,A
+Which operator matches documents that satisfy any of the given conditions?,$in,$or,$any,$union,B
+Which global tool provides a GUI for MongoDB (official)?,MongoDB Compass,Studio 3T,Robo 3T,NoSQL Workbench,A
+Which operator is used to increment a numeric field in an update?,$sum,$inc,$increase,$add,B

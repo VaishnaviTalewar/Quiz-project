@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which construct creates a list using concise syntax?,List comprehension,map(),Generator expression,filter(),A
+Which decorator syntax is used to wrap functions?,#decorator,use decorator,@decorator,decorator(),C
+Which context manager ensures resources are properly closed?,try/finally,with statement,using,context(),B
+Which feature delays evaluation and returns an iterator?,Tuple,Generator (yield),Comprehension,List,B
+Which module provides data structures like deque and defaultdict?,containers,structures,collections,datautils,C
+Which method handles custom object string representation?,__toString__,__repr__,__print__,__str__,D
+Which exception is raised for index out of range?,KeyError,ValueError,OutOfRangeError,IndexError,D
+Which function applies a function to all items and returns an iterator in Python 3?,forEach(),collect(),apply(),map(),D
+Which module provides functions to inspect live objects and source code?,inspect,os,sys,io,A
+Which protocol methods make an object iterable?,__iter__ and next,__iter__ and __call__,__iter__ and __next__,__begin__ and __end__,C
+Which built-in returns a view of dict items?,entries(),pairs(),view(),items(),D
+Which statement is used to create a custom exception?,def MyError():,raise MyError,exception MyError,class MyError(Exception):,D
+Which function is used to create an immutable sequence from an iterable?,list(),set(),tuple(),frozenlist(),C
+Which tool is used to create virtual environments in recent Python versions?,virtualenv,python -m venv,pipenv,conda create,B
+Which module helps with asynchronous IO in modern Python?,asyncio,concurrent.futures,threading,multiprocessing,A
+Which decorator caches function calls results in functools?,memoize,lru_cache,cache,cached,B
+Which method serializes Python objects to JSON string?,serialize(),json.dumps(),json.dump(),pickle.dumps(),B
+Which syntax defines keyword-only arguments after * in function?,"def f(a, kw=1):","def f(a, **kw):","def f(a, *, kw=1):","def f(a, *kw):",C
+Which library provides data analysis tools like DataFrame?,matplotlib,scipy,pandas,numpy,C
+Which method on list removes the first occurrence of a value?,delete(),pop(),remove(),discard(),C
+Which built-in raises when conversion fails?,RuntimeError,ValueError,TypeError,SyntaxError,B
+Which syntax creates a set literal?,"(1,2,3)","{1, 2, 3}","[1,2,3]","set(1,2,3)",B
+Which function returns the index of first matching substring in a string?,search(),index(),find(),locate(),C
+Which module provides high-performance arrays and numerical ops?,statistics,array,math,numpy,D
+Which construct creates a list using concise syntax?,Generator expression,List comprehension,map(),filter(),B
+Which decorator syntax is used to wrap functions?,use decorator,#decorator,decorator(),@decorator,D
+Which context manager ensures resources are properly closed?,with statement,context(),using,try/finally,A
+Which feature delays evaluation and returns an iterator?,Comprehension,Tuple,Generator (yield),List,C
+Which module provides data structures like deque and defaultdict?,structures,containers,datautils,collections,D
+Which method handles custom object string representation?,__print__,__str__,__repr__,__toString__,B
+Which exception is raised for index out of range?,ValueError,OutOfRangeError,IndexError,KeyError,C
+Which function applies a function to all items and returns an iterator in Python 3?,forEach(),apply(),collect(),map(),D
+Which module provides functions to inspect live objects and source code?,sys,io,os,inspect,D
+Which protocol methods make an object iterable?,__iter__ and next,__begin__ and __end__,__iter__ and __next__,__iter__ and __call__,C
+Which built-in returns a view of dict items?,pairs(),entries(),items(),view(),C
+Which statement is used to create a custom exception?,raise MyError,exception MyError,class MyError(Exception):,def MyError():,C
+Which function is used to create an immutable sequence from an iterable?,set(),list(),tuple(),frozenlist(),C
+Which tool is used to create virtual environments in recent Python versions?,python -m venv,conda create,virtualenv,pipenv,A
+Which module helps with asynchronous IO in modern Python?,multiprocessing,concurrent.futures,asyncio,threading,C
+Which decorator caches function calls results in functools?,cache,cached,memoize,lru_cache,D
+Which method serializes Python objects to JSON string?,pickle.dumps(),json.dumps(),json.dump(),serialize(),B
+Which syntax defines keyword-only arguments after * in function?,"def f(a, kw=1):","def f(a, **kw):","def f(a, *, kw=1):","def f(a, *kw):",C
+Which library provides data analysis tools like DataFrame?,scipy,matplotlib,numpy,pandas,D
+Which method on list removes the first occurrence of a value?,discard(),pop(),remove(),delete(),C
+Which built-in raises when conversion fails?,RuntimeError,SyntaxError,TypeError,ValueError,D
+Which syntax creates a set literal?,"set(1,2,3)","[1,2,3]","{1, 2, 3}","(1,2,3)",C
+Which function returns the index of first matching substring in a string?,search(),locate(),find(),index(),C
+Which module provides high-performance arrays and numerical ops?,math,statistics,numpy,array,C
+Which construct creates a list using concise syntax?,filter(),map(),Generator expression,List comprehension,D
+Which decorator syntax is used to wrap functions?,#decorator,decorator(),@decorator,use decorator,C
+Which context manager ensures resources are properly closed?,try/finally,using,with statement,context(),C
+Which feature delays evaluation and returns an iterator?,Tuple,Comprehension,List,Generator (yield),D
+Which module provides data structures like deque and defaultdict?,datautils,structures,containers,collections,D
+Which method handles custom object string representation?,__toString__,__str__,__repr__,__print__,B
+Which exception is raised for index out of range?,IndexError,KeyError,OutOfRangeError,ValueError,A
+Which function applies a function to all items and returns an iterator in Python 3?,forEach(),apply(),map(),collect(),C
+Which module provides functions to inspect live objects and source code?,sys,io,inspect,os,C
+Which protocol methods make an object iterable?,__iter__ and __next__,__begin__ and __end__,__iter__ and next,__iter__ and __call__,A
+Which built-in returns a view of dict items?,view(),pairs(),entries(),items(),D
+Which statement is used to create a custom exception?,def MyError():,class MyError(Exception):,raise MyError,exception MyError,B

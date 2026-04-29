@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which collection allows only unique elements and no order guarantee?,List,Map,Queue,Set,D
+Which interface represents an ordered collection that allows duplicates?,Queue,Set,List,Map,C
+Which keyword allows a subclass to call its superclass constructor?,this,super,base,parent,B
+Which Java feature enables functions to be passed as parameters (Java 8)?,Anonymous classes,Method references only,Callbacks,Lambda expressions,D
+Which stream operation transforms each element?,reduce(),map(),filter(),forEach(),B
+Which class is used for thread-safe mutable sequence of characters?,String,CharBuffer,StringBuilder,StringBuffer,D
+Which keyword marks a method that must be implemented by subclasses?,native,override,abstract,interface,C
+Which interface provides read-only access to a value that may be present or absent?,Nullable,Maybe,Wrapper,Optional,D
+Which package contains concurrency utilities like ExecutorService?,java.concurrent,java.util.concurrent.atomic,java.threads,java.util.concurrent,D
+Which collection is backed by a hash table and allows null keys?,LinkedHashMap,TreeMap,HashMap,Hashtable,C
+Which mechanism helps serialize objects to bytes?,Serializable interface,Marshaller,Encoder,Externalizable,A
+Which class supports efficient append-only string building (non-thread-safe)?,StringBuilder,StringWriter,StringBuffer,StringConcat,A
+Which method on Thread starts a new thread of execution?,begin(),execute(),run(),start(),D
+Which feature avoids NullPointerException by returning an explicit container?,Optional,Objects.requireNonNull,Maybe type,Nullable annotations,A
+Which keyword prevents method overriding but allows hiding static methods?,final,static,private,sealed,A
+Which API introduced in Java 8 helps with Date and Time operations?,SimpleDateFormat,java.util.Date,java.time (JSR-310),Calendar,C
+Which construct is used to automatically close resources?,using,try-finally,try-with-resources,finally,C
+Which operator is used to create a synchronized block on an object?,synchronized (obj) { },sync(obj) { },monitor(obj) { },lock(obj) { },A
+Which interface represents a function that accepts one argument and produces a result?,Supplier,Predicate,Consumer,"Function<T,R>",D
+Which exception is thrown when concurrent modification detected on collections?,ConcurrentModificationException,IllegalStateException,ConcurrentException,ModificationException,A
+Which method on Collections sorts a list in natural order?,Arrays.sort(list),sort(list),Collections.sort(list),list.sort(),C
+Which feature is used to implement callbacks without creating new classes (Java 8)?,Functional interfaces and lambdas,Annotations,Threads,Reflection,A
+Which class can be used to schedule delayed tasks?,TaskScheduler,ScheduledExecutorService,DelayQueue,Timer,B
+Which interface represents asynchronous computation result?,Promise,Future,Completable,AsyncResult,B
+Which collection allows only unique elements and no order guarantee?,List,Queue,Set,Map,C
+Which interface represents an ordered collection that allows duplicates?,List,Set,Queue,Map,A
+Which keyword allows a subclass to call its superclass constructor?,this,super,parent,base,B
+Which Java feature enables functions to be passed as parameters (Java 8)?,Anonymous classes,Method references only,Callbacks,Lambda expressions,D
+Which stream operation transforms each element?,reduce(),forEach(),map(),filter(),C
+Which class is used for thread-safe mutable sequence of characters?,CharBuffer,StringBuffer,String,StringBuilder,B
+Which keyword marks a method that must be implemented by subclasses?,abstract,interface,override,native,A
+Which interface provides read-only access to a value that may be present or absent?,Nullable,Wrapper,Optional,Maybe,C
+Which package contains concurrency utilities like ExecutorService?,java.util.concurrent,java.util.concurrent.atomic,java.concurrent,java.threads,A
+Which collection is backed by a hash table and allows null keys?,LinkedHashMap,HashMap,TreeMap,Hashtable,B
+Which mechanism helps serialize objects to bytes?,Externalizable,Marshaller,Serializable interface,Encoder,C
+Which class supports efficient append-only string building (non-thread-safe)?,StringBuilder,StringBuffer,StringConcat,StringWriter,A
+Which method on Thread starts a new thread of execution?,begin(),execute(),run(),start(),D
+Which feature avoids NullPointerException by returning an explicit container?,Objects.requireNonNull,Maybe type,Nullable annotations,Optional,D
+Which keyword prevents method overriding but allows hiding static methods?,final,sealed,private,static,A
+Which API introduced in Java 8 helps with Date and Time operations?,java.util.Date,java.time (JSR-310),SimpleDateFormat,Calendar,B
+Which construct is used to automatically close resources?,finally,try-finally,using,try-with-resources,D
+Which operator is used to create a synchronized block on an object?,monitor(obj) { },sync(obj) { },synchronized (obj) { },lock(obj) { },C
+Which interface represents a function that accepts one argument and produces a result?,Supplier,"Function<T,R>",Consumer,Predicate,B
+Which exception is thrown when concurrent modification detected on collections?,ModificationException,ConcurrentModificationException,IllegalStateException,ConcurrentException,B
+Which method on Collections sorts a list in natural order?,sort(list),list.sort(),Collections.sort(list),Arrays.sort(list),C
+Which feature is used to implement callbacks without creating new classes (Java 8)?,Functional interfaces and lambdas,Reflection,Annotations,Threads,A
+Which class can be used to schedule delayed tasks?,DelayQueue,ScheduledExecutorService,TaskScheduler,Timer,B
+Which interface represents asynchronous computation result?,AsyncResult,Future,Completable,Promise,B
+Which collection allows only unique elements and no order guarantee?,Map,Queue,Set,List,C
+Which interface represents an ordered collection that allows duplicates?,Set,Queue,Map,List,D
+Which keyword allows a subclass to call its superclass constructor?,base,this,super,parent,C
+Which Java feature enables functions to be passed as parameters (Java 8)?,Callbacks,Anonymous classes,Lambda expressions,Method references only,C
+Which stream operation transforms each element?,filter(),forEach(),reduce(),map(),D
+Which class is used for thread-safe mutable sequence of characters?,StringBuilder,StringBuffer,String,CharBuffer,B
+Which keyword marks a method that must be implemented by subclasses?,override,abstract,interface,native,B
+Which interface provides read-only access to a value that may be present or absent?,Optional,Wrapper,Maybe,Nullable,A
+Which package contains concurrency utilities like ExecutorService?,java.threads,java.util.concurrent,java.concurrent,java.util.concurrent.atomic,B
+Which collection is backed by a hash table and allows null keys?,LinkedHashMap,TreeMap,Hashtable,HashMap,D
+Which mechanism helps serialize objects to bytes?,Marshaller,Serializable interface,Encoder,Externalizable,B
+Which class supports efficient append-only string building (non-thread-safe)?,StringBuilder,StringConcat,StringBuffer,StringWriter,A

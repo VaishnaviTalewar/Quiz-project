@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What is a closure in JavaScript?,A loop that closes automatically,A private class method,An IIFE only,A function that remembers its lexical scope even when executed outside that scope,D
+What causes hoisting in JavaScript?,Nothing is hoisted,Variable values are copied,Declarations (var/function) are moved to the top of their scope at runtime,Only functions are hoisted,C
+Which method adds a handler for a promise resolution?,catch(),then(),resolve(),finally(),B
+Which statement handles errors in promises when using async/await?,then...catch,if...else,throw...catch,try...catch,D
+Which of these creates a new Promise?,Promise.resolve(),"new Promise((resolve, reject) => { ... })",Promise.create(),async function() {},B
+Which method attaches a callback for any promise rejection?,finally(),reject(),then(),catch(),D
+What is the purpose of async/await?,Replaces callbacks completely,Used only in Node.js,Syntactic sugar to work with promises more easily,Faster execution,C
+Which operator spreads elements of an iterable into places?,.. (range),** (power),=> (arrow),... (spread operator),D
+What does '===' compare?,Value only,Reference only,Type only,Strict equality: same value and same type,D
+Which method copies properties from source to target object?,assign(),Object.copy(),Object.assign(),copy(),C
+Which data structure stores unique values of any type?,Set,Map,Object,Array,A
+Which data structure stores key-value pairs with any types of keys?,Map,Set,Object,Array,A
+What does JSON.stringify do?,Serializes to binary,Clones functions,Parses JSON,Converts a value to JSON string,D
+Which keyword creates a new instance of an object from a constructor?,new,instanceof,construct,create,A
+What does 'this' refer to in a regular function called as an object method?,The object before the dot (the caller),The global object,The function itself,undefined always,A
+Which function converts a value to a number if possible?,toNumber(),parseInt(),Number(),convert(),C
+Which method finds the first element that satisfies a provided testing function?,some(),filter(),find(),map(),C
+Which property on functions gives number of declared parameters?,length,arity,size,params,A
+What is event delegation?,Stopping propagation,Delegating to another thread,Adding listeners to each child,Attaching a single event listener to a parent to handle events for its children,D
+Which mechanism schedules microtasks (promises) to run after current script?,Microtask queue (Promise jobs),Macrotask queue,Event queue,Render queue,A
+Which global method decodes a URI component?,URI.decode(),unescape(),decodeURIComponent(),decodeURI(),C
+Which method creates a shallow copy of an array?,slice(),concat(),copy(),splice(),A
+Which operator checks if a property exists in an object?,exists,in,contains,has,B
+Which built-in object provides methods for timing and rendering frames?,Timer,Performance / requestAnimationFrame,Frame,Scheduler,B
+What does 'use strict' do?,Speeds up code,Changes scoping to block only,"Enables strict mode with safer semantics (e.g., disallow undeclared vars)",Enables experimental features,C
+What is a closure in JavaScript?,A function that remembers its lexical scope even when executed outside that scope,A loop that closes automatically,An IIFE only,A private class method,A
+What causes hoisting in JavaScript?,Variable values are copied,Declarations (var/function) are moved to the top of their scope at runtime,Only functions are hoisted,Nothing is hoisted,B
+Which method adds a handler for a promise resolution?,catch(),finally(),resolve(),then(),D
+Which statement handles errors in promises when using async/await?,if...else,throw...catch,try...catch,then...catch,C
+Which of these creates a new Promise?,async function() {},"new Promise((resolve, reject) => { ... })",Promise.resolve(),Promise.create(),B
+Which method attaches a callback for any promise rejection?,catch(),then(),reject(),finally(),A
+What is the purpose of async/await?,Replaces callbacks completely,Used only in Node.js,Syntactic sugar to work with promises more easily,Faster execution,C
+Which operator spreads elements of an iterable into places?,... (spread operator),=> (arrow),** (power),.. (range),A
+What does '===' compare?,Type only,Strict equality: same value and same type,Value only,Reference only,B
+Which method copies properties from source to target object?,Object.copy(),assign(),Object.assign(),copy(),C
+Which data structure stores unique values of any type?,Set,Array,Object,Map,A
+Which data structure stores key-value pairs with any types of keys?,Array,Set,Object,Map,D
+What does JSON.stringify do?,Clones functions,Serializes to binary,Parses JSON,Converts a value to JSON string,D
+Which keyword creates a new instance of an object from a constructor?,new,instanceof,construct,create,A
+What does 'this' refer to in a regular function called as an object method?,The global object,The object before the dot (the caller),undefined always,The function itself,B
+Which function converts a value to a number if possible?,toNumber(),parseInt(),convert(),Number(),D
+Which method finds the first element that satisfies a provided testing function?,some(),map(),find(),filter(),C
+Which property on functions gives number of declared parameters?,arity,length,params,size,B
+What is event delegation?,Delegating to another thread,Attaching a single event listener to a parent to handle events for its children,Adding listeners to each child,Stopping propagation,B
+Which mechanism schedules microtasks (promises) to run after current script?,Render queue,Macrotask queue,Microtask queue (Promise jobs),Event queue,C
+Which global method decodes a URI component?,decodeURIComponent(),decodeURI(),URI.decode(),unescape(),A
+Which method creates a shallow copy of an array?,copy(),slice(),concat(),splice(),B
+Which operator checks if a property exists in an object?,exists,in,contains,has,B
+Which built-in object provides methods for timing and rendering frames?,Scheduler,Frame,Performance / requestAnimationFrame,Timer,C
+What does 'use strict' do?,Speeds up code,Changes scoping to block only,Enables experimental features,"Enables strict mode with safer semantics (e.g., disallow undeclared vars)",D
+What is a closure in JavaScript?,An IIFE only,A loop that closes automatically,A function that remembers its lexical scope even when executed outside that scope,A private class method,C
+What causes hoisting in JavaScript?,Nothing is hoisted,Variable values are copied,Declarations (var/function) are moved to the top of their scope at runtime,Only functions are hoisted,C
+Which method adds a handler for a promise resolution?,catch(),resolve(),finally(),then(),D
+Which statement handles errors in promises when using async/await?,then...catch,try...catch,if...else,throw...catch,B
+Which of these creates a new Promise?,async function() {},"new Promise((resolve, reject) => { ... })",Promise.create(),Promise.resolve(),B
+Which method attaches a callback for any promise rejection?,catch(),reject(),then(),finally(),A
+What is the purpose of async/await?,Replaces callbacks completely,Syntactic sugar to work with promises more easily,Faster execution,Used only in Node.js,B
+Which operator spreads elements of an iterable into places?,.. (range),** (power),=> (arrow),... (spread operator),D
+What does '===' compare?,Type only,Strict equality: same value and same type,Reference only,Value only,B
+Which method copies properties from source to target object?,Object.assign(),copy(),Object.copy(),assign(),A

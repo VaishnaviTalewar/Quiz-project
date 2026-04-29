@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which aggregation stage reshapes each document in the pipeline?,$match,$group,$sort,$project,D
+Which aggregation stage groups documents and can compute sums and counts?,$sum,$aggregate,$group,$collect,C
+Which option enables sharding to distribute data across multiple shards?,Create replica set,Enable sharding and shard a collection,Create indexes,Use multiple databases,B
+Which operator adds new elements to an array field?,$add,$append,$concat,$push,D
+Which update operator sets the value of a field?,$update,$set,$change,$assign,B
+Which index type supports text search over string content?,Single field index,Geo index,Hashed index,Text index,D
+Which command shows replica set status in the shell?,rs.statusAll(),show replSet,rs.status(),repl.status(),C
+Which aggregation stage filters documents by condition?,$where,$filter,$select,$match,D
+Which operator removes elements from an array that match a condition?,$pop,$deleteArray,$remove,$pull,D
+Which command creates an index on a collection?,db.createIndex(),db.collection.addIndex(),db.collection.createIndex(),collection.createIndex(),C
+Which index type is useful for sharding on a hashed shard key?,Hashed index,Sparse index,Text index,Compound index,A
+Which option in find() limits the number of documents returned?,limit(),max(),count(),slice(),A
+Which aggregation stage sorts documents?,$rank,$arrange,$order,$sort,D
+Which operator appends items to an array only if they don't already exist?,$addToSet,$push,$ensure,$pushUnique,A
+Which storage engine setting can affect compression and cache usage?,WiredTiger configuration options,MMAPv1 settings,CacheLimit,StoragePool,A
+Which method updates many documents matching a filter?,updateAll(),bulkUpdate(),updateMany(),modifyMany(),C
+Which feature allows defining validation rules for collections?,Constraints,SQL schema,Schema validation with JSON Schema,Validation triggers,C
+Which command exports data from a database to a JSON/CSV file?,mongoexport,mongoexported,mongodump --export,mongodump,A
+Which tool imports data into MongoDB from JSON/CSV?,mongoimported,mongodump --import,mongorestore,mongoimport,D
+Which aggregation operator adds fields to documents?,$addFields,$setFields,$appendFields,$projectFields,A
+Which query operator matches documents with array size equal to a value?,$count,$arraySize,$size,$length,C
+Which option in createIndex makes an index ignore documents missing the indexed field?,sparse,unique,background,partial,A
+Which option makes index creation run in background (older versions)?,parallel,background (deprecated in newer),async,foreground,B
+Which operator evaluates JavaScript expressions on server (avoid for performance)?,$expr,$where,$script,$eval,B
+Which command creates a text index on multiple fields?,createTextIndex(),textIndex(),"db.collection.createIndex({field1:'text', field2:'text'})",createIndexText(),C
+Which aggregation stage unwinds an array into separate documents?,$unwind,$explode,$split,$flatten,A
+Which operator allows conditional expressions in aggregation pipeline?,$if,$cond,$switch,$case,B
+Which command restores a mongodump backup into a database?,mongoimport,mongorestore --import,restoreDump(),mongorestore,D
+Which aggregation stage reshapes each document in the pipeline?,$group,$sort,$project,$match,C
+Which aggregation stage groups documents and can compute sums and counts?,$sum,$group,$collect,$aggregate,B
+Which option enables sharding to distribute data across multiple shards?,Enable sharding and shard a collection,Create replica set,Create indexes,Use multiple databases,A
+Which operator adds new elements to an array field?,$append,$concat,$push,$add,C
+Which update operator sets the value of a field?,$set,$assign,$change,$update,A
+Which index type supports text search over string content?,Single field index,Text index,Hashed index,Geo index,B
+Which command shows replica set status in the shell?,repl.status(),rs.statusAll(),rs.status(),show replSet,C
+Which aggregation stage filters documents by condition?,$match,$filter,$select,$where,A
+Which operator removes elements from an array that match a condition?,$deleteArray,$remove,$pop,$pull,D
+Which command creates an index on a collection?,db.createIndex(),collection.createIndex(),db.collection.addIndex(),db.collection.createIndex(),D
+Which index type is useful for sharding on a hashed shard key?,Hashed index,Sparse index,Text index,Compound index,A
+Which option in find() limits the number of documents returned?,count(),limit(),max(),slice(),B
+Which aggregation stage sorts documents?,$arrange,$order,$rank,$sort,D
+Which operator appends items to an array only if they don't already exist?,$ensure,$push,$addToSet,$pushUnique,C
+Which storage engine setting can affect compression and cache usage?,StoragePool,WiredTiger configuration options,MMAPv1 settings,CacheLimit,B
+Which method updates many documents matching a filter?,modifyMany(),updateMany(),bulkUpdate(),updateAll(),B
+Which feature allows defining validation rules for collections?,Constraints,SQL schema,Schema validation with JSON Schema,Validation triggers,C
+Which command exports data from a database to a JSON/CSV file?,mongoexport,mongodump,mongoexported,mongodump --export,A
+Which tool imports data into MongoDB from JSON/CSV?,mongodump --import,mongoimport,mongoimported,mongorestore,B
+Which aggregation operator adds fields to documents?,$appendFields,$addFields,$projectFields,$setFields,B
+Which query operator matches documents with array size equal to a value?,$count,$arraySize,$size,$length,C
+Which option in createIndex makes an index ignore documents missing the indexed field?,partial,background,unique,sparse,D
+Which option makes index creation run in background (older versions)?,async,foreground,background (deprecated in newer),parallel,C
+Which operator evaluates JavaScript expressions on server (avoid for performance)?,$script,$expr,$where,$eval,C
+Which command creates a text index on multiple fields?,createTextIndex(),textIndex(),createIndexText(),"db.collection.createIndex({field1:'text', field2:'text'})",D
+Which aggregation stage unwinds an array into separate documents?,$explode,$unwind,$flatten,$split,B
+Which operator allows conditional expressions in aggregation pipeline?,$case,$cond,$if,$switch,B
+Which command restores a mongodump backup into a database?,mongorestore,restoreDump(),mongoimport,mongorestore --import,A
+Which aggregation stage reshapes each document in the pipeline?,$group,$project,$match,$sort,B
+Which aggregation stage groups documents and can compute sums and counts?,$collect,$aggregate,$sum,$group,D
+Which option enables sharding to distribute data across multiple shards?,Use multiple databases,Enable sharding and shard a collection,Create indexes,Create replica set,B
+Which operator adds new elements to an array field?,$push,$concat,$add,$append,A

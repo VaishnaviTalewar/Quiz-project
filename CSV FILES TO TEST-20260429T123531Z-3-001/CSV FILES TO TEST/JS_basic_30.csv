@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which keyword declares a block-scoped variable in JavaScript?,define,consts,let,var,C
+Which operator checks strict equality (type and value)?,===,!==,==,=,A
+How do you write a single-line comment in JavaScript?,<!-- comment -->,// comment,# comment,/* comment */,B
+Which method converts a JavaScript object to a JSON string?,toJSON(),Stringify(),JSON.parse(),JSON.stringify(),D
+Which method parses a JSON string into an object?,parseJSON(),toObject(),JSON.parse(),JSON.stringify(),C
+Which function is used to output to the browser console?,echo(),console.log(),log(),print(),B
+Which statement is used to stop a loop prematurely?,return,exit,stop,break,D
+Which array method adds an element to the end?,append(),push(),add(),unshift(),B
+Which array method removes the last element?,shift(),slice(),remove(),pop(),D
+Which operator is used to get the remainder of a division?,rem,%,/,mod,B
+Which keyword creates a constant binding?,static,var,const,let,C
+What is the typeof NaN in JavaScript?,number,object,undefined,,A
+Which value represents no value or intentional absence of object value?,,0,undefined,false,A
+Which global function converts a string to an integer?,int(),parseInt(),toInt(),Number.parse(),B
+Which loop iterates a fixed number of times?,while,do...while,for,foreach,C
+Which method returns the length of an array?,length,size,length(),count,A
+Which property gives the number of characters in a string?,count,length,chars,size,B
+Which method adds an element to the start of an array?,prepend(),unshift(),push(),addFirst(),B
+Which function schedules a callback after a given delay (ms)?,setTimeout(),sleep(),delay(),setInterval(),A
+Which keyword declares a function in JavaScript?,def,fn,declare,function,D
+Which built-in object provides mathematical constants and functions?,Number,Maths,Math,JSON,C
+How do you create an array literal?,(),[],<>,{},B
+Which statement exits a function and optionally returns a value?,exit,return,stop,break,B
+Which operator is used to assign a value?,:=,=,==,=>,B
+Which value indicates a variable that has been declared but not assigned?,'' (empty string),,0,undefined,D
+Which method creates a new array with results of calling a provided function on every element?,filter(),map(),forEach(),reduce(),B
+Which method creates a new array with only elements that pass a test?,filter(),reduce(),find(),map(),A
+Which method reduces an array to a single value by applying a function?,map(),reduce(),concat(),filter(),B
+Which global object represents the browser window?,window,navigator,document,global,A
+Which array method returns true if at least one element passes a provided test?,includes(),every(),find(),some(),D

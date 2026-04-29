@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What are isolates in Dart primarily used for?,Lightweight threads sharing memory,Concurrency with separate memory heaps (no shared memory),Coroutines,Async callbacks,B
+Which tool produces a Dart AOT native executable?,dart build,dart run,dart compile exe (AOT) or tools like dart2native (older),flutter build,C
+Which technique reduces app size and removes unused code in Dart/Flutter?,Minification only,Dead-code tagging,Tree shaking during compilation,Obfuscation only,C
+Which feature helps perform JS interop when compiling Dart to JS?,jsinterop,interopJS,js_bridge,dart:js and package:js interop,D
+Which API provides FFI to call native C libraries from Dart?,ffi_call,dart:ffi,dart:c,dart:native,B
+Which concept helps implement platform channels in Flutter using Dart?,PlatformBridge,MethodChannel and EventChannel (Flutter-side),NativeChannel,PlatformAPI,B
+Which optimization avoids UI jank by offloading heavy computation from main isolate?,Use async/await only,Run CPU-heavy tasks in other isolates or use compute(),Use microtasks,Use Future,B
+Which package helps with null-safety migration and lint fixes?,migrate_tool,nullsafe_migrate,dart_fix,migration tool and analysis_options with lints (dart migrate),D
+Which feature supports sound null safety in Dart?,Optional null safety,Non-nullable by default with ? and required annotations,No null safety,Runtime null safety,B
+Which runtime mode runs in JIT for faster development cycles?,Release mode,Profile mode,Hot mode,Debug mode (JIT) vs Release (AOT),D
+Which command profiles Dart VM performance?,dart inspect,dart profile,dart --observe and Observatory/profiler tools,dart --profile,C
+Which package helps build reactive state management patterns in Flutter/Dart?,ReactDart,DartState,"Provider, Riverpod, Bloc (examples)",StateKit,C
+Which approach serializes objects with type-safety and codegen in Dart?,reflective serialization,pickle,manual toJson,json_serializable and build_runner code generation,D
+Which tool aids in AOT snapshot and ahead-of-time compilation debugging?, Observatory/DevTools and dart compile tooling,dart-debuginfo,native-debug,aot-debugger,A
+Which technique reduces memory churn in high-performance Dart code?,Frequent allocations,Use many small objects,Use typed data (Uint8List) and object pooling patterns,Large strings,C
+Which design pattern is commonly used to structure Flutter apps for testability?,Global variables,MVC only,Singleton-only,MVVM / BLoC / Provider patterns,D
+Which mechanism allows calling native platform code from Dart in Flutter?,NativeBridge,Platform channels (MethodChannel/EventChannel),JNI,FFI only,B
+Which analyzer tool enforces null-safety and lint rules before CI?,dart lint check,analyze-ci,dart analyze and custom lints,lint-runner,C
+Which source of truth ensures stable package versions across environments?,pubspec.yaml,pubspec.lock,packages.lock,dependency.lock,B
+Which Dart feature helps implement mixins with constructors limitations?,extends mixin,mixinclass,mixins with constructors,Mixin without constructors; use 'with' and mixin keyword,D
+Which compile-time constant evaluation helps with performance?,static const only,final constants,const constructors and compile-time constants,runtime const,C
+What are isolates in Dart primarily used for?,Async callbacks,Concurrency with separate memory heaps (no shared memory),Lightweight threads sharing memory,Coroutines,B
+Which tool produces a Dart AOT native executable?,dart run,flutter build,dart build,dart compile exe (AOT) or tools like dart2native (older),D
+Which technique reduces app size and removes unused code in Dart/Flutter?,Tree shaking during compilation,Dead-code tagging,Obfuscation only,Minification only,A
+Which feature helps perform JS interop when compiling Dart to JS?,interopJS,js_bridge,jsinterop,dart:js and package:js interop,D
+Which API provides FFI to call native C libraries from Dart?,dart:native,ffi_call,dart:c,dart:ffi,D
+Which concept helps implement platform channels in Flutter using Dart?,PlatformBridge,PlatformAPI,NativeChannel,MethodChannel and EventChannel (Flutter-side),D
+Which optimization avoids UI jank by offloading heavy computation from main isolate?,Run CPU-heavy tasks in other isolates or use compute(),Use Future,Use async/await only,Use microtasks,A
+Which package helps with null-safety migration and lint fixes?,migrate_tool,dart_fix,nullsafe_migrate,migration tool and analysis_options with lints (dart migrate),D
+Which feature supports sound null safety in Dart?,Non-nullable by default with ? and required annotations,No null safety,Runtime null safety,Optional null safety,A
+Which runtime mode runs in JIT for faster development cycles?,Hot mode,Release mode,Profile mode,Debug mode (JIT) vs Release (AOT),D
+Which command profiles Dart VM performance?,dart profile,dart inspect,dart --profile,dart --observe and Observatory/profiler tools,D
+Which package helps build reactive state management patterns in Flutter/Dart?,"Provider, Riverpod, Bloc (examples)",StateKit,ReactDart,DartState,A
+Which approach serializes objects with type-safety and codegen in Dart?,json_serializable and build_runner code generation,reflective serialization,pickle,manual toJson,A
+Which tool aids in AOT snapshot and ahead-of-time compilation debugging?,aot-debugger, Observatory/DevTools and dart compile tooling,native-debug,dart-debuginfo,B
+Which technique reduces memory churn in high-performance Dart code?,Frequent allocations,Use many small objects,Large strings,Use typed data (Uint8List) and object pooling patterns,D
+Which design pattern is commonly used to structure Flutter apps for testability?,MVVM / BLoC / Provider patterns,MVC only,Global variables,Singleton-only,A
+Which mechanism allows calling native platform code from Dart in Flutter?,FFI only,JNI,Platform channels (MethodChannel/EventChannel),NativeBridge,C
+Which analyzer tool enforces null-safety and lint rules before CI?,dart analyze and custom lints,analyze-ci,lint-runner,dart lint check,A
+Which source of truth ensures stable package versions across environments?,pubspec.yaml,packages.lock,pubspec.lock,dependency.lock,C
+Which Dart feature helps implement mixins with constructors limitations?,mixinclass,Mixin without constructors; use 'with' and mixin keyword,extends mixin,mixins with constructors,B
+Which compile-time constant evaluation helps with performance?,final constants,const constructors and compile-time constants,static const only,runtime const,B
+What are isolates in Dart primarily used for?,Concurrency with separate memory heaps (no shared memory),Lightweight threads sharing memory,Async callbacks,Coroutines,A
+Which tool produces a Dart AOT native executable?,dart build,flutter build,dart run,dart compile exe (AOT) or tools like dart2native (older),D
+Which technique reduces app size and removes unused code in Dart/Flutter?,Dead-code tagging,Obfuscation only,Minification only,Tree shaking during compilation,D
+Which feature helps perform JS interop when compiling Dart to JS?,interopJS,js_bridge,dart:js and package:js interop,jsinterop,C
+Which API provides FFI to call native C libraries from Dart?,dart:ffi,ffi_call,dart:c,dart:native,A
+Which concept helps implement platform channels in Flutter using Dart?,MethodChannel and EventChannel (Flutter-side),PlatformBridge,NativeChannel,PlatformAPI,A
+Which optimization avoids UI jank by offloading heavy computation from main isolate?,Use Future,Run CPU-heavy tasks in other isolates or use compute(),Use async/await only,Use microtasks,B
+Which package helps with null-safety migration and lint fixes?,migration tool and analysis_options with lints (dart migrate),migrate_tool,nullsafe_migrate,dart_fix,A
+Which feature supports sound null safety in Dart?,Non-nullable by default with ? and required annotations,Runtime null safety,No null safety,Optional null safety,A
+Which runtime mode runs in JIT for faster development cycles?,Hot mode,Release mode,Debug mode (JIT) vs Release (AOT),Profile mode,C
+Which command profiles Dart VM performance?,dart --profile,dart inspect,dart --observe and Observatory/profiler tools,dart profile,C
+Which package helps build reactive state management patterns in Flutter/Dart?,DartState,ReactDart,StateKit,"Provider, Riverpod, Bloc (examples)",D
+Which approach serializes objects with type-safety and codegen in Dart?,pickle,manual toJson,reflective serialization,json_serializable and build_runner code generation,D
+Which tool aids in AOT snapshot and ahead-of-time compilation debugging?, Observatory/DevTools and dart compile tooling,native-debug,aot-debugger,dart-debuginfo,A
+Which technique reduces memory churn in high-performance Dart code?,Use many small objects,Frequent allocations,Use typed data (Uint8List) and object pooling patterns,Large strings,C
+Which design pattern is commonly used to structure Flutter apps for testability?,Singleton-only,MVVM / BLoC / Provider patterns,Global variables,MVC only,B
+Which mechanism allows calling native platform code from Dart in Flutter?,FFI only,NativeBridge,Platform channels (MethodChannel/EventChannel),JNI,C
+Which analyzer tool enforces null-safety and lint rules before CI?,analyze-ci,lint-runner,dart analyze and custom lints,dart lint check,C
+Which source of truth ensures stable package versions across environments?,pubspec.yaml,packages.lock,pubspec.lock,dependency.lock,C
+Which Dart feature helps implement mixins with constructors limitations?,Mixin without constructors; use 'with' and mixin keyword,mixinclass,mixins with constructors,extends mixin,A
+Which compile-time constant evaluation helps with performance?,runtime const,const constructors and compile-time constants,final constants,static const only,B
+What are isolates in Dart primarily used for?,Async callbacks,Lightweight threads sharing memory,Coroutines,Concurrency with separate memory heaps (no shared memory),D
+Which tool produces a Dart AOT native executable?,dart build,dart compile exe (AOT) or tools like dart2native (older),dart run,flutter build,B
+Which technique reduces app size and removes unused code in Dart/Flutter?,Obfuscation only,Minification only,Tree shaking during compilation,Dead-code tagging,C
+Which feature helps perform JS interop when compiling Dart to JS?,js_bridge,dart:js and package:js interop,interopJS,jsinterop,B
+Which API provides FFI to call native C libraries from Dart?,dart:ffi,dart:native,dart:c,ffi_call,A
+Which concept helps implement platform channels in Flutter using Dart?,NativeChannel,PlatformBridge,MethodChannel and EventChannel (Flutter-side),PlatformAPI,C
+Which optimization avoids UI jank by offloading heavy computation from main isolate?,Run CPU-heavy tasks in other isolates or use compute(),Use async/await only,Use microtasks,Use Future,A
+Which package helps with null-safety migration and lint fixes?,dart_fix,migrate_tool,nullsafe_migrate,migration tool and analysis_options with lints (dart migrate),D
+Which feature supports sound null safety in Dart?,Optional null safety,Non-nullable by default with ? and required annotations,No null safety,Runtime null safety,B
+Which runtime mode runs in JIT for faster development cycles?,Debug mode (JIT) vs Release (AOT),Profile mode,Release mode,Hot mode,A
+Which command profiles Dart VM performance?,dart --profile,dart inspect,dart profile,dart --observe and Observatory/profiler tools,D
+Which package helps build reactive state management patterns in Flutter/Dart?,DartState,"Provider, Riverpod, Bloc (examples)",StateKit,ReactDart,B
+Which approach serializes objects with type-safety and codegen in Dart?,pickle,json_serializable and build_runner code generation,manual toJson,reflective serialization,B
+Which tool aids in AOT snapshot and ahead-of-time compilation debugging?, Observatory/DevTools and dart compile tooling,aot-debugger,dart-debuginfo,native-debug,A
+Which technique reduces memory churn in high-performance Dart code?,Large strings,Use typed data (Uint8List) and object pooling patterns,Frequent allocations,Use many small objects,B
+Which design pattern is commonly used to structure Flutter apps for testability?,Singleton-only,MVC only,Global variables,MVVM / BLoC / Provider patterns,D
+Which mechanism allows calling native platform code from Dart in Flutter?,FFI only,JNI,NativeBridge,Platform channels (MethodChannel/EventChannel),D
+Which analyzer tool enforces null-safety and lint rules before CI?,lint-runner,dart analyze and custom lints,analyze-ci,dart lint check,B
+Which source of truth ensures stable package versions across environments?,dependency.lock,packages.lock,pubspec.yaml,pubspec.lock,D
+Which Dart feature helps implement mixins with constructors limitations?,Mixin without constructors; use 'with' and mixin keyword,mixins with constructors,extends mixin,mixinclass,A
+Which compile-time constant evaluation helps with performance?,final constants,runtime const,static const only,const constructors and compile-time constants,D
+What are isolates in Dart primarily used for?,Coroutines,Async callbacks,Lightweight threads sharing memory,Concurrency with separate memory heaps (no shared memory),D
+Which tool produces a Dart AOT native executable?,flutter build,dart build,dart compile exe (AOT) or tools like dart2native (older),dart run,C
+Which technique reduces app size and removes unused code in Dart/Flutter?,Obfuscation only,Dead-code tagging,Minification only,Tree shaking during compilation,D
+Which feature helps perform JS interop when compiling Dart to JS?,dart:js and package:js interop,jsinterop,interopJS,js_bridge,A
+Which API provides FFI to call native C libraries from Dart?,dart:native,ffi_call,dart:c,dart:ffi,D
+Which concept helps implement platform channels in Flutter using Dart?,NativeChannel,PlatformBridge,PlatformAPI,MethodChannel and EventChannel (Flutter-side),D
+Which optimization avoids UI jank by offloading heavy computation from main isolate?,Use microtasks,Use Future,Use async/await only,Run CPU-heavy tasks in other isolates or use compute(),D
+Which package helps with null-safety migration and lint fixes?,nullsafe_migrate,dart_fix,migrate_tool,migration tool and analysis_options with lints (dart migrate),D
+Which feature supports sound null safety in Dart?,Non-nullable by default with ? and required annotations,Runtime null safety,Optional null safety,No null safety,A
+Which runtime mode runs in JIT for faster development cycles?,Release mode,Hot mode,Debug mode (JIT) vs Release (AOT),Profile mode,C
+Which command profiles Dart VM performance?,dart inspect,dart --profile,dart --observe and Observatory/profiler tools,dart profile,C
+Which package helps build reactive state management patterns in Flutter/Dart?,ReactDart,StateKit,"Provider, Riverpod, Bloc (examples)",DartState,C
+Which approach serializes objects with type-safety and codegen in Dart?,json_serializable and build_runner code generation,pickle,reflective serialization,manual toJson,A
+Which tool aids in AOT snapshot and ahead-of-time compilation debugging?,native-debug, Observatory/DevTools and dart compile tooling,dart-debuginfo,aot-debugger,B
+Which technique reduces memory churn in high-performance Dart code?,Frequent allocations,Use typed data (Uint8List) and object pooling patterns,Large strings,Use many small objects,B
+Which design pattern is commonly used to structure Flutter apps for testability?,MVC only,Global variables,MVVM / BLoC / Provider patterns,Singleton-only,C

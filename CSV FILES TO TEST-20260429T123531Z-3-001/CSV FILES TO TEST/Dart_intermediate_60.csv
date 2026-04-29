@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which keyword is used to create a callable class constructor with optional named parameters?,Use named parameters with { } and optional: MyClass({this.x}),init,constructor,named(),A
+Which type is used for asynchronous streams of values in Dart?,Stream<T>,AsyncIterable,FutureStream,Observable,A
+Which annotation indicates that a field is nullable/optional (sound null-safety)?,@nullable,nullable,"Use ? on type (e.g., String?)",optional,C
+Which method converts an Iterable to a List?,asList(),toList(),list(),convert(),B
+Which feature helps create immutable data classes easily in Dart?,immutable keyword,use 'const' constructors and final fields or packages like freezed,sealed classes,data class keyword,B
+Which operator casts a value to a specific type at runtime?,is,typeof,as,cast,C
+Which collection method returns a new Iterable with elements that satisfy a test?,select(),filter(),findAll(),where(),D
+Which keyword marks a method as factory constructor?,constructor,static,new,factory,D
+Which tool formats Dart code automatically?,prettier,dart-style,formatDart,dartfmt or dart format,D
+Which package manager is used to manage Dart packages?,pub (pub.dev) and 'dart pub' / 'pubspec.yaml',pip,npm,maven,A
+Which mechanism allows creating extension methods on existing types?,mixins only,protocols,extension methods (extension MyExt on Type {}),categories,C
+Which operator provides null-coalescing assignment in Dart?,||=,?=,??,??=,D
+Which keyword denotes mixin usage in Dart classes?,mixin,use,implements,with,D
+Which feature allows isolates for concurrency in Dart?,Threads,Coroutines,Isolates (independent memory heaps),Green threads,C
+Which function converts JSON string to Dart object (Map)?,JSON.parse(),jsonDecode(),decodeJSON(),json.load(),B
+Which class is commonly used for immutable strings of bytes?,Uint8List (from dart:typed_data),BinaryList,ByteArray,Buffer,A
+Which operator checks if variable is not null and spreads into collection?,...,...?,?..,?.,B
+Which keyword marks a getter in Dart class?,accessor,get,getter,prop,B
+Which annotation is used for deprecating APIs in Dart?,@Deprecated,@obsolete,@deprecated or @Deprecated(),@remove,C
+Which enum-like feature allows sealed class behavior (recent Dart)?,sealed package,sealed keyword only,Sealed classes (language feature evolves) or use sealed pattern,enum classes,C
+Which tool runs Dart tests?,run tests,pub test,dart test,flutter test,C
+Which function converts Dart object to JSON string?,toJson(),jsonEncode(),json.stringify(),encodeJSON(),B
+Which operator provides type promotion after 'is' checks?,cast,Type promotion happens automatically after 'is' checks,as,promote(),B
+Which pattern matches to destructure Map entries? (use Map methods),pattern matching,object destructuring,Use map access and spread; destructuring not like JS,destructure,C
+Which linter configuration file is used for Dart analysis rules?,.dartlint,analysis.yaml,linter.yaml,analysis_options.yaml,D
+Which property in pubspec.yaml lists package dependencies?,packages:,dependencies:,libs:,requires:,B
+Which tool compiles Dart code to native or JS depending on target?,dartrun,dartc,dart-compile,dart compile / dart2js / dart compile exe,D
+Which keyword is used to create a callable class constructor with optional named parameters?,Use named parameters with { } and optional: MyClass({this.x}),named(),init,constructor,A
+Which type is used for asynchronous streams of values in Dart?,Observable,AsyncIterable,Stream<T>,FutureStream,C
+Which annotation indicates that a field is nullable/optional (sound null-safety)?,optional,nullable,@nullable,"Use ? on type (e.g., String?)",D
+Which method converts an Iterable to a List?,convert(),toList(),asList(),list(),B
+Which feature helps create immutable data classes easily in Dart?,immutable keyword,sealed classes,use 'const' constructors and final fields or packages like freezed,data class keyword,C
+Which operator casts a value to a specific type at runtime?,typeof,cast,is,as,D
+Which collection method returns a new Iterable with elements that satisfy a test?,filter(),findAll(),select(),where(),D
+Which keyword marks a method as factory constructor?,constructor,static,factory,new,C
+Which tool formats Dart code automatically?,prettier,formatDart,dartfmt or dart format,dart-style,C
+Which package manager is used to manage Dart packages?,pip,maven,pub (pub.dev) and 'dart pub' / 'pubspec.yaml',npm,C
+Which mechanism allows creating extension methods on existing types?,categories,mixins only,extension methods (extension MyExt on Type {}),protocols,C
+Which operator provides null-coalescing assignment in Dart?,??=,??,||=,?=,A
+Which keyword denotes mixin usage in Dart classes?,use,implements,with,mixin,C
+Which feature allows isolates for concurrency in Dart?,Threads,Green threads,Coroutines,Isolates (independent memory heaps),D
+Which function converts JSON string to Dart object (Map)?,decodeJSON(),jsonDecode(),JSON.parse(),json.load(),B
+Which class is commonly used for immutable strings of bytes?,ByteArray,Buffer,Uint8List (from dart:typed_data),BinaryList,C
+Which operator checks if variable is not null and spreads into collection?,...,?.,?..,...?,D
+Which keyword marks a getter in Dart class?,prop,getter,get,accessor,C
+Which annotation is used for deprecating APIs in Dart?,@obsolete,@remove,@Deprecated,@deprecated or @Deprecated(),D
+Which enum-like feature allows sealed class behavior (recent Dart)?,sealed package,enum classes,Sealed classes (language feature evolves) or use sealed pattern,sealed keyword only,C
+Which tool runs Dart tests?,flutter test,run tests,dart test,pub test,C
+Which function converts Dart object to JSON string?,json.stringify(),toJson(),jsonEncode(),encodeJSON(),C
+Which operator provides type promotion after 'is' checks?,promote(),cast,as,Type promotion happens automatically after 'is' checks,D
+Which pattern matches to destructure Map entries? (use Map methods),object destructuring,pattern matching,Use map access and spread; destructuring not like JS,destructure,C
+Which linter configuration file is used for Dart analysis rules?,linter.yaml,.dartlint,analysis_options.yaml,analysis.yaml,C
+Which property in pubspec.yaml lists package dependencies?,libs:,requires:,packages:,dependencies:,D
+Which tool compiles Dart code to native or JS depending on target?,dartc,dart-compile,dartrun,dart compile / dart2js / dart compile exe,D
+Which keyword is used to create a callable class constructor with optional named parameters?,init,Use named parameters with { } and optional: MyClass({this.x}),constructor,named(),B
+Which type is used for asynchronous streams of values in Dart?,Stream<T>,FutureStream,Observable,AsyncIterable,A
+Which annotation indicates that a field is nullable/optional (sound null-safety)?,optional,@nullable,"Use ? on type (e.g., String?)",nullable,C
+Which method converts an Iterable to a List?,asList(),convert(),toList(),list(),C
+Which feature helps create immutable data classes easily in Dart?,use 'const' constructors and final fields or packages like freezed,immutable keyword,data class keyword,sealed classes,A
+Which operator casts a value to a specific type at runtime?,is,typeof,cast,as,D

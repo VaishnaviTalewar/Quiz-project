@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What is a compound index in MongoDB?,Hashed index,Multiple single-field indexes,An index on multiple fields in a single index structure,Text index across fields,C
+Which feature distributes data across shards by range or hash?,Sharding,Replication,Clustering,Partitioning,A
+Which stage can be used to join data from another collection in aggregation?,$lookup,$graphLookup,$merge,$join,A
+What is change streams used for in MongoDB?,Watch real-time data changes for collections/DBs,Replication logs,Backup streaming,Change auditing only,A
+Which backup tool captures a binary snapshot of the data files?,mongoexport,mongoarchive,mongodump (binary/ BSON dump) and filesystem snapshots,mongorestore,C
+Which security feature encrypts data at rest for MongoDB?,TLS only,Encrypted storage engine or filesystem-level encryption (encryption at rest),No encryption,Field-level encryption only,B
+Which feature allows encrypting specific fields on client before sending to server?,ClientEncryption,TLS,EncryptedCollections,Client-Side Field Level Encryption (CSFLE),D
+Which metric helps diagnose slow queries in MongoDB?,connection count,Profiler and slow query logs (db.setProfilingLevel),index size,oplog size,B
+Which operator helps compute window functions in MongoDB aggregation?,$over,$setWindowFields,$groupWindow,$window,B
+Which option helps distribute read traffic to secondaries?,"Read preferences (secondaryPreferred, nearest, primaryPreferred)",Read concern,Write concern,Replica preference,A
+Which mechanism provides eventual consistency across clusters in distributed setups?,Strict ACID across cluster,Two-phase commit,Replication (replica sets) and eventual consistency for secondaries,Sharding consistency,C
+Which command shows current replica set configuration?,rs.conf(),repl.conf(),rs.config(),rs.statusConfig(),A
+Which aggregation pipeline stage merges the pipeline results into a collection?,$write,$out,$merge,$save,C
+Which feature allows resharding of a sharded collection online?,Drop+recreate shard,Manual repartition,Resharding (reshardCollection),SplitChunks only,C
+Which read concern ensures majority-committed data is returned?,available,local,majority,linearizable,C
+Which write concern ensures acknowledgement from majority of replica set members?,w:0,w: majority,w:all,w:1,B
+Which operator performs fuzzy string search in Atlas Search?,Text search with analyzers (Atlas Search) / $search operator,$text,$regex,$match,A
+Which feature provides full-text and advanced search capabilities in MongoDB Atlas?,Atlas Search (built on Apache Lucene),Aggregation text,Text index,Search Index,A
+Which consideration is important for index key order in compound indexes?,Order matters only for text indexes,Order doesn't matter,Index only works for equality,Order affects query support and sort performance,D
+Which option ensures retryable writes and transactions on sharded clusters (MongoDB 4.2+)?,Support for distributed transactions and retryable writes,Two-phase commit plugin,External coordinator,Only single-document ACID,A
+Which transaction isolation semantics does MongoDB provide for multi-document transactions?,Read uncommitted,Snapshot isolation for transactions (read concern snapshot),Serializable,Repeatable read,B
+Which tool helps analyze schema and index usage in production (Atlas/Profiler)?,Atlas Performance Advisor / Database Profiler,mongotop,mongostat,mongorestore,A
+Which operator can be used to perform regular expression matching in queries?,$matchRegex,$regex,$like,$re,B
+Which feature provides tiered storage or time-series optimizations?,Aggregation only,Sharding only,Bucket collections,Time Series collections and tiered storage options in Atlas,D
+Which optimization avoids blocking during index builds on large collections?,Drop indexes first,Recreate collection,Use foreground/background/build in foreground vs. online index builds (depends on version) or use Atlas online index builds,Always build foreground,C
+Which command shows current operations running on server?,db.runningOps(),db.currentOp(),db.showOps(),db.ops(),B
+Which aggregation stage can reorder or limit results efficiently after grouping?,$groupOnly,$slice,$match and $project,$sort and $limit,D
+Which operator in aggregation allows invoking expressions and comparators ($expr)?,$expr,$evaluate,$compute,$calc,A
+Which feature helps manage schema evolution and validate document shapes?,DDL migrations,JSON Schema validation and validationLevel/validationAction,Strict schemas,Schema registry,B
+What is a compound index in MongoDB?,An index on multiple fields in a single index structure,Hashed index,Text index across fields,Multiple single-field indexes,A
+Which feature distributes data across shards by range or hash?,Sharding,Clustering,Replication,Partitioning,A
+Which stage can be used to join data from another collection in aggregation?,$graphLookup,$join,$lookup,$merge,C
+What is change streams used for in MongoDB?,Backup streaming,Watch real-time data changes for collections/DBs,Change auditing only,Replication logs,B
+Which backup tool captures a binary snapshot of the data files?,mongorestore,mongoexport,mongoarchive,mongodump (binary/ BSON dump) and filesystem snapshots,D
+Which security feature encrypts data at rest for MongoDB?,Field-level encryption only,Encrypted storage engine or filesystem-level encryption (encryption at rest),TLS only,No encryption,B
+Which feature allows encrypting specific fields on client before sending to server?,ClientEncryption,EncryptedCollections,TLS,Client-Side Field Level Encryption (CSFLE),D
+Which metric helps diagnose slow queries in MongoDB?,connection count,Profiler and slow query logs (db.setProfilingLevel),oplog size,index size,B
+Which operator helps compute window functions in MongoDB aggregation?,$setWindowFields,$window,$over,$groupWindow,A
+Which option helps distribute read traffic to secondaries?,"Read preferences (secondaryPreferred, nearest, primaryPreferred)",Replica preference,Write concern,Read concern,A
+Which mechanism provides eventual consistency across clusters in distributed setups?,Sharding consistency,Strict ACID across cluster,Two-phase commit,Replication (replica sets) and eventual consistency for secondaries,D
+Which command shows current replica set configuration?,rs.conf(),rs.statusConfig(),repl.conf(),rs.config(),A
+Which aggregation pipeline stage merges the pipeline results into a collection?,$out,$write,$save,$merge,D
+Which feature allows resharding of a sharded collection online?,SplitChunks only,Drop+recreate shard,Resharding (reshardCollection),Manual repartition,C
+Which read concern ensures majority-committed data is returned?,local,majority,available,linearizable,B
+Which write concern ensures acknowledgement from majority of replica set members?,w:all,w:0,w: majority,w:1,C
+Which operator performs fuzzy string search in Atlas Search?,$text,$regex,Text search with analyzers (Atlas Search) / $search operator,$match,C
+Which feature provides full-text and advanced search capabilities in MongoDB Atlas?,Aggregation text,Text index,Search Index,Atlas Search (built on Apache Lucene),D
+Which consideration is important for index key order in compound indexes?,Index only works for equality,Order doesn't matter,Order matters only for text indexes,Order affects query support and sort performance,D
+Which option ensures retryable writes and transactions on sharded clusters (MongoDB 4.2+)?,Support for distributed transactions and retryable writes,Two-phase commit plugin,Only single-document ACID,External coordinator,A
+Which transaction isolation semantics does MongoDB provide for multi-document transactions?,Read uncommitted,Snapshot isolation for transactions (read concern snapshot),Repeatable read,Serializable,B
+Which tool helps analyze schema and index usage in production (Atlas/Profiler)?,Atlas Performance Advisor / Database Profiler,mongostat,mongotop,mongorestore,A
+Which operator can be used to perform regular expression matching in queries?,$matchRegex,$re,$regex,$like,C
+Which feature provides tiered storage or time-series optimizations?,Time Series collections and tiered storage options in Atlas,Aggregation only,Bucket collections,Sharding only,A
+Which optimization avoids blocking during index builds on large collections?,Always build foreground,Drop indexes first,Use foreground/background/build in foreground vs. online index builds (depends on version) or use Atlas online index builds,Recreate collection,C
+Which command shows current operations running on server?,db.ops(),db.currentOp(),db.showOps(),db.runningOps(),B
+Which aggregation stage can reorder or limit results efficiently after grouping?,$slice,$sort and $limit,$match and $project,$groupOnly,B
+Which operator in aggregation allows invoking expressions and comparators ($expr)?,$compute,$evaluate,$calc,$expr,D
+Which feature helps manage schema evolution and validate document shapes?,JSON Schema validation and validationLevel/validationAction,Strict schemas,DDL migrations,Schema registry,A
+What is a compound index in MongoDB?,An index on multiple fields in a single index structure,Multiple single-field indexes,Text index across fields,Hashed index,A
+Which feature distributes data across shards by range or hash?,Replication,Partitioning,Clustering,Sharding,D
+Which stage can be used to join data from another collection in aggregation?,$join,$graphLookup,$merge,$lookup,D
+What is change streams used for in MongoDB?,Backup streaming,Watch real-time data changes for collections/DBs,Change auditing only,Replication logs,B
+Which backup tool captures a binary snapshot of the data files?,mongodump (binary/ BSON dump) and filesystem snapshots,mongoexport,mongoarchive,mongorestore,A
+Which security feature encrypts data at rest for MongoDB?,TLS only,Field-level encryption only,Encrypted storage engine or filesystem-level encryption (encryption at rest),No encryption,C
+Which feature allows encrypting specific fields on client before sending to server?,ClientEncryption,EncryptedCollections,Client-Side Field Level Encryption (CSFLE),TLS,C
+Which metric helps diagnose slow queries in MongoDB?,Profiler and slow query logs (db.setProfilingLevel),connection count,oplog size,index size,A
+Which operator helps compute window functions in MongoDB aggregation?,$over,$groupWindow,$setWindowFields,$window,C
+Which option helps distribute read traffic to secondaries?,Read concern,Write concern,Replica preference,"Read preferences (secondaryPreferred, nearest, primaryPreferred)",D
+Which mechanism provides eventual consistency across clusters in distributed setups?,Strict ACID across cluster,Sharding consistency,Two-phase commit,Replication (replica sets) and eventual consistency for secondaries,D
+Which command shows current replica set configuration?,rs.config(),rs.statusConfig(),repl.conf(),rs.conf(),D
+Which aggregation pipeline stage merges the pipeline results into a collection?,$merge,$save,$out,$write,A
+Which feature allows resharding of a sharded collection online?,SplitChunks only,Resharding (reshardCollection),Drop+recreate shard,Manual repartition,B
+Which read concern ensures majority-committed data is returned?,local,majority,available,linearizable,B
+Which write concern ensures acknowledgement from majority of replica set members?,w:0,w: majority,w:all,w:1,B
+Which operator performs fuzzy string search in Atlas Search?,$match,Text search with analyzers (Atlas Search) / $search operator,$regex,$text,B
+Which feature provides full-text and advanced search capabilities in MongoDB Atlas?,Text index,Aggregation text,Search Index,Atlas Search (built on Apache Lucene),D
+Which consideration is important for index key order in compound indexes?,Order doesn't matter,Index only works for equality,Order matters only for text indexes,Order affects query support and sort performance,D
+Which option ensures retryable writes and transactions on sharded clusters (MongoDB 4.2+)?,External coordinator,Two-phase commit plugin,Only single-document ACID,Support for distributed transactions and retryable writes,D
+Which transaction isolation semantics does MongoDB provide for multi-document transactions?,Repeatable read,Serializable,Read uncommitted,Snapshot isolation for transactions (read concern snapshot),D
+Which tool helps analyze schema and index usage in production (Atlas/Profiler)?,mongostat,mongotop,Atlas Performance Advisor / Database Profiler,mongorestore,C
+Which operator can be used to perform regular expression matching in queries?,$matchRegex,$like,$regex,$re,C
+Which feature provides tiered storage or time-series optimizations?,Time Series collections and tiered storage options in Atlas,Aggregation only,Bucket collections,Sharding only,A
+Which optimization avoids blocking during index builds on large collections?,Always build foreground,Recreate collection,Use foreground/background/build in foreground vs. online index builds (depends on version) or use Atlas online index builds,Drop indexes first,C
+Which command shows current operations running on server?,db.showOps(),db.ops(),db.currentOp(),db.runningOps(),C
+Which aggregation stage can reorder or limit results efficiently after grouping?,$sort and $limit,$slice,$match and $project,$groupOnly,A
+Which operator in aggregation allows invoking expressions and comparators ($expr)?,$compute,$evaluate,$calc,$expr,D
+Which feature helps manage schema evolution and validate document shapes?,Schema registry,JSON Schema validation and validationLevel/validationAction,Strict schemas,DDL migrations,B
+What is a compound index in MongoDB?,Multiple single-field indexes,Hashed index,Text index across fields,An index on multiple fields in a single index structure,D
+Which feature distributes data across shards by range or hash?,Partitioning,Clustering,Replication,Sharding,D
+Which stage can be used to join data from another collection in aggregation?,$graphLookup,$join,$merge,$lookup,D
+What is change streams used for in MongoDB?,Change auditing only,Backup streaming,Replication logs,Watch real-time data changes for collections/DBs,D
+Which backup tool captures a binary snapshot of the data files?,mongoexport,mongodump (binary/ BSON dump) and filesystem snapshots,mongorestore,mongoarchive,B
+Which security feature encrypts data at rest for MongoDB?,Field-level encryption only,TLS only,No encryption,Encrypted storage engine or filesystem-level encryption (encryption at rest),D
+Which feature allows encrypting specific fields on client before sending to server?,ClientEncryption,EncryptedCollections,TLS,Client-Side Field Level Encryption (CSFLE),D
+Which metric helps diagnose slow queries in MongoDB?,connection count,oplog size,index size,Profiler and slow query logs (db.setProfilingLevel),D
+Which operator helps compute window functions in MongoDB aggregation?,$window,$groupWindow,$over,$setWindowFields,D
+Which option helps distribute read traffic to secondaries?,Replica preference,Write concern,"Read preferences (secondaryPreferred, nearest, primaryPreferred)",Read concern,C
+Which mechanism provides eventual consistency across clusters in distributed setups?,Strict ACID across cluster,Replication (replica sets) and eventual consistency for secondaries,Two-phase commit,Sharding consistency,B
+Which command shows current replica set configuration?,rs.conf(),repl.conf(),rs.statusConfig(),rs.config(),A
+Which aggregation pipeline stage merges the pipeline results into a collection?,$save,$out,$merge,$write,C

@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which keyword declares a variable whose value can change in Dart?,var or dynamic (var commonly),change,const,let,A
+Which keyword creates a compile-time constant in Dart?,const,static,final,immutable,A
+Which function is the entry point for a Dart console app?,start(),main(),run(),begin(),B
+How do you create a single-line comment in Dart?,/* comment */,// comment,# comment,<!-- comment -->,B
+Which type is used for text in Dart?,str,String,Char,Text,B
+Which collection type is ordered and allows duplicates in Dart?,Queue,List,Map,Set,B
+Which collection stores key-value pairs in Dart?,Object,Map,Pairs,Dict,B
+Which keyword makes a variable non-reassignable but allows lazy initialization?,let,immutable,final,const,C
+Which type represents absence of a value in Dart?,undefined,,nil,,B
+Which operator is used for string interpolation in Dart?,#{},${},%,+,B
+Which type indicates a Boolean value in Dart?,Boolean,bool,BoolType,boolean,B
+Which loop iterates over values in a collection?,foreach(collection),forEach(),loop in collection,for (var v in collection),D
+Which keyword declares a class in Dart?,object,class,struct,module,B
+Which operator checks equality by value in Dart?,===,equals,==,is,C
+Which type is used for integer numbers in Dart?,int,long,number,integer,A
+How do you define an asynchronous function in Dart?,Use FutureSync,Use await only,Define generator,Use async keyword: Future<void> foo() async { },D
+Which return type indicates future result in Dart?,Async<T>,Future<T>,Deferred<T>,Promise<T>,B
+Which symbol denotes a cascade operator to make multiple operations on same object?,..,=>,...,->,A
+Which collection type in Dart stores unique unordered elements?,Map,Set,Array,List,B
+Which built-in method converts a string to integer in Dart?,parseInt(),toInt(),int.parse(),Integer.parse(),C
+Which operator checks type at runtime in Dart?,is,typeof,instanceof,as,A
+Which keyword imports libraries in Dart?,import,require,using,include,A
+Which symbol is used to denote named parameters in function definitions (call)?,{name},(name),<name>,[name],A
+Which syntax creates a map literal in Dart?,"Map('key','value')",['key':'value'],('key' => 'value'),{'key': 'value'},D
+Which keyword defines a constructor in Dart class syntax?,create,init,constructor,Use className(...) as constructor; no special keyword,D
+Which operator provides null-aware access to a member?,#.,??.,->,?.,D
+Which operator provides default value if null?,??,?:,||,or,A
+Which type is used for floating point numbers in Dart?,double,real,decimal,float,A
+How do you define a constant list in Dart?,"final [1,2,3]","immutable [1,2,3]","const [1,2,3]","List.const([1,2,3])",C
+Which keyword creates a top-level constant in Dart file scope?,let,final,static,const,D

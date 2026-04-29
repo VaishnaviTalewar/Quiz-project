@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What does JSX stand for in React?,JavaScript XML (syntax for writing HTML-like code in JS),JSX doesn't stand for anything,Java Syntax eXchange,JavaScript eXtension,A
+How do you create a functional component in React?,A JavaScript function that returns JSX,An object literal,A class with render method,An HTML template,A
+Which hook lets you add state to a functional component?,useEffect,useState,useRef,useContext,B
+Which prop is used to pass data from parent to child?,state,props,context,refs,B
+How do you render a list of items in React?,Use innerHTML,Use map() to return elements and include a key prop,Render array directly,Use for loop inside JSX,B
+Which attribute must be provided for list items for stable identity?,data-key,key,ref,id,B
+Which method is used to render a React app into the DOM (pre-React 18)?,mount(),ReactDOM.render(),React.render(),renderApp(),B
+What is the purpose of React.Fragment or <>?</>?,Create new components,Render external HTML,Group a list of children without adding extra DOM nodes,Add styling to children,C
+How do you apply inline styles in JSX?,"style=""color:red""","Pass an object to the style prop (e.g., {{ color: 'red' }})",className='red',style='color:red',B
+Which attribute is used instead of 'class' in JSX for CSS classes?,cssClass,className,class,classList,B
+Which hook runs side-effects after render?,useMemo,useEffect,useCallback,useLayoutEffect,B
+How do you create a controlled input in React?,Use defaultValue only,Use ref only,Use uncontrolled input,Set value and onChange props with state,D
+Which function should be pure and return the same output for same props?,setState callbacks,Functional component rendering,Event handlers,useEffect callbacks,B
+How do you pass children to a component?,Using slots,Using props.children() method,Using the children prop (between opening and closing tags),Using innerHTML,C
+Which attribute is used to reference DOM elements in React?,ref,data-ref,key,id,A
+Which hook returns a mutable ref object whose .current property is initialized to the passed argument?,createRef,useState,useMemo,useRef,D
+What is unidirectional data flow in React?,Data flows from child to parent,Data flows from parent to child via props,Data flows in global store only,Data flows both ways automatically,B
+Which way is recommended for styling components in React projects?,"Any (CSS, CSS-in-JS, Tailwind etc.) depending on project needs",Only inline styles,Only styled-components,Only CSS files,A
+Which prop updates will cause a component to re-render?,Only DOM changes,State or props changes,Only parent rerenders,Only props changes,B
+How do you prevent default form submission in React event handler?,return false,stopPropagation(),event.preventDefault(),event.stop(),C
+Which method/event attribute should you use for click handlers in JSX?,onClick,click,onclick,handleClick,A
+What is the recommended key for list items when a stable id is available?,A unique stable id from data,Same id for all,Random id,Index in array,A
+How do you lift state up in React?,Move state to the nearest common ancestor and pass via props,Duplicate state in both components,Use localStorage,Use refs,A
+Which hook can be used to memoize expensive calculations between renders?,useRef,useCallback,useEffect,useMemo,D
+Which attribute is used to set HTML attributes like 'for' in JSX for labels?,htmlfor,labelFor,for,htmlFor,D
+Which built-in is used to create portals to render children outside parent DOM hierarchy?,createPortal(),React.createPortal(),Portal.create(),ReactDOM.createPortal(),D
+Which method can be used to create a component class (older API)?,class extends React.Component with render(),function Component(),React.createClass(),createComponent(),A
+Which hook can sync effects before browser paints?,useLayoutEffect,useRenderEffect,useEffectSync,useEffect,A
+Which prop stops propagation of events automatically in React synthetic events?,stop,preventProp,No built-in prop; use event.stopPropagation(),propagate=false,C
+Which prop provides an initial value for uncontrolled form inputs in React?,defaultValue,default,value,initial,A

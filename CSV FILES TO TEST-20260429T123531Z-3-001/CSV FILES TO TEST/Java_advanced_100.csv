@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What does the 'volatile' keyword guarantee in Java's memory model?,Garbage collection timing,Atomicity of updates,Visibility of changes to variables across threads (no atomicity guarantee),Ordering of operations across JVMs,C
+Which class provides reentrant mutual exclusion lock with extra features?,ReentrantLock,Mutex,SynchronizedLock,Lock,A
+Which API provides non-blocking I/O operations?,java.nio (NIO),nio.async,nio2,java.io,A
+What is a ClassLoader in Java responsible for?,Loading classes into the JVM at runtime,Compiling classes,Garbage collecting classes,Storing classes,A
+Which GC algorithm is designed for low pause times (Java 11+)?,Serial GC,CMS,G1 (Garbage-First) GC,Parallel GC,C
+Which feature allows inspection and modification of classes at runtime?,Annotation processing,Reflection,Debug API,Instrumentation,B
+"Which mechanism supports asynchronous, non-blocking composition of tasks?",Promise,FutureTask,ThreadPoolExecutor,CompletableFuture,D
+Which keyword allows use of method handles and invokedynamic optimizations (advanced)?,handle,MethodHandles / invokedynamic (JVM features),invoke,dynamic,B
+Which concept prevents ClassCastException with generics when using wildcards?,Type erasure,Use of bounded wildcards (<? extends / <? super),Reflection,Raw types,B
+What does 'escape analysis' in JVM help with?,Optimize allocation (stack allocation or scalar replacement) and eliminate synchronization,Prevent memory leaks,Improve GC speed,Keep objects in heap,A
+What does JIT compiler do?,Optimize source code comments,Translate to Java source,Compile frequently executed bytecode into native machine code for speed,Interpret bytecode slower,C
+Which tool helps profile memory and CPU usage of a Java application?,jvisualvm / jcmd / jmap / jstack,javadoc,javap,jar,A
+Which annotation can be processed at runtime and accessed via reflection?,@Process,@Runtime,@Retention(RetentionPolicy.RUNTIME),@Reflect,C
+Which API helps with low-level byte buffers and channels for high-performance IO?,SocketIO,java.io.Streams,java.nio.ByteBuffer and Channels,nio.buffers,C
+Which security manager concept restricts code permissions in JVM? (deprecated in recent versions),Sandbox,AccessController,SecurityManager / Policy,Permissions,C
+Which tuning option can set maximum heap size of JVM?,-XX:MaxHeapSize,-Xmx,-heapmax,-Xms,B
+Which JVM flag prints GC logs for analysis?,-Xlog:gc (or -verbose:gc older),-Xlog:class,-Xdebug,-verbose:class,A
+Which design allows late binding of implementations via interfaces and dependency injection?,Dependency Injection / Inversion of Control,Singleton,Factory only,Static binding,A
+Which concept handles thread-local storage for per-thread variables?,PerThread,ThreadLocalStorage,LocalVar,ThreadLocal,D
+Which mechanism avoids synchronization overhead using lock-free algorithms?,Atomic classes (java.util.concurrent.atomic),ReentrantLock,volatile,synchronized,A
+Which API supports asynchronous file channels in NIO.2?,AsyncIO,AsynchronousFileChannel,FileChannel,NIOChannel,B
+Which format is commonly used for Java serialization issues and replaced by safer options?,"Default Java Serialization (Serializable) - can be unsafe; alternatives: JSON, protobuf",YAML,XML,BinaryJar,A
+Which tool can generate native images ahead-of-time (GraalVM)?,javac -native,GraalVM native-image,nativec,jlink-native,B
+Which JVM component verifies bytecode correctness before execution?,Runtime checker,Class verifier,Security verifier,Bytecode verifier,D
+Which method in ConcurrentHashMap provides atomic compute-if-absent behavior?,putIfAbsent(),compute(),computeIfAbsent(),getOrDefault(),C
+What does the 'volatile' keyword guarantee in Java's memory model?,Garbage collection timing,Visibility of changes to variables across threads (no atomicity guarantee),Ordering of operations across JVMs,Atomicity of updates,B
+Which class provides reentrant mutual exclusion lock with extra features?,Lock,SynchronizedLock,Mutex,ReentrantLock,D
+Which API provides non-blocking I/O operations?,java.nio (NIO),java.io,nio2,nio.async,A
+What is a ClassLoader in Java responsible for?,Compiling classes,Loading classes into the JVM at runtime,Garbage collecting classes,Storing classes,B
+Which GC algorithm is designed for low pause times (Java 11+)?,G1 (Garbage-First) GC,CMS,Parallel GC,Serial GC,A
+Which feature allows inspection and modification of classes at runtime?,Reflection,Debug API,Annotation processing,Instrumentation,A
+"Which mechanism supports asynchronous, non-blocking composition of tasks?",Promise,FutureTask,CompletableFuture,ThreadPoolExecutor,C
+Which keyword allows use of method handles and invokedynamic optimizations (advanced)?,dynamic,MethodHandles / invokedynamic (JVM features),handle,invoke,B
+Which concept prevents ClassCastException with generics when using wildcards?,Type erasure,Raw types,Reflection,Use of bounded wildcards (<? extends / <? super),D
+What does 'escape analysis' in JVM help with?,Prevent memory leaks,Optimize allocation (stack allocation or scalar replacement) and eliminate synchronization,Improve GC speed,Keep objects in heap,B
+What does JIT compiler do?,Optimize source code comments,Translate to Java source,Interpret bytecode slower,Compile frequently executed bytecode into native machine code for speed,D
+Which tool helps profile memory and CPU usage of a Java application?,jar,jvisualvm / jcmd / jmap / jstack,javap,javadoc,B
+Which annotation can be processed at runtime and accessed via reflection?,@Retention(RetentionPolicy.RUNTIME),@Runtime,@Process,@Reflect,A
+Which API helps with low-level byte buffers and channels for high-performance IO?,java.nio.ByteBuffer and Channels,nio.buffers,java.io.Streams,SocketIO,A
+Which security manager concept restricts code permissions in JVM? (deprecated in recent versions),AccessController,Sandbox,Permissions,SecurityManager / Policy,D
+Which tuning option can set maximum heap size of JVM?,-Xmx,-heapmax,-XX:MaxHeapSize,-Xms,A
+Which JVM flag prints GC logs for analysis?,-Xlog:class,-Xdebug,-verbose:class,-Xlog:gc (or -verbose:gc older),D
+Which design allows late binding of implementations via interfaces and dependency injection?,Static binding,Singleton,Dependency Injection / Inversion of Control,Factory only,C
+Which concept handles thread-local storage for per-thread variables?,ThreadLocalStorage,ThreadLocal,PerThread,LocalVar,B
+Which mechanism avoids synchronization overhead using lock-free algorithms?,volatile,ReentrantLock,Atomic classes (java.util.concurrent.atomic),synchronized,C
+Which API supports asynchronous file channels in NIO.2?,FileChannel,AsyncIO,AsynchronousFileChannel,NIOChannel,C
+Which format is commonly used for Java serialization issues and replaced by safer options?,YAML,XML,BinaryJar,"Default Java Serialization (Serializable) - can be unsafe; alternatives: JSON, protobuf",D
+Which tool can generate native images ahead-of-time (GraalVM)?,jlink-native,javac -native,nativec,GraalVM native-image,D
+Which JVM component verifies bytecode correctness before execution?,Bytecode verifier,Runtime checker,Class verifier,Security verifier,A
+Which method in ConcurrentHashMap provides atomic compute-if-absent behavior?,putIfAbsent(),computeIfAbsent(),compute(),getOrDefault(),B
+What does the 'volatile' keyword guarantee in Java's memory model?,Visibility of changes to variables across threads (no atomicity guarantee),Atomicity of updates,Ordering of operations across JVMs,Garbage collection timing,A
+Which class provides reentrant mutual exclusion lock with extra features?,Mutex,Lock,ReentrantLock,SynchronizedLock,C
+Which API provides non-blocking I/O operations?,java.nio (NIO),nio2,nio.async,java.io,A
+What is a ClassLoader in Java responsible for?,Garbage collecting classes,Compiling classes,Loading classes into the JVM at runtime,Storing classes,C
+Which GC algorithm is designed for low pause times (Java 11+)?,Serial GC,G1 (Garbage-First) GC,Parallel GC,CMS,B
+Which feature allows inspection and modification of classes at runtime?,Debug API,Reflection,Annotation processing,Instrumentation,B
+"Which mechanism supports asynchronous, non-blocking composition of tasks?",ThreadPoolExecutor,FutureTask,Promise,CompletableFuture,D
+Which keyword allows use of method handles and invokedynamic optimizations (advanced)?,MethodHandles / invokedynamic (JVM features),dynamic,invoke,handle,A
+Which concept prevents ClassCastException with generics when using wildcards?,Use of bounded wildcards (<? extends / <? super),Raw types,Type erasure,Reflection,A
+What does 'escape analysis' in JVM help with?,Improve GC speed,Prevent memory leaks,Keep objects in heap,Optimize allocation (stack allocation or scalar replacement) and eliminate synchronization,D
+What does JIT compiler do?,Interpret bytecode slower,Optimize source code comments,Translate to Java source,Compile frequently executed bytecode into native machine code for speed,D
+Which tool helps profile memory and CPU usage of a Java application?,javap,jvisualvm / jcmd / jmap / jstack,jar,javadoc,B
+Which annotation can be processed at runtime and accessed via reflection?,@Retention(RetentionPolicy.RUNTIME),@Runtime,@Reflect,@Process,A
+Which API helps with low-level byte buffers and channels for high-performance IO?,java.io.Streams,SocketIO,java.nio.ByteBuffer and Channels,nio.buffers,C
+Which security manager concept restricts code permissions in JVM? (deprecated in recent versions),Sandbox,Permissions,SecurityManager / Policy,AccessController,C
+Which tuning option can set maximum heap size of JVM?,-Xmx,-heapmax,-Xms,-XX:MaxHeapSize,A
+Which JVM flag prints GC logs for analysis?,-Xdebug,-verbose:class,-Xlog:gc (or -verbose:gc older),-Xlog:class,C
+Which design allows late binding of implementations via interfaces and dependency injection?,Singleton,Factory only,Static binding,Dependency Injection / Inversion of Control,D
+Which concept handles thread-local storage for per-thread variables?,PerThread,ThreadLocalStorage,LocalVar,ThreadLocal,D
+Which mechanism avoids synchronization overhead using lock-free algorithms?,synchronized,volatile,ReentrantLock,Atomic classes (java.util.concurrent.atomic),D
+Which API supports asynchronous file channels in NIO.2?,AsynchronousFileChannel,NIOChannel,FileChannel,AsyncIO,A
+Which format is commonly used for Java serialization issues and replaced by safer options?,BinaryJar,"Default Java Serialization (Serializable) - can be unsafe; alternatives: JSON, protobuf",YAML,XML,B
+Which tool can generate native images ahead-of-time (GraalVM)?,javac -native,GraalVM native-image,nativec,jlink-native,B
+Which JVM component verifies bytecode correctness before execution?,Runtime checker,Bytecode verifier,Security verifier,Class verifier,B
+Which method in ConcurrentHashMap provides atomic compute-if-absent behavior?,compute(),computeIfAbsent(),putIfAbsent(),getOrDefault(),B
+What does the 'volatile' keyword guarantee in Java's memory model?,Atomicity of updates,Ordering of operations across JVMs,Garbage collection timing,Visibility of changes to variables across threads (no atomicity guarantee),D
+Which class provides reentrant mutual exclusion lock with extra features?,Mutex,Lock,SynchronizedLock,ReentrantLock,D
+Which API provides non-blocking I/O operations?,nio.async,nio2,java.io,java.nio (NIO),D
+What is a ClassLoader in Java responsible for?,Storing classes,Garbage collecting classes,Compiling classes,Loading classes into the JVM at runtime,D
+Which GC algorithm is designed for low pause times (Java 11+)?,Serial GC,Parallel GC,G1 (Garbage-First) GC,CMS,C
+Which feature allows inspection and modification of classes at runtime?,Annotation processing,Debug API,Reflection,Instrumentation,C
+"Which mechanism supports asynchronous, non-blocking composition of tasks?",CompletableFuture,ThreadPoolExecutor,Promise,FutureTask,A
+Which keyword allows use of method handles and invokedynamic optimizations (advanced)?,dynamic,handle,MethodHandles / invokedynamic (JVM features),invoke,C
+Which concept prevents ClassCastException with generics when using wildcards?,Type erasure,Raw types,Use of bounded wildcards (<? extends / <? super),Reflection,C
+What does 'escape analysis' in JVM help with?,Optimize allocation (stack allocation or scalar replacement) and eliminate synchronization,Keep objects in heap,Improve GC speed,Prevent memory leaks,A
+What does JIT compiler do?,Translate to Java source,Interpret bytecode slower,Optimize source code comments,Compile frequently executed bytecode into native machine code for speed,D
+Which tool helps profile memory and CPU usage of a Java application?,jar,jvisualvm / jcmd / jmap / jstack,javap,javadoc,B
+Which annotation can be processed at runtime and accessed via reflection?,@Runtime,@Reflect,@Process,@Retention(RetentionPolicy.RUNTIME),D
+Which API helps with low-level byte buffers and channels for high-performance IO?,SocketIO,nio.buffers,java.io.Streams,java.nio.ByteBuffer and Channels,D
+Which security manager concept restricts code permissions in JVM? (deprecated in recent versions),Sandbox,AccessController,Permissions,SecurityManager / Policy,D
+Which tuning option can set maximum heap size of JVM?,-heapmax,-Xms,-XX:MaxHeapSize,-Xmx,D
+Which JVM flag prints GC logs for analysis?,-Xlog:class,-Xlog:gc (or -verbose:gc older),-Xdebug,-verbose:class,B
+Which design allows late binding of implementations via interfaces and dependency injection?,Singleton,Factory only,Static binding,Dependency Injection / Inversion of Control,D
+Which concept handles thread-local storage for per-thread variables?,PerThread,LocalVar,ThreadLocalStorage,ThreadLocal,D
+Which mechanism avoids synchronization overhead using lock-free algorithms?,volatile,synchronized,ReentrantLock,Atomic classes (java.util.concurrent.atomic),D
+Which API supports asynchronous file channels in NIO.2?,FileChannel,NIOChannel,AsyncIO,AsynchronousFileChannel,D
+Which format is commonly used for Java serialization issues and replaced by safer options?,BinaryJar,XML,"Default Java Serialization (Serializable) - can be unsafe; alternatives: JSON, protobuf",YAML,C
+Which tool can generate native images ahead-of-time (GraalVM)?,nativec,GraalVM native-image,jlink-native,javac -native,B
+Which JVM component verifies bytecode correctness before execution?,Bytecode verifier,Runtime checker,Security verifier,Class verifier,A
+Which method in ConcurrentHashMap provides atomic compute-if-absent behavior?,compute(),getOrDefault(),computeIfAbsent(),putIfAbsent(),C

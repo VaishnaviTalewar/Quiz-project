@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What runtime environment is used to run JavaScript on the server?,NPM,Deno,Node.js,V8,C
+Which command initializes a Node.js project?,npm init,node create,node init,npm start,A
+Which file stores Node.js project dependencies?,dependencies.json,package.json,project.json,node.json,B
+Which function is used to include modules in Node.js (CommonJS)?,include(),load(),import(),require(),D
+Which global object provides information about the current module?,exports,process,module,global,C
+Which object is used to export functions from a module?,export default,module.exports,module.share,exports(),B
+Which command installs a package locally?,npm add,node install,npm get,npm install package-name,D
+Which command runs a Node.js script file?,run node filename,node filename.js,npm run filename,execute node,B
+Which core module is used to work with file systems?,file,path,filesystem,fs,D
+Which method reads a file asynchronously in Node.js?,readAsync(),fs.readFile(),fs.read(),file.read(),B
+Which object represents the current process?,system,runtime,process,global,C
+Which event loop library powers Node.js asynchronous operations?,libuv,NodeCore,asyncLoop,V8,A
+Which module helps work with file and directory paths?,path,file,dir,route,A
+Which command installs a package globally?,node install -g,npm install -g,npm add global,npm global install,B
+Which property provides environment variables in Node.js?,env.process,system.env,process.env,node.env,C
+Which module allows creation of HTTP servers?,http,server,web,net,A
+Which method creates a new HTTP server?,createHttp(),http.createServer(),server.create(),http.server(),B
+Which command removes a package?,npm remove-package,npm uninstall,npm delete,npm erase,B
+Which keyword defines asynchronous functions in modern JS?,async,defer,promise,await,A
+Which method schedules repeated execution?,setTimeout(),repeat(),loop(),setInterval(),D
+Which method schedules execution after delay?,delay(),interval(),setTimeout(),wait(),C
+Which module provides utilities for events?,eventEmitter,events,node-events,eventModule,B
+Which class is used to emit and listen for events?,EventClass,EventEmitter,Listener,Emitter,B
+Which module is used to handle OS-related operations?,machine,os,system,kernel,B
+Which command checks Node.js version?,node info,node version,node --check,node -v,D
+Which package manager comes with Node.js?,pnpm,npm,yarn,bower,B
+Which alternative runtime for JS similar to Node.js?,Deno,Ruby,PHP,Python,A
+Which module helps create TCP servers?,socket,net,tcp,server,B
+Which keyword stops execution of a function and returns value?,return,exit,break,stop,A
+Which operator compares value and type?,==,=,!=,===,D

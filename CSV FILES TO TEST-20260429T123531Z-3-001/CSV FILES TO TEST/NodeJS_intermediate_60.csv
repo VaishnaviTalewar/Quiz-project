@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which Node.js framework is widely used for building web APIs?,NestJS,Koa,Express.js,Hapi,C
+Which middleware parses JSON request bodies in Express?,bodyParser(),express.json(),jsonParser(),parseJSON(),B
+Which object represents HTTP request in Express?,request,httpReq,r,req,D
+Which object represents HTTP response?,reply,res,response,r,B
+Which method sends JSON response?,res.return(),res.output(),res.sendJSON(),res.json(),D
+Which method sends plain response?,res.return(),res.output(),res.send(),res.write(),C
+Which method defines GET route in Express?,app.fetch(),app.routeGet(),app.request(),app.get(),D
+Which middleware allows cross-origin requests?,cross,allow,origin,cors,D
+Which module is used for environment variables in Node apps?,config,env,dotenv,vars,C
+Which package manager alternative to npm?,yarn,pip,cargo,gradle,A
+Which object stores middleware stack in Express?,app,server,router,middleware,A
+Which method loads middleware globally?,app.run(),app.add(),app.middleware(),app.use(),D
+Which function handles async errors automatically in Express?,next(),reject(),handle(),throw(),A
+Which module helps hashing passwords?,bcrypt,hash,cryptoHash,encrypt,A
+Which database driver used for MongoDB in Node?,mongodb-cli,mongojs,mongoose,node-db,C
+Which method connects mongoose to DB?,connectDB(),db.connect(),mongoose.connect(),mongo.connect(),C
+Which library helps with authentication using tokens?,jsonwebtoken,tokenizer,jwt-auth,auth-token,A
+Which architecture splits app into routes/controllers/models?,MVVM,Layered,MVP,MVC,D
+Which Node.js module creates child processes?,child_process,processChild,forker,nodeProcess,A
+Which module provides crypto functionality?,secure,encrypt,crypto,hash,C
+Which Node.js framework is widely used for building web APIs?,Express.js,Hapi,NestJS,Koa,A
+Which middleware parses JSON request bodies in Express?,parseJSON(),express.json(),jsonParser(),bodyParser(),B
+Which object represents HTTP request in Express?,request,req,r,httpReq,B
+Which object represents HTTP response?,response,r,res,reply,C
+Which method sends JSON response?,res.json(),res.sendJSON(),res.output(),res.return(),A
+Which method sends plain response?,res.write(),res.send(),res.return(),res.output(),B
+Which method defines GET route in Express?,app.routeGet(),app.fetch(),app.request(),app.get(),D
+Which middleware allows cross-origin requests?,origin,allow,cors,cross,C
+Which module is used for environment variables in Node apps?,vars,dotenv,config,env,B
+Which package manager alternative to npm?,yarn,gradle,cargo,pip,A
+Which object stores middleware stack in Express?,server,middleware,app,router,C
+Which method loads middleware globally?,app.use(),app.run(),app.middleware(),app.add(),A
+Which function handles async errors automatically in Express?,reject(),next(),throw(),handle(),B
+Which module helps hashing passwords?,hash,encrypt,bcrypt,cryptoHash,C
+Which database driver used for MongoDB in Node?,mongoose,mongojs,node-db,mongodb-cli,A
+Which method connects mongoose to DB?,connectDB(),mongo.connect(),db.connect(),mongoose.connect(),D
+Which library helps with authentication using tokens?,tokenizer,jwt-auth,auth-token,jsonwebtoken,D
+Which architecture splits app into routes/controllers/models?,MVC,MVVM,Layered,MVP,A
+Which Node.js module creates child processes?,processChild,child_process,forker,nodeProcess,B
+Which module provides crypto functionality?,secure,hash,encrypt,crypto,D
+Which Node.js framework is widely used for building web APIs?,NestJS,Hapi,Express.js,Koa,C
+Which middleware parses JSON request bodies in Express?,parseJSON(),express.json(),bodyParser(),jsonParser(),B
+Which object represents HTTP request in Express?,r,req,request,httpReq,B
+Which object represents HTTP response?,r,response,res,reply,C
+Which method sends JSON response?,res.json(),res.sendJSON(),res.return(),res.output(),A
+Which method sends plain response?,res.output(),res.send(),res.return(),res.write(),B
+Which method defines GET route in Express?,app.fetch(),app.get(),app.request(),app.routeGet(),B
+Which middleware allows cross-origin requests?,origin,allow,cors,cross,C
+Which module is used for environment variables in Node apps?,env,vars,config,dotenv,D
+Which package manager alternative to npm?,cargo,gradle,yarn,pip,C
+Which object stores middleware stack in Express?,middleware,router,app,server,C
+Which method loads middleware globally?,app.middleware(),app.run(),app.add(),app.use(),D
+Which function handles async errors automatically in Express?,throw(),next(),reject(),handle(),B
+Which module helps hashing passwords?,cryptoHash,bcrypt,hash,encrypt,B
+Which database driver used for MongoDB in Node?,mongoose,node-db,mongojs,mongodb-cli,A
+Which method connects mongoose to DB?,mongo.connect(),mongoose.connect(),db.connect(),connectDB(),B
+Which library helps with authentication using tokens?,tokenizer,auth-token,jwt-auth,jsonwebtoken,D
+Which architecture splits app into routes/controllers/models?,MVVM,MVC,Layered,MVP,B
+Which Node.js module creates child processes?,child_process,nodeProcess,processChild,forker,A
+Which module provides crypto functionality?,encrypt,hash,crypto,secure,C

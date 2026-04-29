@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What does the <canvas> element provide?,A drawable region for script-based graphics,Form input element,Scalable vector container,Text formatting only,A
+Which attribute is used to provide alternative text for an image?,desc,caption,title,alt,D
+Which element is used to define self-contained content that could be syndicated?,main,div,section,article,D
+Which element is used to define navigation links?,footer,nav,menu,ul,B
+Which attribute on <a> prevents the new page from accessing the window.opener property?,"rel=""nofollow""","rel=""noopener""","rel=""noreferrer""","target=""_blank""",B
+Which meta tag is recommended to set viewport for responsive design?,"meta name=""viewport"" content=""width=device-width, initial-scale=1""","meta name=""author""","meta charset=""utf-8""","meta http-equiv=""X-UA-Compatible"" content=""IE=edge""",A
+What does the 'srcset' attribute on an <img> allow you to do?,Describe machine-readable metadata,Provide captions,Provide multiple image sources for responsive images,Delay image loading,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,link rel,data-* attributes,"ARIA attributes (like role, aria-label)",D
+What is the Shadow DOM used for in web components?,Encapsulate styles and markup for a component,Optimize images,Manage cookies,Create server-side templates,A
+What does the 'srcset' attribute on an <img> allow you to do?,Provide captions,Describe machine-readable metadata,Provide multiple image sources for responsive images,Delay image loading,C
+What does the 'srcset' attribute on an <img> allow you to do?,Describe machine-readable metadata,Provide captions,Provide multiple image sources for responsive images,Delay image loading,C
+What is the Shadow DOM used for in web components?,Create server-side templates,Encapsulate styles and markup for a component,Manage cookies,Optimize images,B
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,link rel,"ARIA attributes (like role, aria-label)",data-* attributes,C
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<slot>,<template>,<script>,C
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<slot>,<template>,<script>,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,"ARIA attributes (like role, aria-label)",link rel,meta tags,data-* attributes,A
+What is the Shadow DOM used for in web components?,Optimize images,Create server-side templates,Manage cookies,Encapsulate styles and markup for a component,D
+What does the 'srcset' attribute on an <img> allow you to do?,Delay image loading,Provide multiple image sources for responsive images,Provide captions,Describe machine-readable metadata,B
+What is the Shadow DOM used for in web components?,Manage cookies,Encapsulate styles and markup for a component,Optimize images,Create server-side templates,B
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,SVG,Canvas API,WebGL,B
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<template>,<slot>,<script>,B
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,"ARIA attributes (like role, aria-label)",data-* attributes,link rel,meta tags,A
+What is the Shadow DOM used for in web components?,Encapsulate styles and markup for a component,Manage cookies,Create server-side templates,Optimize images,A
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,link rel,data-* attributes,meta tags,"ARIA attributes (like role, aria-label)",D
+Which element forms the template for client-side content that can be cloned with JavaScript?,<slot>,<script>,<div>,<template>,D
+Which element forms the template for client-side content that can be cloned with JavaScript?,<template>,<script>,<div>,<slot>,A
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,SVG,WebGL,Canvas API,B
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,data-* attributes,link rel,"ARIA attributes (like role, aria-label)",D
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,"ARIA attributes (like role, aria-label)",data-* attributes,meta tags,link rel,A
+Which mechanism allows a page to use vector graphics in HTML natively?,SVG,Canvas API,WebGL,IMG with src,A
+Which element forms the template for client-side content that can be cloned with JavaScript?,<script>,<slot>,<template>,<div>,C
+What is the Shadow DOM used for in web components?,Optimize images,Encapsulate styles and markup for a component,Create server-side templates,Manage cookies,B
+Which element forms the template for client-side content that can be cloned with JavaScript?,<script>,<template>,<div>,<slot>,B
+What does the 'srcset' attribute on an <img> allow you to do?,Provide multiple image sources for responsive images,Delay image loading,Provide captions,Describe machine-readable metadata,A
+Which element forms the template for client-side content that can be cloned with JavaScript?,<template>,<script>,<slot>,<div>,A
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,Canvas API,SVG,WebGL,C
+Which mechanism allows a page to use vector graphics in HTML natively?,WebGL,SVG,IMG with src,Canvas API,B
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<slot>,<script>,<template>,D
+What is the Shadow DOM used for in web components?,Optimize images,Create server-side templates,Encapsulate styles and markup for a component,Manage cookies,C
+Which element forms the template for client-side content that can be cloned with JavaScript?,<script>,<slot>,<template>,<div>,C
+Which element forms the template for client-side content that can be cloned with JavaScript?,<script>,<slot>,<div>,<template>,D
+What is the Shadow DOM used for in web components?,Manage cookies,Encapsulate styles and markup for a component,Create server-side templates,Optimize images,B
+Which mechanism allows a page to use vector graphics in HTML natively?,Canvas API,SVG,IMG with src,WebGL,B
+Which mechanism allows a page to use vector graphics in HTML natively?,SVG,IMG with src,WebGL,Canvas API,A
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,link rel,data-* attributes,"ARIA attributes (like role, aria-label)",D
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,Canvas API,WebGL,SVG,D
+What is the Shadow DOM used for in web components?,Optimize images,Create server-side templates,Manage cookies,Encapsulate styles and markup for a component,D
+What does the 'srcset' attribute on an <img> allow you to do?,Describe machine-readable metadata,Delay image loading,Provide multiple image sources for responsive images,Provide captions,C
+What does the 'srcset' attribute on an <img> allow you to do?,Describe machine-readable metadata,Provide multiple image sources for responsive images,Provide captions,Delay image loading,B
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,"ARIA attributes (like role, aria-label)",data-* attributes,meta tags,link rel,A
+What does the 'srcset' attribute on an <img> allow you to do?,Provide captions,Describe machine-readable metadata,Provide multiple image sources for responsive images,Delay image loading,C
+Which mechanism allows a page to use vector graphics in HTML natively?,WebGL,Canvas API,IMG with src,SVG,D
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,Canvas API,WebGL,SVG,D
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,data-* attributes,link rel,"ARIA attributes (like role, aria-label)",meta tags,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,"ARIA attributes (like role, aria-label)",data-* attributes,link rel,B
+What does the 'srcset' attribute on an <img> allow you to do?,Provide captions,Provide multiple image sources for responsive images,Describe machine-readable metadata,Delay image loading,B
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,link rel,data-* attributes,"ARIA attributes (like role, aria-label)",D
+Which mechanism allows a page to use vector graphics in HTML natively?,Canvas API,WebGL,IMG with src,SVG,D
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,data-* attributes,link rel,"ARIA attributes (like role, aria-label)",D
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,link rel,"ARIA attributes (like role, aria-label)",data-* attributes,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,"ARIA attributes (like role, aria-label)",meta tags,link rel,data-* attributes,A
+Which element forms the template for client-side content that can be cloned with JavaScript?,<script>,<div>,<template>,<slot>,C
+Which element forms the template for client-side content that can be cloned with JavaScript?,<slot>,<div>,<template>,<script>,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,link rel,meta tags,data-* attributes,"ARIA attributes (like role, aria-label)",D
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,"ARIA attributes (like role, aria-label)",data-* attributes,link rel,meta tags,A
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<script>,<slot>,<template>,D
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,data-* attributes,meta tags,link rel,"ARIA attributes (like role, aria-label)",D
+What is the Shadow DOM used for in web components?,Manage cookies,Create server-side templates,Optimize images,Encapsulate styles and markup for a component,D
+Which element forms the template for client-side content that can be cloned with JavaScript?,<script>,<template>,<slot>,<div>,B
+What is the Shadow DOM used for in web components?,Manage cookies,Create server-side templates,Encapsulate styles and markup for a component,Optimize images,C
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<script>,<slot>,<template>,D
+Which mechanism allows a page to use vector graphics in HTML natively?,Canvas API,WebGL,SVG,IMG with src,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,link rel,data-* attributes,meta tags,"ARIA attributes (like role, aria-label)",D
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,WebGL,SVG,Canvas API,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,link rel,data-* attributes,meta tags,"ARIA attributes (like role, aria-label)",D
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<script>,<slot>,<template>,D
+Which mechanism allows a page to use vector graphics in HTML natively?,Canvas API,SVG,WebGL,IMG with src,B
+Which element forms the template for client-side content that can be cloned with JavaScript?,<div>,<script>,<slot>,<template>,D
+Which mechanism allows a page to use vector graphics in HTML natively?,WebGL,SVG,IMG with src,Canvas API,B
+Which element forms the template for client-side content that can be cloned with JavaScript?,<template>,<script>,<div>,<slot>,A
+What does the 'srcset' attribute on an <img> allow you to do?,Delay image loading,Provide captions,Provide multiple image sources for responsive images,Describe machine-readable metadata,C
+What does the 'srcset' attribute on an <img> allow you to do?,Provide multiple image sources for responsive images,Provide captions,Describe machine-readable metadata,Delay image loading,A
+Which mechanism allows a page to use vector graphics in HTML natively?,WebGL,SVG,IMG with src,Canvas API,B
+Which mechanism allows a page to use vector graphics in HTML natively?,SVG,Canvas API,WebGL,IMG with src,A
+What is the Shadow DOM used for in web components?,Manage cookies,Optimize images,Encapsulate styles and markup for a component,Create server-side templates,C
+What does the 'srcset' attribute on an <img> allow you to do?,Provide multiple image sources for responsive images,Provide captions,Delay image loading,Describe machine-readable metadata,A
+Which mechanism allows a page to use vector graphics in HTML natively?,SVG,IMG with src,Canvas API,WebGL,A
+What does the 'srcset' attribute on an <img> allow you to do?,Delay image loading,Describe machine-readable metadata,Provide multiple image sources for responsive images,Provide captions,C
+What is the Shadow DOM used for in web components?,Encapsulate styles and markup for a component,Manage cookies,Optimize images,Create server-side templates,A
+Which element forms the template for client-side content that can be cloned with JavaScript?,<template>,<slot>,<div>,<script>,A
+What does the 'srcset' attribute on an <img> allow you to do?,Provide captions,Describe machine-readable metadata,Delay image loading,Provide multiple image sources for responsive images,D
+Which mechanism allows a page to use vector graphics in HTML natively?,Canvas API,WebGL,SVG,IMG with src,C
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,data-* attributes,link rel,meta tags,"ARIA attributes (like role, aria-label)",D
+What is the Shadow DOM used for in web components?,Create server-side templates,Manage cookies,Optimize images,Encapsulate styles and markup for a component,D
+What is the Shadow DOM used for in web components?,Encapsulate styles and markup for a component,Create server-side templates,Optimize images,Manage cookies,A
+What does the 'srcset' attribute on an <img> allow you to do?,Provide multiple image sources for responsive images,Describe machine-readable metadata,Delay image loading,Provide captions,A
+Which mechanism allows a page to use vector graphics in HTML natively?,IMG with src,Canvas API,WebGL,SVG,D
+Which mechanism allows a page to use vector graphics in HTML natively?,SVG,WebGL,Canvas API,IMG with src,A
+Which HTML feature helps improve accessibility by exposing a role to assistive technologies?,meta tags,"ARIA attributes (like role, aria-label)",link rel,data-* attributes,B
+Which element forms the template for client-side content that can be cloned with JavaScript?,<slot>,<script>,<template>,<div>,C

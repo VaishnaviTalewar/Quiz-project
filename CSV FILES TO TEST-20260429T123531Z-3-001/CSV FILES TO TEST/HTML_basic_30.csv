@@ -1,0 +1,31 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What attribute on the <script> tag ensures the script is executed asynchronously (as soon as it is downloaded)?,defer,async,later,await,B
+Which attribute should you use on an <img> to provide multiple image sources for responsive images?,srcset,src-multi,picture-src,responsive-src,A
+Which HTML element is used to provide a caption for a <figure> element?,<figcaption>,<caption>,<label>,<legend>,A
+"What does the attribute rel=noopener"" protect against when used on links with target=""_blank""?""",Prevents CSS leakage,Prevents the new page from accessing window.opener,Blocks third-party cookies,Forces HTTPS,B
+Which input attribute restricts a file input to accept only certain file types?,accept,filetypes,filter,pattern,A
+Which element is intended to contain the primary navigation links of a page?,<menu>,<nav>,<aside>,<header>,B
+"What is the effect of the loading=lazy"" attribute on images and iframes?""",Loads resource before DOMContentLoaded,Defers loading until the element is near the viewport,Forces prefetching,Disables caching,B
+Which HTML element is not rendered but can hold content to be stamped into the DOM by scripts?,<template>,<slot>,<noscript>,<fragment>,A
+What does the crossorigin attribute on <link> or <script> relate to when used with Subresource Integrity (SRI)?,Specifies resource origin for CORS requests,Specifies cookie policy,Defines referrer policy,Marks resource as cached,A
+Which attribute should you add to an interactive element to include it in keyboard tab order (if it isn't naturally focusable)?,data-focus,tabindex,focusable,accesskey,B
+Which HTML element is used to embed SVG markup inline?,<graphic>,<svg>,<vector>,<image>,B
+Which <link> rel value is commonly used to preconnect to an external origin to speed up resource fetching?,preload,dns-prefetch,preconnect,prefetch,C
+Which attribute on <a> should you set to indicate the link opens in a new browsing context?,target,rel,download,context,A
+Which HTML element provides a way to group the visible label and control for a form field semantically?,<label>,<legend>,<caption>,<fieldset>,A
+Which attribute on <input> or <textarea> provides a regular expression the value must match for HTML5 validation?,pattern,validate,regex,match,A
+Which attribute tells the browser to download a resource (like an image/file) instead of navigating to it when a link is clicked?,"rel=download""""",download,data-download,"target=_download""""",B
+What is the purpose of the <noscript> element?,Show alternative content when JavaScript is disabled,Load scripts lazily,Provide ARIA roles for scripts,Cache scripts for offline use,A
+Which attribute/value combination should you use to suggest prefetching a stylesheet that will be used later?,"<link rel=prefetch"" href=""style.css"">""","<link rel=preload"" as=""style"" href=""style.css"">""","<link rel=dns-prefetch"" href=""/style.css"">""","<link rel=prerender"" href=""style.css"">""",B
+Which attribute is used on <a> to hint that following the link will download a resource with a specific filename?,filename,download,data-filename,"rel=download""""",B
+Which attribute should you use to improve accessibility by associating text explicitly with a form control?,aria-label,for (on label) matching id on control,title,placeholder,B
+Which element and attribute pair lets web authors offer an alternative shorter page title for mobile home screen installation (Web App Manifest aside)?,"<meta name=apple-mobile-web-app-title"" content=""App"">""","<link rel=manifest"" title=""App"">""","<meta name=mobile-title"" content=""App"">""","<meta name=application-name"" content=""App"">""",A
+Which HTML attribute is best for adding custom data to an element that can be read by JavaScript?,data-* attributes,x-data,custom-*,js-data,A
+Which element provides a semantic container for a self-contained composition that could be syndicated?,<section>,<article>,<div>,<component>,B
+Which attribute on <link> or <script> should you set when using Subresource Integrity (SRI)?,integrity,sri,hash,secure,A
+Which attribute on <iframe> can be used to impose extra restrictions on the framed content for security?,sandbox,secure,restrict,isolate,A
+What is the purpose of the <base> tag in the document <head>?,Set default font for the document,Specify the base URL for relative URLs,Preload base resources,Define base styles,B
+Which HTML element is used to declare an area of content that is usually presented as a dialog that can be shown/hidden natively?,<dialog>,<modal>,<popup>,<overlay>,A
+"Which attribute do you use on <input type=email""> to allow multiple comma-separated emails?""",multiple,multiple-emails,emails,list,A
+Which HTML feature allows you to associate metadata by adding attributes like itemscope and itemprop?,Microdata,JSON-LD,RDFa,OpenGraph,A
+Which attribute on <link> do you use to supply an application manifest for progressive web apps?,"rel=manifest""""","rel=app-manifest""""","rel=pwa""""","rel=application""""",A

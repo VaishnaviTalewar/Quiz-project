@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which property is used to create a 3D transform perspective on an element?,perspective,transform-3d,view-perspective,perspective-origin,A
+Which rule allows you to define an animation with keyframes?,@keyframes,@motion,@animate,@frames,A
+Which property sets the animation duration?,animation-duration,animation-time,duration,anim-time,A
+Which property controls whether backface of an element is visible when rotated?,face-visibility,visibility,backface-visibility,back-visibility,C
+Which selector matches an element that is the nth child of its parent?,:nth(),:nth-child(),:nth-of-type(),:child(),B
+"Which CSS function adjusts contrast, brightness, and other image effects?",adjust(),fx(),image-filter(),filter(),D
+Which property sets variables that cascade and can be changed at runtime?,environment variables,CSS custom properties (variables),LESS variables,SASS variables,B
+Which property enables GPU acceleration for transforms in many browsers?,accelerate: true,transform: translateZ(0) or will-change: transform,hardware: true,gpu: on,B
+Which selector matches elements not matching a selector?,:not(),:unless(),:exclude(),:except(),A
+Which property specifies the blend mode between background and element content?,mix-mode,background-blend-mode,mix-blend-mode,blend-mode,C
+Which function returns the computed value of a CSS variable with a fallback?,"var(--name, fallback)","cssvar(--name, fallback)","get(--name, fallback)",var(--name),A
+Which property limits the maximum height and allows scrolling inside an element?,scrollable: true,overflow-y: scroll,max-height with overflow: auto,height-limit,C
+Which property defines the snapping behavior for scroll containers?,scroll-behavior,snap-type,scroll-snap-type,snap-align,C
+"Which property sets whether an element participates in layout (e.g., contents)?",position: contents,visibility: collapse,display: contents,display: none,C
+Which advanced selector matches an element based on its sibling relationship?,& (and sibling),~ (general sibling) or + (adjacent sibling),| (pipe sibling),^ (caret sibling),B
+Which property provides a shorthand for several animation properties?,animation,transition,transform,motion,A
+Which property adjusts how background images are positioned relative to their container?,background-position,bg-position,background-align,image-position,A
+Which property makes text layout respect hyphenation rules?,line-break,text-wrap,word-break,hyphens,D
+Which property controls the final computed style of long shadows or multiple box-shadows?,box-shadow,text-shadow,outline,shadow,A
+Which CSS feature helps reduce repaints by hinting which property will change?,will-update,will-change,hint-change,predict-change,B
+Which selector selects elements based on attribute value starts-with?,[attr^='value'],[attr$='value'],[attr*='value'],[attr~='value'],A
+Which property defines the resolution at which background images are drawn (image-rendering)?,image-resolution,image-rendering,dpi,resolution,B
+Which property can be used to make fonts render crisply on low-resolution screens?,text-smoothing,font-rendering,font-smooth,-webkit-font-smoothing,D
+Which technique reduces layout shift by reserving space for images?,object-fit: cover,using min-height,setting explicit width and height or aspect-ratio,lazy-loading images,C
+Which property lets you create a clipping region for an element using SVG or shapes?,shape-outside,clip-path,clip,mask,B
+"Which CSS feature helps create responsive typography using min(), max(), clamp()?",minmax(),var(),calc(),clamp(),D
+Which property controls the ordering of background layers?,background-position / background-image order,background-order,layer-index,z-index,A
+Which selector matches an element that is the only child of its parent?,:first-child:last-child,:only-child,:single-child,:only,B
+Which value for display causes element to behave like a table-cell?,table-cell,cell,table,inline-table,A
+Which CSS module provides functions like color-mix() and color-contrast()?,CSS Color Module Level 4,CSS Image Module,CSS Color Module Level 3,CSS Variables Module,A
+Which property allows fine-grained control over scroll behavior smoothness?,smooth-scroll,scroll-snap,scroll-behavior,scroll-mode,C
+Which property and value help avoid blurry transforms on some devices (hint)?,image-rendering: pixelated,transform: translateZ(0) or will-change: transform,perspective: 1px,backface-visibility: hidden,B
+Which selector allows styling based on value of an attribute list containing a word?,[attr^='word'],[attr|='word'],[attr$='word'],[attr~='word'],D
+Which feature allows scoping style to a subtree (in shadow DOM)?,scoped attribute,Shadow DOM,Scoped CSS,CSS Modules,B
+Which property controls how background attachments are fixed or scroll with the page?,attach-mode,bg-attach,background-scroll,background-attachment,D
+Which function calculates length relative to viewport width?,vmin,"vw units (e.g., 1vw)",vh,%,B
+Which property helps reduce repaints by combining transforms and opacity changes?,use transform and opacity instead of top/left,use margin changes,change width/height,use font-size,A
+Which selector is used to style the placeholder text inside an input?,::placeholder,:input-placeholder,:placeholder,::-webkit-input-placeholder,A
+Which property is used to optimize large images rendering using 'image-set' or 'image()'?,srcset,object-fit,background-image,image-set() or image(),D
+Which property sets how elements break across pages when printing?,page-break-inside / break-inside,break-page,print-break,page-break,A
+Which property controls CSS Grid auto-placement behavior?,grid-flow,auto-place,grid-auto-position,grid-auto-flow,D
+Which pseudo-class matches elements when printing?,:paged,@print,:print,:media-print,C
+Which property enables logical properties for writing-mode agnostic spacing?,margin-left,"logical properties like margin-inline, padding-block",inline-margin,padding-top,B
+Which advanced selector matches elements based on position among type siblings?,:type(),:of-type(),:nth-of-type(),:nth-child(),C
+Which property sets the color interpolation for gradients?,gradient-stop,color-stop,color-interpolation,interpolation-mode,C
+Which property gives you control over whether text wraps onto the next line?,text-wrap,word-wrap,wrap,white-space,D
+Which property can include multiple comma-separated sizes for background-size?,size,bg-size,image-size,background-size,D
+Which CSS feature allows author-level containment to improve performance?,contain property (contain: layout paint size),performance-contain,content-contain,isolation,A
+Which property defines the baseline shift for inline-level elements?,line-shift,vertical-align,align-baseline,baseline-shift,B
+"Which CSS function can compute values with units (calc) combining %, px, vw etc.?",calc(),compute(),math(),combine(),A
+Which property is used in fluid typography with calc and viewport units together?,font-scaling,font-responsive,font-size: calc(...),font-clamp,C
+Which advanced selector matches an element based on having an attribute?,[attr],:has(attr),:has(),attr(),A
+Which CSS at-rule is used for fonts loaded from a remote source?,@font,@import-font,@font-face,@face,C
+Which property controls smoothing of scaled images (image-rendering)?,image-smooth,image-rendering,image-quality,rendering-mode,B
+Which property is used to create a 3D transform perspective on an element?,view-perspective,perspective,transform-3d,perspective-origin,B
+Which rule allows you to define an animation with keyframes?,@animate,@frames,@motion,@keyframes,D
+Which property sets the animation duration?,animation-duration,duration,animation-time,anim-time,A
+Which property controls whether backface of an element is visible when rotated?,backface-visibility,face-visibility,back-visibility,visibility,A
+Which selector matches an element that is the nth child of its parent?,:nth(),:child(),:nth-of-type(),:nth-child(),D
+"Which CSS function adjusts contrast, brightness, and other image effects?",fx(),adjust(),image-filter(),filter(),D
+Which property sets variables that cascade and can be changed at runtime?,SASS variables,CSS custom properties (variables),environment variables,LESS variables,B
+Which property enables GPU acceleration for transforms in many browsers?,transform: translateZ(0) or will-change: transform,gpu: on,hardware: true,accelerate: true,A
+Which selector matches elements not matching a selector?,:exclude(),:unless(),:not(),:except(),C
+Which property specifies the blend mode between background and element content?,mix-mode,background-blend-mode,mix-blend-mode,blend-mode,C
+Which function returns the computed value of a CSS variable with a fallback?,"var(--name, fallback)",var(--name),"get(--name, fallback)","cssvar(--name, fallback)",A
+Which property limits the maximum height and allows scrolling inside an element?,scrollable: true,height-limit,max-height with overflow: auto,overflow-y: scroll,C
+Which property defines the snapping behavior for scroll containers?,scroll-behavior,snap-type,snap-align,scroll-snap-type,D
+"Which property sets whether an element participates in layout (e.g., contents)?",position: contents,visibility: collapse,display: none,display: contents,D
+Which advanced selector matches an element based on its sibling relationship?,^ (caret sibling),| (pipe sibling),& (and sibling),~ (general sibling) or + (adjacent sibling),D
+Which property provides a shorthand for several animation properties?,animation,motion,transition,transform,A
+Which property adjusts how background images are positioned relative to their container?,image-position,background-position,bg-position,background-align,B
+Which property makes text layout respect hyphenation rules?,text-wrap,hyphens,line-break,word-break,B
+Which property controls the final computed style of long shadows or multiple box-shadows?,text-shadow,box-shadow,outline,shadow,B
+Which CSS feature helps reduce repaints by hinting which property will change?,predict-change,will-change,will-update,hint-change,B
+Which selector selects elements based on attribute value starts-with?,[attr*='value'],[attr$='value'],[attr~='value'],[attr^='value'],D
+Which property defines the resolution at which background images are drawn (image-rendering)?,image-resolution,resolution,dpi,image-rendering,D
+Which property can be used to make fonts render crisply on low-resolution screens?,font-smooth,text-smoothing,font-rendering,-webkit-font-smoothing,D
+Which technique reduces layout shift by reserving space for images?,using min-height,lazy-loading images,object-fit: cover,setting explicit width and height or aspect-ratio,D
+Which property lets you create a clipping region for an element using SVG or shapes?,mask,clip,clip-path,shape-outside,C
+"Which CSS feature helps create responsive typography using min(), max(), clamp()?",calc(),var(),clamp(),minmax(),C
+Which property controls the ordering of background layers?,background-position / background-image order,layer-index,z-index,background-order,A
+Which selector matches an element that is the only child of its parent?,:single-child,:only,:only-child,:first-child:last-child,C
+Which value for display causes element to behave like a table-cell?,table,inline-table,table-cell,cell,C
+Which CSS module provides functions like color-mix() and color-contrast()?,CSS Color Module Level 4,CSS Image Module,CSS Color Module Level 3,CSS Variables Module,A
+Which property allows fine-grained control over scroll behavior smoothness?,scroll-mode,scroll-snap,smooth-scroll,scroll-behavior,D
+Which property and value help avoid blurry transforms on some devices (hint)?,perspective: 1px,transform: translateZ(0) or will-change: transform,image-rendering: pixelated,backface-visibility: hidden,B
+Which selector allows styling based on value of an attribute list containing a word?,[attr|='word'],[attr$='word'],[attr^='word'],[attr~='word'],D
+Which feature allows scoping style to a subtree (in shadow DOM)?,scoped attribute,CSS Modules,Scoped CSS,Shadow DOM,D
+Which property controls how background attachments are fixed or scroll with the page?,attach-mode,background-scroll,bg-attach,background-attachment,D
+Which function calculates length relative to viewport width?,vmin,vh,%,"vw units (e.g., 1vw)",D
+Which property helps reduce repaints by combining transforms and opacity changes?,use margin changes,use transform and opacity instead of top/left,change width/height,use font-size,B
+Which selector is used to style the placeholder text inside an input?,::-webkit-input-placeholder,:placeholder,:input-placeholder,::placeholder,D
+Which property is used to optimize large images rendering using 'image-set' or 'image()'?,object-fit,background-image,srcset,image-set() or image(),D
+Which property sets how elements break across pages when printing?,break-page,page-break,print-break,page-break-inside / break-inside,D
+Which property controls CSS Grid auto-placement behavior?,grid-flow,grid-auto-position,auto-place,grid-auto-flow,D
+Which pseudo-class matches elements when printing?,:paged,:media-print,:print,@print,C
+Which property enables logical properties for writing-mode agnostic spacing?,inline-margin,"logical properties like margin-inline, padding-block",padding-top,margin-left,B
+Which advanced selector matches elements based on position among type siblings?,:nth-of-type(),:of-type(),:type(),:nth-child(),A
+Which property sets the color interpolation for gradients?,interpolation-mode,gradient-stop,color-interpolation,color-stop,C
+Which property gives you control over whether text wraps onto the next line?,white-space,wrap,text-wrap,word-wrap,A

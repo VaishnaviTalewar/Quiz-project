@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What is React Context used for?,Pass data through component tree without props drilling,Replacing state,Managing side-effects,Styling components,A
+Which hook is good for complex state logic similar to Redux reducers?,useReducer,useContext,useState,useRef,A
+What does memoization with React.memo do?,Caches network requests,Forces rerender,Prevents re-render when props are shallowly equal,Prevents event bubbling,C
+Which hook returns a memoized callback?,useMemo,useCallback,useRef,useEffect,B
+What is Suspense used for in React?,Styling,Suspend rendering to wait for async data (often with lazy),Event handling,Error handling,B
+Which technique helps avoid unnecessary re-renders of child components?,Rerender parent only,Use inline functions everywhere,"Use keys, memo, useCallback, and pure components",Always use indexes as keys,C
+What is hydration in React SSR?,Downloading JS twice,Re-rendering everything,Clearing the DOM,Attaching event listeners to server-rendered HTML on the client,D
+Which hook should you use to read and write context value?,useState,useReducer,useRef,useContext,D
+Which lifecycle does useEffect without dependencies mimic?,componentDidCatch,getDerivedStateFromProps,componentWillUnmount only,componentDidMount + componentDidUpdate depending on deps,D
+What is an error boundary in React?,A component (class) that catches rendering errors in its subtree,A hook for errors,A try/catch around render,A logging utility,A
+Which hook can return a ref and a callback to set it (useful for DOM measurements)?,useLayoutEffect,useMemo,useCallback + useRef pattern (or useRef alone),useState,C
+Which approach is recommended for code-splitting React apps?,Loading entire app upfront,Server-side only,Inline scripts,React.lazy with Suspense or dynamic import(),D
+Which method allows forwarding refs to child components?,useRefForward,passRef,withRef,forwardRef,D
+Which library is commonly used for routing in React apps?,next/router,vue-router,react-router (react-router-dom),angular-router,C
+Which hook allows you to run effects synchronously after DOM mutations?,useEffect,useLayoutEffect,useRenderEffect,useSyncEffect,B
+What is the difference between useMemo and useCallback?,"useMemo memoizes a value, useCallback memoizes a function",useMemo memoizes functions,They are identical,useCallback memoizes values,A
+Which React feature helps manage global state without external libs?,Portals,Context + useReducer or useState,Refs,Fragments,B
+Which prop should you avoid changing frequently to keep memoization effective?,Strings,Inline functions/objects as props,Primitives,Numbers,B
+What does 'key' help React with when rendering lists?,Style items,Sort items,"Identify which items changed, added, or removed",Validate data,C
+Which hook would you use to subscribe to an external data source and clean up on unmount?,useRef,useMemo,useEffect with cleanup function,useState,C
+What is React Context used for?,Styling components,Managing side-effects,Pass data through component tree without props drilling,Replacing state,C
+Which hook is good for complex state logic similar to Redux reducers?,useContext,useReducer,useState,useRef,B
+What does memoization with React.memo do?,Prevents event bubbling,Prevents re-render when props are shallowly equal,Caches network requests,Forces rerender,B
+Which hook returns a memoized callback?,useRef,useMemo,useCallback,useEffect,C
+What is Suspense used for in React?,Styling,Event handling,Error handling,Suspend rendering to wait for async data (often with lazy),D
+Which technique helps avoid unnecessary re-renders of child components?,Always use indexes as keys,"Use keys, memo, useCallback, and pure components",Use inline functions everywhere,Rerender parent only,B
+What is hydration in React SSR?,Clearing the DOM,Re-rendering everything,Downloading JS twice,Attaching event listeners to server-rendered HTML on the client,D
+Which hook should you use to read and write context value?,useContext,useRef,useReducer,useState,A
+Which lifecycle does useEffect without dependencies mimic?,getDerivedStateFromProps,componentDidCatch,componentDidMount + componentDidUpdate depending on deps,componentWillUnmount only,C
+What is an error boundary in React?,A hook for errors,A logging utility,A try/catch around render,A component (class) that catches rendering errors in its subtree,D
+Which hook can return a ref and a callback to set it (useful for DOM measurements)?,useMemo,useCallback + useRef pattern (or useRef alone),useLayoutEffect,useState,B
+Which approach is recommended for code-splitting React apps?,Server-side only,Inline scripts,React.lazy with Suspense or dynamic import(),Loading entire app upfront,C
+Which method allows forwarding refs to child components?,passRef,useRefForward,withRef,forwardRef,D
+Which library is commonly used for routing in React apps?,next/router,angular-router,vue-router,react-router (react-router-dom),D
+Which hook allows you to run effects synchronously after DOM mutations?,useEffect,useRenderEffect,useLayoutEffect,useSyncEffect,C
+What is the difference between useMemo and useCallback?,useCallback memoizes values,They are identical,"useMemo memoizes a value, useCallback memoizes a function",useMemo memoizes functions,C
+Which React feature helps manage global state without external libs?,Portals,Fragments,Context + useReducer or useState,Refs,C
+Which prop should you avoid changing frequently to keep memoization effective?,Numbers,Primitives,Inline functions/objects as props,Strings,C
+What does 'key' help React with when rendering lists?,"Identify which items changed, added, or removed",Validate data,Style items,Sort items,A
+Which hook would you use to subscribe to an external data source and clean up on unmount?,useMemo,useRef,useEffect with cleanup function,useState,C
+What is React Context used for?,Managing side-effects,Styling components,Replacing state,Pass data through component tree without props drilling,D
+Which hook is good for complex state logic similar to Redux reducers?,useContext,useReducer,useState,useRef,B
+What does memoization with React.memo do?,Caches network requests,Prevents event bubbling,Prevents re-render when props are shallowly equal,Forces rerender,C
+Which hook returns a memoized callback?,useRef,useEffect,useMemo,useCallback,D
+What is Suspense used for in React?,Styling,Error handling,Suspend rendering to wait for async data (often with lazy),Event handling,C
+Which technique helps avoid unnecessary re-renders of child components?,Use inline functions everywhere,Rerender parent only,Always use indexes as keys,"Use keys, memo, useCallback, and pure components",D
+What is hydration in React SSR?,Clearing the DOM,Re-rendering everything,Attaching event listeners to server-rendered HTML on the client,Downloading JS twice,C
+Which hook should you use to read and write context value?,useReducer,useRef,useContext,useState,C
+Which lifecycle does useEffect without dependencies mimic?,componentWillUnmount only,componentDidCatch,componentDidMount + componentDidUpdate depending on deps,getDerivedStateFromProps,C
+What is an error boundary in React?,A logging utility,A hook for errors,A try/catch around render,A component (class) that catches rendering errors in its subtree,D
+Which hook can return a ref and a callback to set it (useful for DOM measurements)?,useLayoutEffect,useState,useCallback + useRef pattern (or useRef alone),useMemo,C
+Which approach is recommended for code-splitting React apps?,Loading entire app upfront,Server-side only,React.lazy with Suspense or dynamic import(),Inline scripts,C
+Which method allows forwarding refs to child components?,passRef,withRef,useRefForward,forwardRef,D
+Which library is commonly used for routing in React apps?,next/router,vue-router,angular-router,react-router (react-router-dom),D
+Which hook allows you to run effects synchronously after DOM mutations?,useRenderEffect,useLayoutEffect,useEffect,useSyncEffect,B
+What is the difference between useMemo and useCallback?,"useMemo memoizes a value, useCallback memoizes a function",They are identical,useMemo memoizes functions,useCallback memoizes values,A
+Which React feature helps manage global state without external libs?,Portals,Refs,Context + useReducer or useState,Fragments,C
+Which prop should you avoid changing frequently to keep memoization effective?,Primitives,Strings,Inline functions/objects as props,Numbers,C
+What does 'key' help React with when rendering lists?,"Identify which items changed, added, or removed",Sort items,Style items,Validate data,A
+Which hook would you use to subscribe to an external data source and clean up on unmount?,useRef,useMemo,useState,useEffect with cleanup function,D

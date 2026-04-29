@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What is a Proxy in JavaScript used for?,Compiling to native code,Encrypting objects,"Interception and customization of operations on objects (get, set, etc.)",Deep cloning,C
+Which built-in allows observing asynchronous iteration over a stream?,Async iterator / for await...of,Generator only,EventEmitter,Promise.all,A
+What is the purpose of WeakMap?,Hold keys weakly so they can be garbage-collected when no other refs exist,Fast lookup only,Prevent modifications,Store weak references to arrays,A
+What is the Event Loop's role in JavaScript?,Manage execution of call stack and task queues to handle async events,Memory management,Parallel thread scheduling,Compiling scripts,A
+Which API provides high-resolution timestamps for performance measurements?,Date.now(),process.hrtime(),performance.now(),console.time(),C
+What are Web Workers used for?,Scheduling UI updates,Running scripts in background threads separate from the main UI thread,Managing memory,Rendering elements faster,B
+Which feature allows dynamic module loading?,System.import(),require(),loadModule(),import(),D
+What are TypedArrays used for?,JSON parsing,Handling binary data (ArrayBuffer views) like Uint8Array,DOM manipulation,Large strings,B
+What is a Memory Leak in JS?,Slow CPU,Retained references preventing garbage collection,Infinite loops only,Large objects only,B
+Which API streams binary data in web platforms?,"Streams API (ReadableStream, WritableStream)",File API,XMLHttpRequest,Blob API,A
+What is tail-call optimization (TCO)?,Garbage collecting stacks,Inlining functions,Optimization to reuse stack frames for tail calls (not widely implemented),Removing function calls,C
+Which object provides control over cookies in the browser?,document.cookie,localStorage.cookies,CookieManager,navigator.cookie,A
+What is the purpose of Structured Clone algorithm (postMessage)?,Shallow-copy only,Serialize to JSON,"Deep-clone complex objects (ArrayBuffer, Map, Set) between threads",Encrypt data,C
+Which API allows binary manipulation of files in browser?,IndexedDB only,localStorage,File and Blob + ArrayBuffer/TypedArray,Canvas API,C
+What is the Reflect API used for?,Meta-programming in CSS,Proxy replacement,Perform operations on objects similar to proxy traps with predictable return values,Reflection of classes only,C
+What is BigInt for?,Complex numbers,Arbitrary precision integers beyond Number.MAX_SAFE_INTEGER,High precision decimals,Floating point math,B
+Which API helps avoid layout thrashing by batching reads and writes?,requestAnimationFrame / read/write batching patterns,setTimeout with 0,MutationObserver only,Promise.resolve(),A
+What is a Service Worker primarily used for?,Background worker that can intercept network requests and enable offline caching,Manage DOM,Render UI,Encrypt network traffic,A
+What does 'same-origin policy' enforce?,Caching rules,Faster transfers,Compression,Restricts how scripts access resources from other origins for security,D
+What is the purpose of CSP (Content Security Policy)?,Mitigate XSS by restricting sources of scripts/styles,Enable CORS,Manage cookies,Improve performance,A
+What is a Proxy in JavaScript used for?,Deep cloning,"Interception and customization of operations on objects (get, set, etc.)",Encrypting objects,Compiling to native code,B
+Which built-in allows observing asynchronous iteration over a stream?,Async iterator / for await...of,Promise.all,Generator only,EventEmitter,A
+What is the purpose of WeakMap?,Store weak references to arrays,Hold keys weakly so they can be garbage-collected when no other refs exist,Fast lookup only,Prevent modifications,B
+What is the Event Loop's role in JavaScript?,Memory management,Parallel thread scheduling,Compiling scripts,Manage execution of call stack and task queues to handle async events,D
+Which API provides high-resolution timestamps for performance measurements?,console.time(),process.hrtime(),performance.now(),Date.now(),C
+What are Web Workers used for?,Managing memory,Running scripts in background threads separate from the main UI thread,Rendering elements faster,Scheduling UI updates,B
+Which feature allows dynamic module loading?,loadModule(),System.import(),require(),import(),D
+What are TypedArrays used for?,Handling binary data (ArrayBuffer views) like Uint8Array,Large strings,DOM manipulation,JSON parsing,A
+What is a Memory Leak in JS?,Slow CPU,Retained references preventing garbage collection,Large objects only,Infinite loops only,B
+Which API streams binary data in web platforms?,"Streams API (ReadableStream, WritableStream)",Blob API,File API,XMLHttpRequest,A
+What is tail-call optimization (TCO)?,Optimization to reuse stack frames for tail calls (not widely implemented),Garbage collecting stacks,Removing function calls,Inlining functions,A
+Which object provides control over cookies in the browser?,navigator.cookie,CookieManager,document.cookie,localStorage.cookies,C
+What is the purpose of Structured Clone algorithm (postMessage)?,Serialize to JSON,"Deep-clone complex objects (ArrayBuffer, Map, Set) between threads",Encrypt data,Shallow-copy only,B
+Which API allows binary manipulation of files in browser?,IndexedDB only,localStorage,Canvas API,File and Blob + ArrayBuffer/TypedArray,D
+What is the Reflect API used for?,Reflection of classes only,Perform operations on objects similar to proxy traps with predictable return values,Proxy replacement,Meta-programming in CSS,B
+What is BigInt for?,High precision decimals,Complex numbers,Floating point math,Arbitrary precision integers beyond Number.MAX_SAFE_INTEGER,D
+Which API helps avoid layout thrashing by batching reads and writes?,Promise.resolve(),requestAnimationFrame / read/write batching patterns,setTimeout with 0,MutationObserver only,B
+What is a Service Worker primarily used for?,Background worker that can intercept network requests and enable offline caching,Render UI,Manage DOM,Encrypt network traffic,A
+What does 'same-origin policy' enforce?,Restricts how scripts access resources from other origins for security,Caching rules,Faster transfers,Compression,A
+What is the purpose of CSP (Content Security Policy)?,Improve performance,Manage cookies,Enable CORS,Mitigate XSS by restricting sources of scripts/styles,D
+What is a Proxy in JavaScript used for?,"Interception and customization of operations on objects (get, set, etc.)",Compiling to native code,Deep cloning,Encrypting objects,A
+Which built-in allows observing asynchronous iteration over a stream?,Generator only,Promise.all,EventEmitter,Async iterator / for await...of,D
+What is the purpose of WeakMap?,Fast lookup only,Prevent modifications,Hold keys weakly so they can be garbage-collected when no other refs exist,Store weak references to arrays,C
+What is the Event Loop's role in JavaScript?,Parallel thread scheduling,Manage execution of call stack and task queues to handle async events,Compiling scripts,Memory management,B
+Which API provides high-resolution timestamps for performance measurements?,process.hrtime(),console.time(),performance.now(),Date.now(),C
+What are Web Workers used for?,Scheduling UI updates,Rendering elements faster,Running scripts in background threads separate from the main UI thread,Managing memory,C
+Which feature allows dynamic module loading?,loadModule(),require(),System.import(),import(),D
+What are TypedArrays used for?,DOM manipulation,Large strings,JSON parsing,Handling binary data (ArrayBuffer views) like Uint8Array,D
+What is a Memory Leak in JS?,Retained references preventing garbage collection,Slow CPU,Large objects only,Infinite loops only,A
+Which API streams binary data in web platforms?,File API,"Streams API (ReadableStream, WritableStream)",Blob API,XMLHttpRequest,B
+What is tail-call optimization (TCO)?,Optimization to reuse stack frames for tail calls (not widely implemented),Removing function calls,Inlining functions,Garbage collecting stacks,A
+Which object provides control over cookies in the browser?,CookieManager,localStorage.cookies,document.cookie,navigator.cookie,C
+What is the purpose of Structured Clone algorithm (postMessage)?,"Deep-clone complex objects (ArrayBuffer, Map, Set) between threads",Shallow-copy only,Encrypt data,Serialize to JSON,A
+Which API allows binary manipulation of files in browser?,localStorage,IndexedDB only,File and Blob + ArrayBuffer/TypedArray,Canvas API,C
+What is the Reflect API used for?,Proxy replacement,Perform operations on objects similar to proxy traps with predictable return values,Reflection of classes only,Meta-programming in CSS,B
+What is BigInt for?,High precision decimals,Arbitrary precision integers beyond Number.MAX_SAFE_INTEGER,Floating point math,Complex numbers,B
+Which API helps avoid layout thrashing by batching reads and writes?,MutationObserver only,setTimeout with 0,Promise.resolve(),requestAnimationFrame / read/write batching patterns,D
+What is a Service Worker primarily used for?,Background worker that can intercept network requests and enable offline caching,Render UI,Manage DOM,Encrypt network traffic,A
+What does 'same-origin policy' enforce?,Restricts how scripts access resources from other origins for security,Faster transfers,Compression,Caching rules,A
+What is the purpose of CSP (Content Security Policy)?,Improve performance,Enable CORS,Manage cookies,Mitigate XSS by restricting sources of scripts/styles,D
+What is a Proxy in JavaScript used for?,Encrypting objects,Compiling to native code,Deep cloning,"Interception and customization of operations on objects (get, set, etc.)",D
+Which built-in allows observing asynchronous iteration over a stream?,Generator only,Async iterator / for await...of,EventEmitter,Promise.all,B
+What is the purpose of WeakMap?,Hold keys weakly so they can be garbage-collected when no other refs exist,Store weak references to arrays,Fast lookup only,Prevent modifications,A
+What is the Event Loop's role in JavaScript?,Parallel thread scheduling,Memory management,Manage execution of call stack and task queues to handle async events,Compiling scripts,C
+Which API provides high-resolution timestamps for performance measurements?,process.hrtime(),console.time(),performance.now(),Date.now(),C
+What are Web Workers used for?,Running scripts in background threads separate from the main UI thread,Managing memory,Scheduling UI updates,Rendering elements faster,A
+Which feature allows dynamic module loading?,loadModule(),System.import(),import(),require(),C
+What are TypedArrays used for?,DOM manipulation,Large strings,JSON parsing,Handling binary data (ArrayBuffer views) like Uint8Array,D
+What is a Memory Leak in JS?,Infinite loops only,Large objects only,Slow CPU,Retained references preventing garbage collection,D
+Which API streams binary data in web platforms?,XMLHttpRequest,Blob API,File API,"Streams API (ReadableStream, WritableStream)",D
+What is tail-call optimization (TCO)?,Optimization to reuse stack frames for tail calls (not widely implemented),Garbage collecting stacks,Removing function calls,Inlining functions,A
+Which object provides control over cookies in the browser?,navigator.cookie,document.cookie,localStorage.cookies,CookieManager,B
+What is the purpose of Structured Clone algorithm (postMessage)?,Serialize to JSON,"Deep-clone complex objects (ArrayBuffer, Map, Set) between threads",Encrypt data,Shallow-copy only,B
+Which API allows binary manipulation of files in browser?,IndexedDB only,File and Blob + ArrayBuffer/TypedArray,Canvas API,localStorage,B
+What is the Reflect API used for?,Meta-programming in CSS,Perform operations on objects similar to proxy traps with predictable return values,Reflection of classes only,Proxy replacement,B
+What is BigInt for?,Floating point math,Complex numbers,High precision decimals,Arbitrary precision integers beyond Number.MAX_SAFE_INTEGER,D
+Which API helps avoid layout thrashing by batching reads and writes?,setTimeout with 0,MutationObserver only,Promise.resolve(),requestAnimationFrame / read/write batching patterns,D
+What is a Service Worker primarily used for?,Encrypt network traffic,Manage DOM,Render UI,Background worker that can intercept network requests and enable offline caching,D
+What does 'same-origin policy' enforce?,Caching rules,Faster transfers,Compression,Restricts how scripts access resources from other origins for security,D
+What is the purpose of CSP (Content Security Policy)?,Improve performance,Enable CORS,Mitigate XSS by restricting sources of scripts/styles,Manage cookies,C
+What is a Proxy in JavaScript used for?,Encrypting objects,Compiling to native code,"Interception and customization of operations on objects (get, set, etc.)",Deep cloning,C
+Which built-in allows observing asynchronous iteration over a stream?,Async iterator / for await...of,Promise.all,EventEmitter,Generator only,A
+What is the purpose of WeakMap?,Store weak references to arrays,Fast lookup only,Hold keys weakly so they can be garbage-collected when no other refs exist,Prevent modifications,C
+What is the Event Loop's role in JavaScript?,Memory management,Parallel thread scheduling,Manage execution of call stack and task queues to handle async events,Compiling scripts,C
+Which API provides high-resolution timestamps for performance measurements?,performance.now(),process.hrtime(),Date.now(),console.time(),A
+What are Web Workers used for?,Rendering elements faster,Scheduling UI updates,Managing memory,Running scripts in background threads separate from the main UI thread,D
+Which feature allows dynamic module loading?,System.import(),import(),require(),loadModule(),B
+What are TypedArrays used for?,Large strings,JSON parsing,DOM manipulation,Handling binary data (ArrayBuffer views) like Uint8Array,D
+What is a Memory Leak in JS?,Slow CPU,Infinite loops only,Large objects only,Retained references preventing garbage collection,D
+Which API streams binary data in web platforms?,Blob API,XMLHttpRequest,File API,"Streams API (ReadableStream, WritableStream)",D
+What is tail-call optimization (TCO)?,Garbage collecting stacks,Removing function calls,Inlining functions,Optimization to reuse stack frames for tail calls (not widely implemented),D
+Which object provides control over cookies in the browser?,CookieManager,document.cookie,localStorage.cookies,navigator.cookie,B
+What is the purpose of Structured Clone algorithm (postMessage)?,Shallow-copy only,Serialize to JSON,Encrypt data,"Deep-clone complex objects (ArrayBuffer, Map, Set) between threads",D
+Which API allows binary manipulation of files in browser?,Canvas API,IndexedDB only,localStorage,File and Blob + ArrayBuffer/TypedArray,D
+What is the Reflect API used for?,Meta-programming in CSS,Proxy replacement,Reflection of classes only,Perform operations on objects similar to proxy traps with predictable return values,D
+What is BigInt for?,Floating point math,High precision decimals,Complex numbers,Arbitrary precision integers beyond Number.MAX_SAFE_INTEGER,D
+Which API helps avoid layout thrashing by batching reads and writes?,Promise.resolve(),setTimeout with 0,requestAnimationFrame / read/write batching patterns,MutationObserver only,C
+What is a Service Worker primarily used for?,Encrypt network traffic,Background worker that can intercept network requests and enable offline caching,Manage DOM,Render UI,B
+What does 'same-origin policy' enforce?,Restricts how scripts access resources from other origins for security,Compression,Caching rules,Faster transfers,A
+What is the purpose of CSP (Content Security Policy)?,Manage cookies,Improve performance,Mitigate XSS by restricting sources of scripts/styles,Enable CORS,C

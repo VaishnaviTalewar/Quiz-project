@@ -1,0 +1,101 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+What are Kotlin coroutines primarily used for?,Multi-threaded shared memory,Asynchronous and non-blocking programming with structured concurrency,Reactive streams only,Synchronous tasks,B
+Which construct enables type-safe builders and DSLs in Kotlin?,Template functions,Macros,Receiver lambdas and extension functions (DSLs),Builders only,C
+Which flow operator helps buffer and conflate emissions to manage backpressure?,debounce(),"buffer(), conflate()",throttle(),collectLatest(),B
+Which compiler plugin enables Kotlin serialization codegen?,kotlinx-serial,kotlin-serialization,serialization-plugin,kotlinx.serialization plugin,D
+Which feature allows inline classes (value classes) for zero-overhead wrappers?,data class wrapper,inline only,typealias,inline/value classes (value class),D
+Which approach helps interop with Java's checked exceptions?,Convert to RuntimeException,Ignore,Use @Throws annotation or handle exceptions explicitly,Use try/catch only in Java,C
+Which tool generates multiplatform artifacts for Kotlin Multiplatform?,Kotlin compiler alone,Gradle with kotlin-multiplatform plugin,Maven only,Ant,B
+Which runtime exception helps detect concurrent modification issues?,ModificationException,ConcurrentModificationException (from Java collections),ConcurrentAccessException,IllegalStateException,B
+Which advanced feature controls code generation for inline functions with reified type parameters?,reified type parameters in inline functions,reified keyword only in inline,generic inlining,type erasure control,A
+Which API allows suspend functions to be called from Java via Continuations?,JNI,Direct call,Async wrapper,Use function with Continuation parameter or wrappers; interop requires bridge,D
+Which library helps building multiplatform networking and serialization?,Retrofit only,Ktor + kotlinx.serialization,OkHttp only,Spring Boot,B
+Which concept helps keep API backward-compatible in Kotlin libraries?,Binary compatibility only,No compatibility,Source compatibility only,"Semantic versioning, API review and stable interfaces",D
+Which feature improves performance by inlining small functions?,inline functions,reified,crossinline,noinline,A
+Which concurrency primitive in coroutines cancels children automatically on scope failure?,ThreadPool,SupervisorJob and structured concurrency patterns,CancellationToken,GlobalScope,B
+Which advanced analysis helps find coroutine leaks and uncaught exceptions?,Static analysis only,No tools,Runtime logs only,Use structured concurrency + debug tools and CoroutineDebugging,D
+Which mechanism in Kotlin multiplatform shares common code across targets?,common library,shared module only,expect/actual and commonMain/commonTest source sets,multi-module,C
+Which technique reduces allocations by using inline classes and primitive arrays?,Use boxed types,Use wrappers,Use inline/value classes and primitive typed arrays,Use lists,C
+Which tool helps produce optimized native binaries for Kotlin/Native?,native-compile,kotlin-native-tool,kotlinc only,Kotlin/Native compiler (konan) and Gradle integration,D
+Which approach helps secure coroutines running on Android for lifecycle safety?,GlobalScope,Manual cancellation,Use lifecycleScope/viewModelScope and tie to lifecycle,Thread interrupts,C
+Which advanced plugin helps with bytecode enhancements and transform?,annotation processor only,Gradle plugin and bytecode instrumentation tools,kapt only,classloader transform,B
+What are Kotlin coroutines primarily used for?,Multi-threaded shared memory,Reactive streams only,Synchronous tasks,Asynchronous and non-blocking programming with structured concurrency,D
+Which construct enables type-safe builders and DSLs in Kotlin?,Receiver lambdas and extension functions (DSLs),Template functions,Macros,Builders only,A
+Which flow operator helps buffer and conflate emissions to manage backpressure?,collectLatest(),"buffer(), conflate()",throttle(),debounce(),B
+Which compiler plugin enables Kotlin serialization codegen?,serialization-plugin,kotlinx-serial,kotlin-serialization,kotlinx.serialization plugin,D
+Which feature allows inline classes (value classes) for zero-overhead wrappers?,inline/value classes (value class),typealias,inline only,data class wrapper,A
+Which approach helps interop with Java's checked exceptions?,Ignore,Use @Throws annotation or handle exceptions explicitly,Convert to RuntimeException,Use try/catch only in Java,B
+Which tool generates multiplatform artifacts for Kotlin Multiplatform?,Ant,Maven only,Gradle with kotlin-multiplatform plugin,Kotlin compiler alone,C
+Which runtime exception helps detect concurrent modification issues?,ConcurrentAccessException,ModificationException,IllegalStateException,ConcurrentModificationException (from Java collections),D
+Which advanced feature controls code generation for inline functions with reified type parameters?,reified type parameters in inline functions,generic inlining,reified keyword only in inline,type erasure control,A
+Which API allows suspend functions to be called from Java via Continuations?,JNI,Async wrapper,Direct call,Use function with Continuation parameter or wrappers; interop requires bridge,D
+Which library helps building multiplatform networking and serialization?,OkHttp only,Retrofit only,Ktor + kotlinx.serialization,Spring Boot,C
+Which concept helps keep API backward-compatible in Kotlin libraries?,Binary compatibility only,Source compatibility only,No compatibility,"Semantic versioning, API review and stable interfaces",D
+Which feature improves performance by inlining small functions?,reified,crossinline,noinline,inline functions,D
+Which concurrency primitive in coroutines cancels children automatically on scope failure?,SupervisorJob and structured concurrency patterns,GlobalScope,CancellationToken,ThreadPool,A
+Which advanced analysis helps find coroutine leaks and uncaught exceptions?,Static analysis only,Runtime logs only,Use structured concurrency + debug tools and CoroutineDebugging,No tools,C
+Which mechanism in Kotlin multiplatform shares common code across targets?,shared module only,common library,multi-module,expect/actual and commonMain/commonTest source sets,D
+Which technique reduces allocations by using inline classes and primitive arrays?,Use lists,Use wrappers,Use boxed types,Use inline/value classes and primitive typed arrays,D
+Which tool helps produce optimized native binaries for Kotlin/Native?,kotlin-native-tool,kotlinc only,Kotlin/Native compiler (konan) and Gradle integration,native-compile,C
+Which approach helps secure coroutines running on Android for lifecycle safety?,Thread interrupts,GlobalScope,Manual cancellation,Use lifecycleScope/viewModelScope and tie to lifecycle,D
+Which advanced plugin helps with bytecode enhancements and transform?,classloader transform,Gradle plugin and bytecode instrumentation tools,annotation processor only,kapt only,B
+What are Kotlin coroutines primarily used for?,Multi-threaded shared memory,Synchronous tasks,Asynchronous and non-blocking programming with structured concurrency,Reactive streams only,C
+Which construct enables type-safe builders and DSLs in Kotlin?,Template functions,Builders only,Receiver lambdas and extension functions (DSLs),Macros,C
+Which flow operator helps buffer and conflate emissions to manage backpressure?,throttle(),collectLatest(),"buffer(), conflate()",debounce(),C
+Which compiler plugin enables Kotlin serialization codegen?,kotlinx-serial,kotlinx.serialization plugin,serialization-plugin,kotlin-serialization,B
+Which feature allows inline classes (value classes) for zero-overhead wrappers?,inline only,data class wrapper,typealias,inline/value classes (value class),D
+Which approach helps interop with Java's checked exceptions?,Use try/catch only in Java,Convert to RuntimeException,Use @Throws annotation or handle exceptions explicitly,Ignore,C
+Which tool generates multiplatform artifacts for Kotlin Multiplatform?,Ant,Gradle with kotlin-multiplatform plugin,Maven only,Kotlin compiler alone,B
+Which runtime exception helps detect concurrent modification issues?,ConcurrentModificationException (from Java collections),ConcurrentAccessException,IllegalStateException,ModificationException,A
+Which advanced feature controls code generation for inline functions with reified type parameters?,reified type parameters in inline functions,reified keyword only in inline,generic inlining,type erasure control,A
+Which API allows suspend functions to be called from Java via Continuations?,Use function with Continuation parameter or wrappers; interop requires bridge,Direct call,Async wrapper,JNI,A
+Which library helps building multiplatform networking and serialization?,Spring Boot,Retrofit only,OkHttp only,Ktor + kotlinx.serialization,D
+Which concept helps keep API backward-compatible in Kotlin libraries?,No compatibility,Source compatibility only,"Semantic versioning, API review and stable interfaces",Binary compatibility only,C
+Which feature improves performance by inlining small functions?,crossinline,inline functions,noinline,reified,B
+Which concurrency primitive in coroutines cancels children automatically on scope failure?,ThreadPool,SupervisorJob and structured concurrency patterns,CancellationToken,GlobalScope,B
+Which advanced analysis helps find coroutine leaks and uncaught exceptions?,Runtime logs only,Use structured concurrency + debug tools and CoroutineDebugging,Static analysis only,No tools,B
+Which mechanism in Kotlin multiplatform shares common code across targets?,shared module only,common library,expect/actual and commonMain/commonTest source sets,multi-module,C
+Which technique reduces allocations by using inline classes and primitive arrays?,Use wrappers,Use lists,Use inline/value classes and primitive typed arrays,Use boxed types,C
+Which tool helps produce optimized native binaries for Kotlin/Native?,native-compile,Kotlin/Native compiler (konan) and Gradle integration,kotlin-native-tool,kotlinc only,B
+Which approach helps secure coroutines running on Android for lifecycle safety?,GlobalScope,Thread interrupts,Use lifecycleScope/viewModelScope and tie to lifecycle,Manual cancellation,C
+Which advanced plugin helps with bytecode enhancements and transform?,Gradle plugin and bytecode instrumentation tools,annotation processor only,classloader transform,kapt only,A
+What are Kotlin coroutines primarily used for?,Multi-threaded shared memory,Asynchronous and non-blocking programming with structured concurrency,Synchronous tasks,Reactive streams only,B
+Which construct enables type-safe builders and DSLs in Kotlin?,Receiver lambdas and extension functions (DSLs),Builders only,Template functions,Macros,A
+Which flow operator helps buffer and conflate emissions to manage backpressure?,debounce(),"buffer(), conflate()",throttle(),collectLatest(),B
+Which compiler plugin enables Kotlin serialization codegen?,kotlinx-serial,kotlin-serialization,serialization-plugin,kotlinx.serialization plugin,D
+Which feature allows inline classes (value classes) for zero-overhead wrappers?,inline only,typealias,data class wrapper,inline/value classes (value class),D
+Which approach helps interop with Java's checked exceptions?,Use try/catch only in Java,Use @Throws annotation or handle exceptions explicitly,Ignore,Convert to RuntimeException,B
+Which tool generates multiplatform artifacts for Kotlin Multiplatform?,Ant,Gradle with kotlin-multiplatform plugin,Maven only,Kotlin compiler alone,B
+Which runtime exception helps detect concurrent modification issues?,ConcurrentAccessException,ConcurrentModificationException (from Java collections),IllegalStateException,ModificationException,B
+Which advanced feature controls code generation for inline functions with reified type parameters?,generic inlining,type erasure control,reified type parameters in inline functions,reified keyword only in inline,C
+Which API allows suspend functions to be called from Java via Continuations?,Direct call,Use function with Continuation parameter or wrappers; interop requires bridge,JNI,Async wrapper,B
+Which library helps building multiplatform networking and serialization?,OkHttp only,Retrofit only,Spring Boot,Ktor + kotlinx.serialization,D
+Which concept helps keep API backward-compatible in Kotlin libraries?,No compatibility,"Semantic versioning, API review and stable interfaces",Binary compatibility only,Source compatibility only,B
+Which feature improves performance by inlining small functions?,crossinline,inline functions,reified,noinline,B
+Which concurrency primitive in coroutines cancels children automatically on scope failure?,CancellationToken,ThreadPool,SupervisorJob and structured concurrency patterns,GlobalScope,C
+Which advanced analysis helps find coroutine leaks and uncaught exceptions?,Static analysis only,Use structured concurrency + debug tools and CoroutineDebugging,Runtime logs only,No tools,B
+Which mechanism in Kotlin multiplatform shares common code across targets?,common library,shared module only,multi-module,expect/actual and commonMain/commonTest source sets,D
+Which technique reduces allocations by using inline classes and primitive arrays?,Use boxed types,Use wrappers,Use inline/value classes and primitive typed arrays,Use lists,C
+Which tool helps produce optimized native binaries for Kotlin/Native?,Kotlin/Native compiler (konan) and Gradle integration,native-compile,kotlin-native-tool,kotlinc only,A
+Which approach helps secure coroutines running on Android for lifecycle safety?,Use lifecycleScope/viewModelScope and tie to lifecycle,Manual cancellation,GlobalScope,Thread interrupts,A
+Which advanced plugin helps with bytecode enhancements and transform?,kapt only,classloader transform,annotation processor only,Gradle plugin and bytecode instrumentation tools,D
+What are Kotlin coroutines primarily used for?,Synchronous tasks,Multi-threaded shared memory,Reactive streams only,Asynchronous and non-blocking programming with structured concurrency,D
+Which construct enables type-safe builders and DSLs in Kotlin?,Builders only,Macros,Template functions,Receiver lambdas and extension functions (DSLs),D
+Which flow operator helps buffer and conflate emissions to manage backpressure?,throttle(),debounce(),"buffer(), conflate()",collectLatest(),C
+Which compiler plugin enables Kotlin serialization codegen?,kotlinx.serialization plugin,serialization-plugin,kotlinx-serial,kotlin-serialization,A
+Which feature allows inline classes (value classes) for zero-overhead wrappers?,typealias,inline/value classes (value class),data class wrapper,inline only,B
+Which approach helps interop with Java's checked exceptions?,Use @Throws annotation or handle exceptions explicitly,Convert to RuntimeException,Ignore,Use try/catch only in Java,A
+Which tool generates multiplatform artifacts for Kotlin Multiplatform?,Gradle with kotlin-multiplatform plugin,Kotlin compiler alone,Ant,Maven only,A
+Which runtime exception helps detect concurrent modification issues?,IllegalStateException,ConcurrentModificationException (from Java collections),ConcurrentAccessException,ModificationException,B
+Which advanced feature controls code generation for inline functions with reified type parameters?,generic inlining,reified type parameters in inline functions,reified keyword only in inline,type erasure control,B
+Which API allows suspend functions to be called from Java via Continuations?,Use function with Continuation parameter or wrappers; interop requires bridge,Direct call,Async wrapper,JNI,A
+Which library helps building multiplatform networking and serialization?,Retrofit only,OkHttp only,Ktor + kotlinx.serialization,Spring Boot,C
+Which concept helps keep API backward-compatible in Kotlin libraries?,Source compatibility only,Binary compatibility only,"Semantic versioning, API review and stable interfaces",No compatibility,C
+Which feature improves performance by inlining small functions?,inline functions,reified,crossinline,noinline,A
+Which concurrency primitive in coroutines cancels children automatically on scope failure?,CancellationToken,GlobalScope,SupervisorJob and structured concurrency patterns,ThreadPool,C
+Which advanced analysis helps find coroutine leaks and uncaught exceptions?,No tools,Runtime logs only,Use structured concurrency + debug tools and CoroutineDebugging,Static analysis only,C
+Which mechanism in Kotlin multiplatform shares common code across targets?,multi-module,common library,expect/actual and commonMain/commonTest source sets,shared module only,C
+Which technique reduces allocations by using inline classes and primitive arrays?,Use boxed types,Use inline/value classes and primitive typed arrays,Use wrappers,Use lists,B
+Which tool helps produce optimized native binaries for Kotlin/Native?,Kotlin/Native compiler (konan) and Gradle integration,kotlinc only,native-compile,kotlin-native-tool,A
+Which approach helps secure coroutines running on Android for lifecycle safety?,GlobalScope,Use lifecycleScope/viewModelScope and tie to lifecycle,Thread interrupts,Manual cancellation,B
+Which advanced plugin helps with bytecode enhancements and transform?,kapt only,Gradle plugin and bytecode instrumentation tools,annotation processor only,classloader transform,B

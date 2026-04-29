@@ -1,0 +1,61 @@
+Question,Option A,Option B,Option C,Option D,Correct Answer
+Which CSS property is used to create a flex container?,flex: 1,display: grid,display: flex,flex-container: true,C
+How do you make flex items wrap to the next line?,wrap: true,flex-wrap: wrap,flex-wrap: no,flex-flow: nowrap,B
+Which property aligns items along the main axis in flexbox?,align-items,align-content,justify-items,justify-content,D
+Which property aligns items along the cross axis in flexbox?,justify-items,align-items,place-items,align-content,B
+"In CSS Grid, which property defines the number of columns?",columns,grid-cols,grid-columns,grid-template-columns,D
+Which property places an item in a specific column in grid layout?,column-start,grid-area,grid-column,grid-place-column,C
+Which property establishes a containing block for absolutely positioned elements?,position: absolute,position: static,position: fixed,position: relative,D
+What is the specificity order from highest to lowest?,id > inline > class > element,element > class > id > inline,class > id > element > inline,inline > id > class > element,D
+Which pseudo-class selects the first child of its parent?,:nth-child(1),:first,:first-child,:child:first,C
+Which shorthand property sets transition properties?,transition,transform,transitionable,animation,A
+Which property sets a transition duration?,transition-duration,transition-time,duration,time,A
+How do you write a media query for screens smaller than 600px?,@media (min-width:600px),@media only screen and (600px),@media screen and (max:600px),@media (max-width: 600px),D
+Which property makes an element fixed relative to the viewport?,position: fixed,position: sticky,position: relative,position: absolute,A
+Which property is used to control text overflow with an ellipsis?,text-overflow: ellipsis,overflow: ellipsis,truncate: true,white-space: nowrap,A
+Which property allows nested elements to ignore parent's overflow to create stacking context?,order,stack-index,z-index,position-index,C
+Which pseudo-element inserts content before an element's content?,::prepend,::first,::before,:before,C
+What does `box-sizing: border-box` do?,Includes padding and border in the element's width and height,Makes box transparent,Forces content-box,Excludes padding and border,A
+Which property controls the gap between grid tracks?,track-gap,column-gap,grid-gap,gap,D
+Which value centers an absolutely positioned element using transform?,"transform: translate(-50%, -50%)","translate(-100%, -100%)","translate(0,0)","translate(50%,50%)",A
+Which property makes text unselectable in most browsers?,pointer-events: none,touch-action: none,user-select: none,select: none,C
+Which selector matches elements with both classes .btn and .primary?,.btn.primary,#btn.primary,".btn, .primary",.btn .primary,A
+How do you apply a style only when an input is focused?,:focus input { },input:focus { },input:active { },input.focus { },B
+Which property controls the behavior of floating elements?,float-behavior,clear,display,overflow,B
+Which shorthand property sets padding on all four sides?,space,margin,padding,gap,C
+Which property allows CSS variables (custom properties) to be defined?,--variable-name: value,var(--name): value,property(--name): value,custom-variable: value,A
+Which function is used to use CSS variable values?,get(--name),var(--name),cssvar(--name),value(--name),B
+Which property smooths the movement of animated transforms?,animation-timing,easing,transition-ease,transition-timing-function,D
+Which value of position keeps the element in the normal flow but sticks when scrolling to a threshold?,position: relative,position: absolute,position: sticky,position: fixed,C
+Which pseudo-class selects an element when it's checked (like checkboxes)?,:enabled,:checked,:active,:selected,B
+Which property allows you to set multiple background images?,background-image,backgrounds,image-stack,bg-multiple,A
+Which property sets how a flex item grows relative to others?,flex-size,flex-basis,flex-grow,grow,C
+Which property sets the initial length of a flex item before remaining space is distributed?,flex-basis,basis,flex-start,flex-size,A
+Which property prevents an element from shrinking in flex layout?,shrink: none,flex-shrink: 0,flex-no-shrink,flex: none,B
+Which property helps create columns in multi-column layout?,columns,col-number,column-count,grid-template-columns,C
+Which property defines the behavior of images to scale with their container while preserving aspect ratio?,max-width: 100%,width: auto,object-fit: contain,height: auto,A
+Which property sets the orientation of flex items ('row' or 'column')?,flex-orient,flow,direction,flex-direction,D
+Which value for display creates an inline-level block container?,block-inline,block,inline,inline-block,D
+"Which shorthand sets border width, style and color?",border,box-border,stroke,outline,A
+Which property specifies whether an element's content should break inside a page/column?,page-break-inside,break-inside,column-break-inside,overflow-break,B
+Which CSS at-rule allows conditional group rules (@supports)?,@if,@feature,@condition,@supports,D
+Which CSS property is used to create a flex container?,flex: 1,flex-container: true,display: flex,display: grid,C
+How do you make flex items wrap to the next line?,flex-flow: nowrap,flex-wrap: wrap,wrap: true,flex-wrap: no,B
+Which property aligns items along the main axis in flexbox?,justify-items,justify-content,align-items,align-content,B
+Which property aligns items along the cross axis in flexbox?,align-content,place-items,align-items,justify-items,C
+"In CSS Grid, which property defines the number of columns?",grid-template-columns,grid-columns,columns,grid-cols,A
+Which property places an item in a specific column in grid layout?,grid-area,grid-column,column-start,grid-place-column,B
+Which property establishes a containing block for absolutely positioned elements?,position: absolute,position: relative,position: fixed,position: static,B
+What is the specificity order from highest to lowest?,class > id > element > inline,element > class > id > inline,inline > id > class > element,id > inline > class > element,C
+Which pseudo-class selects the first child of its parent?,:first,:child:first,:nth-child(1),:first-child,D
+Which shorthand property sets transition properties?,transitionable,animation,transition,transform,C
+Which property sets a transition duration?,time,duration,transition-duration,transition-time,C
+How do you write a media query for screens smaller than 600px?,@media screen and (max:600px),@media (min-width:600px),@media only screen and (600px),@media (max-width: 600px),D
+Which property makes an element fixed relative to the viewport?,position: absolute,position: fixed,position: sticky,position: relative,B
+Which property is used to control text overflow with an ellipsis?,truncate: true,text-overflow: ellipsis,overflow: ellipsis,white-space: nowrap,B
+Which property allows nested elements to ignore parent's overflow to create stacking context?,z-index,position-index,stack-index,order,A
+Which pseudo-element inserts content before an element's content?,:before,::before,::first,::prepend,B
+What does `box-sizing: border-box` do?,Makes box transparent,Excludes padding and border,Forces content-box,Includes padding and border in the element's width and height,D
+Which property controls the gap between grid tracks?,track-gap,gap,column-gap,grid-gap,B
+Which value centers an absolutely positioned element using transform?,"transform: translate(-50%, -50%)","translate(50%,50%)","translate(-100%, -100%)","translate(0,0)",A
+Which property makes text unselectable in most browsers?,touch-action: none,select: none,user-select: none,pointer-events: none,C
