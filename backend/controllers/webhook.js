@@ -22,7 +22,7 @@ export const clerkWehbook = async (req, res) => {
     const { type, data } = evt;
     console.log("EVENT TYPE:", type);
 
-    // USER CREATED
+    // ✅ USER CREATED
     if (type === "user.created") {
       const primaryEmail =
         data.email_addresses?.find(
@@ -30,7 +30,7 @@ export const clerkWehbook = async (req, res) => {
         )?.email_address || "";
 
       const role =
-        primaryEmail === "vaishnavitalewar8762gmail.com"
+        primaryEmail === "vaishnavitalewar8762@gmail.com"
           ? "admin"
           : "user";
 
@@ -45,19 +45,18 @@ export const clerkWehbook = async (req, res) => {
         { upsert: true, new: true }
       );
     }
-
-    // SESSION CREATED (LOGIN)
+    // LOGIN
     if (type === "session.created") {
       console.log("LOGIN DETECTED");
 
       await User.findOneAndUpdate(
         { clerkId: data.user_id },
         { isLoggedIn: true },
-        { upsert: true, new: true }
+        { new: true }
       );
     }
 
-    // SESSION ENDED (LOGOUT)
+    //  LOGOUT
     if (type === "session.ended") {
       console.log("LOGOUT DETECTED");
 
@@ -68,7 +67,7 @@ export const clerkWehbook = async (req, res) => {
       );
     }
 
-    // USER DELETED
+    //  DELETE
     if (type === "user.deleted") {
       console.log("USER DELETED DETECTED");
 

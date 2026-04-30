@@ -1,36 +1,33 @@
 import { clerkMiddleware, getAuth } from "@clerk/express";
 import { User } from "../models/userModel.js";
 
-// ✅ Must pass request to middleware properly
+// Clerk protect middleware
 export const protect = clerkMiddleware();
 
 // Admin middleware
 export const isAdmin = async (req, res, next) => {
   try {
-    const { userId } = getAuth(req); // ✅ correct
+    const { userId } = getAuth(req);
 
     if (!userId) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res.status(401).json({
+        message: "Unauthorized",
+      });
     }
 
     const user = await User.findOne({ clerkId: userId });
 
-    if (!user) {
-      return res.status(401).json({
-        message: "User not found in database",
-      });
-    }
-
-    if (user.role !== "admin") {
+    if (!user || user.role !== "admin") {
       return res.status(403).json({
-        message: "Access denied. Admin only",
+        message: "You are not an admin",
       });
     }
 
     next();
-
   } catch (error) {
     console.error("isAdmin error:", error);
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({
+      message: "Server error",
+    });
   }
 };
