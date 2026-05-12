@@ -18,11 +18,11 @@ app.use(clerkMiddleware());
 app.use(cors({
   origin: [
     "https://quiz-project-git-main-vaishnavi-talewars-projects.vercel.app",
-    "https://quiz-project-zx4w.vercel.app"
+    "https://quiz-project-zx4w.vercel.app",
+    "https://quiz-project-ivory-iota.vercel.app"
   ],
   credentials: true
 }));
-
 app.use(express.json());
 
 // mongodb
