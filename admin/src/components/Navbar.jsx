@@ -1,82 +1,59 @@
 import React, { useState, useEffect, useRef } from "react";
 import { navbarStyles } from "../assets/dummyStyles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   SignedIn,
   SignedOut,
   SignInButton,
+  SignOutButton,
   UserButton,
   useUser,
   useAuth,
 } from "@clerk/clerk-react";
-import { List, Home, User, X, Menu } from "lucide-react";
+import { List, Home, X, Menu } from "lucide-react";
 
-const Navbar = ({
-  logoSrc = null,
-  siteName = "Tech Quiz Master",
-  rightContent = null,
-  onNavigate = null,
-}) => {
+const Navbar = ({ logoSrc = null, siteName = "Tech Quiz Master" }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const { user, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
   const { getToken } = useAuth();
-
   const navigate = useNavigate();
+  const location = useLocation();
+  const navRef = useRef(null);
 
-  const prevSignedInRef = useRef(false);
-
-  // ESC close
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && setMobileOpen(false);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
-  // mobile lock
-  useEffect(() => {
-    const onResize = () => window.innerWidth >= 768 && setMobileOpen(false);
-
-    window.addEventListener("resize", onResize);
-
-    const prevOverflow = document.body.style.overflow;
-    if (mobileOpen) document.body.style.overflow = "hidden";
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-      document.body.style.overflow = prevOverflow || "";
-    };
-  }, [mobileOpen]);
-
-  const handleNavigate = (href) => {
+  const goTo = (path) => {
     setMobileOpen(false);
-
-    if (onNavigate) return onNavigate(href);
-
-    try {
-      navigate(href);
-    } catch {
-      window.location.href = href;
-    }
+    navigate(path);
   };
 
-  //  TOKEN SAVE
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (!navRef.current?.contains(event.target)) {
+        setMobileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const handleResize = () => window.innerWidth >= 768 && setMobileOpen(false);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     async function saveToken() {
       if (!isSignedIn) return;
-
       try {
         const token = await getToken();
-
-        if (token) {
-          localStorage.setItem("clerkToken", token);
-          console.log("Clerk token saved");
-        }
+        if (token) localStorage.setItem("clerkToken", token);
       } catch (err) {
         console.error("Failed to get Clerk Token:", err);
       }
     }
-
     saveToken();
   }, [isSignedIn, getToken]);
 
@@ -88,7 +65,8 @@ const Navbar = ({
           {/* LEFT */}
           <div className={navbarStyles.homeButton}>
             <button
-              onClick={() => handleNavigate("/dashboard")}
+              type="button"
+              onClick={() => goTo("/dashboard")}
               className={navbarStyles.homeButton}
             >
               <div className={navbarStyles.logoWrapper}>
@@ -115,8 +93,8 @@ const Navbar = ({
           <SignedIn>
             <div className={navbarStyles.desktopCenterContainer}>
               <div className={navbarStyles.desktopCenterInner}>
-                <button
-                  onClick={() => handleNavigate("/dashboard")}
+                  <button
+                  onClick={() => goTo("/dashboard")}
                   className={navbarStyles.dashboardButton}
                 >
                   <Home className={navbarStyles.dashboardIcon} />
@@ -124,7 +102,7 @@ const Navbar = ({
                 </button>
 
                 <button
-                  onClick={() => handleNavigate("/list")}
+                  onClick={() => goTo("/list")}
                   className={navbarStyles.listButton}
                 >
                   <List className={navbarStyles.listIcon} />
@@ -137,18 +115,8 @@ const Navbar = ({
           {/* RIGHT */}
           <div className="flex items-center gap-3">
             <div className={navbarStyles.desktopRightContent}>
-              <div className={navbarStyles.profileGroup}>
-                
-                <SignedOut>
-                  <SignInButton mode="modal">
-                    <button className={navbarStyles.profileButton}>
-                      <User className={navbarStyles.profileIcon} />
-                      <span>My Profile</span>
-                    </button>
-                  </SignInButton>
-                </SignedOut>
-
-                <SignedIn>
+              {isSignedIn ? (
+                <div className="flex items-center gap-3">
                   <UserButton
                     appearance={{
                       elements: {
@@ -156,24 +124,36 @@ const Navbar = ({
                       },
                     }}
                   />
-                </SignedIn>
-
-              </div>
+                  <SignOutButton>
+                    <button type="button" className={navbarStyles.buttonAlt}>
+                      Logout
+                    </button>
+                  </SignOutButton>
+                </div>
+              ) : (
+                <SignInButton mode="modal">
+                  <button type="button" className={navbarStyles.buttonBase}>
+                    Login
+                  </button>
+                </SignInButton>
+              )}
             </div>
 
             {/* MOBILE BUTTON */}
-            <div className={navbarStyles.mobileMenuContainer}>
-              <button
-                onClick={() => setMobileOpen((s) => !s)}
-                className={navbarStyles.hamburgerButton}
-              >
-                {mobileOpen ? (
-                  <X className={navbarStyles.xIcon} />
-                ) : (
-                  <Menu className={navbarStyles.menuIcon} />
-                )}
-              </button>
-            </div>
+            {location.pathname !== "/list" && (
+              <div className={navbarStyles.mobileMenuContainer}>
+                <button
+                  onClick={() => setMobileOpen((s) => !s)}
+                  className={navbarStyles.hamburgerButton}
+                >
+                  {mobileOpen ? (
+                    <X className={navbarStyles.xIcon} />
+                  ) : (
+                    <Menu className={navbarStyles.menuIcon} />
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -194,31 +174,50 @@ const Navbar = ({
               
               <SignedIn>
                 <button
-                  onClick={() => handleNavigate("/dashboard")}
-                  className={navbarStyles.mobileNavButton}
+                  onClick={() => goTo("/dashboard")}
+                  className={navbarStyles.mobileMenuActionButton}
                 >
-                  <Home className={navbarStyles.mobileNavIcon} />
-                  <div>Dashboard</div>
+                  Dashboard
                 </button>
 
                 <button
-                  onClick={() => handleNavigate("/list")}
-                  className={navbarStyles.mobileNavButton}
+                  onClick={() => goTo("/list")}
+                  className={navbarStyles.mobileMenuActionButton}
                 >
-                  <List className={navbarStyles.mobileNavIcon} />
-                  <div>List Quiz</div>
+                  List Quiz
                 </button>
 
-                <div className={navbarStyles.mobileNavButton}>
-                  <UserButton />
+                <div className={navbarStyles.mobileMenuUserRow}>
+                  <UserButton
+                    appearance={{
+                      elements: {
+                        avatarBox: "w-9 h-9",
+                      },
+                    }}
+                  />
+                  <span className="text-sm font-medium text-slate-700">
+                    Signed in
+                  </span>
                 </div>
+
+                <SignOutButton>
+                  <button
+                    type="button"
+                    className={navbarStyles.mobileMenuActionButtonSecondary}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Logout
+                  </button>
+                </SignOutButton>
               </SignedIn>
 
               <SignedOut>
                 <SignInButton mode="modal">
-                  <button className={navbarStyles.mobileNavButton}>
-                    <User className={navbarStyles.mobileNavIcon} />
-                    <div>Sign In</div>
+                  <button
+                    type="button"
+                    className={navbarStyles.mobileMenuActionButton}
+                  >
+                    Login
                   </button>
                 </SignInButton>
               </SignedOut>

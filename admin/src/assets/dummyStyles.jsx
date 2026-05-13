@@ -58,6 +58,28 @@ export const navbarStyles = {
   // Right content inside mobile menu (if provided)
   mobileRightContentContainer: "pt-2 border-t border-gray-100",
   mobileRightContentInner: "w-full",
+  flexContainer: "flex items-center justify-between gap-4 w-full",
+  logoSection: "flex items-center gap-3",
+  logoButton: "inline-flex items-center justify-center rounded-full bg-white shadow-sm p-2 border border-gray-200 transition hover:shadow-md",
+  logoImage: "h-10 w-10 object-cover rounded-full",
+  titleContainer: "hidden sm:block",
+  titleWrapper: "flex flex-col",
+  titleBox: "overflow-hidden",
+  titleText: "text-base font-semibold text-slate-900",
+  titleGradient: "bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent",
+  desktopButtons: "hidden md:flex items-center gap-3",
+  buttonBase: "inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 shadow-lg hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transition",
+  buttonAlt: "inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-slate-700 bg-white border border-slate-200 shadow-sm hover:bg-slate-50 transition",
+  rightNavGroup: "flex items-center gap-3",
+  mobileMenuButton: "md:hidden inline-flex items-center justify-center rounded-full p-2 bg-slate-100 hover:bg-slate-200 transition",
+  mobileMenuWrapper: "md:hidden absolute inset-x-4 top-full mt-3 rounded-3xl bg-white shadow-2xl border border-slate-200 p-5",
+  mobileMenuHeader: "flex items-center justify-between mb-4",
+  mobileMenuTitle: "text-sm font-semibold text-slate-900",
+  closeButton: "inline-flex items-center justify-center rounded-full p-2 text-slate-600 hover:bg-slate-100 transition",
+  mobileMenuContent: "space-y-3",
+  mobileMenuUserRow: "flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-3",
+  mobileMenuActionButton: "w-full text-left rounded-2xl px-4 py-3 bg-slate-100 text-slate-700 font-semibold hover:bg-slate-200 transition",
+  mobileMenuActionButtonSecondary: "w-full text-left rounded-2xl px-4 py-3 bg-slate-900 text-white font-semibold hover:bg-slate-800 transition",
 };
 
 // ==================== Dashboard Styles ====================
