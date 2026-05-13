@@ -10,7 +10,8 @@ router.post("/upload-quiz", protect, isAdmin, uploadQuiz);
 
 router.get("/stats", protect, isAdmin, getStats);
 
-router.get("/quizzes", protect, isAdmin, getAllQuizzes);
+// Public quiz list endpoint: needed for the frontend to load quiz options for all users.
+router.get("/quizzes", getAllQuizzes);
 
 router.delete("/quiz/:id", protect, isAdmin, deleteQuiz);
 export default router;
