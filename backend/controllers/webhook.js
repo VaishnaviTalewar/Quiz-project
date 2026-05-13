@@ -29,10 +29,13 @@ export const clerkWehbook = async (req, res) => {
           (e) => e.id === data.primary_email_address_id
         )?.email_address || "";
 
-      const role =
-        primaryEmail === "vaishnavitalewar8762@gmail.com"
-          ? "admin"
-          : "user";
+      const adminEmails = process.env.ADMIN_EMAILS
+        ? process.env.ADMIN_EMAILS.split(",").map((email) => email.trim().toLowerCase())
+        : ["vaishnavitalewar8762@gmail.com"];
+
+      const role = adminEmails.includes(primaryEmail.toLowerCase())
+        ? "admin"
+        : "user";
 
       await User.findOneAndUpdate(
         { clerkId: data.id },
