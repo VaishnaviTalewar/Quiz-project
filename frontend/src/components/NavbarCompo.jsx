@@ -13,7 +13,6 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
   const { isSignedIn } = useUser();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
 
   const navRef = useRef(null);
   const menuBtnRef = useRef(null);
@@ -54,8 +53,6 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
       <nav
         ref={navRef}
         className={`${navbarStyles.nav} ${design.borderColor}`}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
       >
         <div className={navbarStyles.patternContainer}>
           <div
@@ -101,12 +98,12 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
 
             {/* DESKTOP BUTTONS */}
             <div className={navbarStyles.desktopButtons}>
-              {!isSignedIn && (
+                {!isSignedIn && (
                 <SignInButton mode="modal">
                   <button
                     className={navbarStyles.buttonBase(design.accentColor)}
                   >
-                    My Result
+                    Login
                   </button>
                 </SignInButton>
               )}
@@ -118,16 +115,6 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
                 >
                   My Result
                 </button>
-              )}
-
-              {!isSignedIn && (
-                <SignInButton mode="modal">
-                  <button
-                    className={navbarStyles.buttonBase(design.accentColor)}
-                  >
-                    Login
-                  </button>
-                </SignInButton>
               )}
 
               {isSignedIn && (
@@ -207,7 +194,7 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
                     <button
                       className={navbarStyles.mobileMenuActionButton}
                     >
-                      Login / My Results
+                      Login
                     </button>
                   </SignInButton>
                 )}

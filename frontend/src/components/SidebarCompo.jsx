@@ -262,7 +262,7 @@ const SidebarCompo = () => {
   const [showResults, setShowResults] = useState(
     initialProgress.showResults || false,
   );
-  const [isLoggedIn, setIsLoggedIn] = useState(!!savedState);
+  const [isLoggedIn, setIsLoggedIn] = useState(isSignedIn);
   const [completedQuestions, setCompletedQuestions] = useState(
     new Set(initialProgress.completedQuestions || []),
   );
@@ -809,11 +809,29 @@ const SidebarCompo = () => {
       // Save current state before logging out
       saveTimerState();
       await signOut();
-      setIsLoggedIn(false);
     } catch (error) {
       console.error("Logout failed:", error);
     }
   };
+
+  useEffect(() => {
+    setIsLoggedIn(isSignedIn);
+
+    if (!isSignedIn) {
+      setSelectedTech(null);
+      setSelectedLevel(null);
+      setCurrentQuestion(0);
+      setUserAnswers({});
+      setShowResults(false);
+      setCompletedQuestions(new Set());
+      setIsSubmitted(false);
+      setReviewMode(false);
+      setIsQuizStarted(false);
+      setTimeLeft(0);
+      setElapsedTime(0);
+      setTimerStartedAt(null);
+    }
+  }, [isSignedIn]);
 
   const handleLogin = () => {
     const saved = loadSavedState();
