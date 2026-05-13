@@ -5,7 +5,7 @@ import {
   navbarStyles,
 } from "../assets/dummyStyles.js";
 import { useNavigate } from "react-router-dom";
-import { useUser, SignInButton, UserButton } from "@clerk/react";
+import { useUser, SignInButton, SignOutButton, UserButton } from "@clerk/react";
 import { X, Menu, User } from "lucide-react";
 
 const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
@@ -131,7 +131,7 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
               )}
 
               {isSignedIn && (
-                <div className="flex items-center justify-center ml-3">
+                <div className="flex items-center justify-center ml-3 gap-2">
                   <UserButton
                     appearance={{
                       elements: {
@@ -139,6 +139,13 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
                       },
                     }}
                   />
+                  <SignOutButton>
+                    <button
+                      className={navbarStyles.buttonBase(design.accentColor)}
+                    >
+                      Logout
+                    </button>
+                  </SignOutButton>
                 </div>
               )}
             </div>
@@ -186,7 +193,16 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
               )}
 
               {isSignedIn ? (
-                <UserButton />
+                <div className="flex items-center gap-2">
+                  <UserButton />
+                  <SignOutButton>
+                    <button
+                      className={navbarStyles.buttonBase(design.accentColor)}
+                    >
+                      Logout
+                    </button>
+                  </SignOutButton>
+                </div>
               ) : (
                 <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center">
                   👤

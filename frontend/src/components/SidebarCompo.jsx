@@ -71,7 +71,7 @@ const SidebarCompo = () => {
   // Auth & User
   const { request } = useApi();
   const { isSignedIn } = useUser();
-  const { openSignIn } = useClerk();
+  const { openSignIn, signOut } = useClerk();
   const [showLoginModal, setShowLoginModal] = useState(false);
   // Api call
   // Variables and state
@@ -804,10 +804,15 @@ const SidebarCompo = () => {
 
   const toggleSidebar = () => setIsSidebarOpen((p) => !p);
 
-  const handleLogout = () => {
-    // Save current state before logging out
-    saveTimerState();
-    setIsLoggedIn(false);
+  const handleLogout = async () => {
+    try {
+      // Save current state before logging out
+      saveTimerState();
+      await signOut();
+      setIsLoggedIn(false);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const handleLogin = () => {
