@@ -17,6 +17,7 @@ app.use(clerkMiddleware());
 
 app.use(cors({
   origin: [
+    "http://localhost:5173",
     "https://quiz-project-git-main-vaishnavi-talewars-projects.vercel.app",
     "https://quiz-project-zx4w.vercel.app",
     "https://quiz-project-ivory-iota.vercel.app"
