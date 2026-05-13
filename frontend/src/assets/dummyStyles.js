@@ -172,12 +172,12 @@ export const navbarAnimations = `
 // Navbar component styles - COMPLETE
 export const navbarStyles = {
   // Main container styles
-  container: "relative font-serif flex justify-center items-center py-4 px-4",
+  container: "relative font-serif flex justify-center items-center py-4 px-4 bg-slate-50",
 
   // Nav element styles
   nav: (borderColor, isHovering) =>
-    `relative w-full max-w-7xl rounded-xl xl:rounded-full backdrop-blur-md bg-white/55 border ${borderColor} shadow-xl overflow-hidden transition-all duration-500 ${
-      isHovering ? "shadow-2xl " : "shadow-lg"
+    `relative w-full max-w-7xl rounded-[2rem] xl:rounded-full backdrop-blur-xl bg-white/90 border ${borderColor} shadow-xl overflow-hidden transition-all duration-500 ${
+      isHovering ? "shadow-2xl" : "shadow-lg"
     }`,
 
   // Pattern container
@@ -212,7 +212,7 @@ export const navbarStyles = {
   // Desktop buttons
   desktopButtons: "hidden md:flex items-center space-x-3 flex-shrink-0",
   buttonBase: (accentColor) =>
-    `group relative px-4 py-2.5 cursor-pointer rounded-full bg-gradient-to-r ${accentColor} text-white font-semibold shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105`,
+    `group relative px-4 py-2.5 cursor-pointer rounded-full bg-gradient-to-r ${accentColor} text-white font-semibold shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300`,
   buttonHoverEffect:
     "absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000",
   buttonContent: "relative flex items-center gap-2",
@@ -228,10 +228,15 @@ export const navbarStyles = {
   mobileMenuIcon: "h-5 w-5",
 
   // Mobile dropdown menu
-  mobileMenuWrapper: "md:hidden mt-4 pt-4 border-t border-gray-200/50",
-  mobileMenuContent: "flex flex-col space-y-2 px-2",
+  mobileMenuWrapper: "md:hidden mt-4 bg-white/95 border border-slate-200/75 rounded-[2rem] shadow-2xl overflow-hidden",
+  mobileMenuHeader: "flex items-center justify-between px-4 py-3 border-b border-slate-200/70",
+  mobileMenuTitle: "text-sm font-semibold text-slate-700",
+  mobileMenuContent: "flex flex-col gap-3 p-4",
   mobileMenuItem: (accentColor) =>
     `group w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r ${accentColor} text-white font-medium shadow-md transition-all duration-300 hover:scale-[1.02]`,
+  mobileMenuActionButton: "w-full rounded-2xl px-4 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-semibold shadow-lg transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-xl",
+  mobileMenuActionButtonSecondary: "w-full rounded-2xl px-4 py-3 bg-slate-100 text-slate-700 text-sm font-semibold shadow-sm transition-all duration-300 hover:bg-slate-200",
+  mobileMenuUserRow: "flex items-center gap-3 px-2 py-2 rounded-2xl bg-slate-50 border border-slate-200/70",
 
   // Icon animations
   iconAnimateBounce: "group-hover:animate-bounce",
@@ -515,18 +520,18 @@ export const resultPageAnimations = `
 export const sidebarStyles = {
   // Layout and container styles
   container: "min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50",
-  flexContainer: "flex xl:h-screen xl:overflow-y-hidden lg:h-screen lg:overflow-y-hidden",
+  flexContainer: "flex flex-col lg:flex-row xl:h-screen xl:overflow-y-hidden lg:h-screen lg:overflow-y-hidden",
   
   // Overlay styles
   overlay: "fixed inset-0 bg-black/20 backdrop-blur-sm z-30",
   
   // Sidebar styles
-  sidebar: "fixed h-screen font-mono z-40 top-0 left-0 w-80 transform transition-transform duration-300 ease-in-out bg-white/90 backdrop-blur-sm shadow-2xl rounded-r-3xl overflow-y-auto border-r border-white/30 lg:relative lg:translate-x-0 lg:flex lg:flex-col",
+  sidebar: "fixed h-screen font-mono z-40 top-0 left-0 w-full max-w-[320px] transform transition-transform duration-300 ease-in-out bg-white/90 backdrop-blur-sm shadow-2xl rounded-r-3xl overflow-y-auto border-r border-white/30 lg:relative lg:translate-x-0 lg:flex lg:flex-col lg:w-80",
   sidebarOpen: "translate-x-0",
   sidebarClosed: "-translate-x-full",
   
   // Sidebar header
-  sidebarHeader: "sticky top-0 z-20 p-6 bg-gradient-to-br from-rose-50/95 to-amber-50/95 border-b border-blue-100/50 backdrop-blur-sm",
+  sidebarHeader: "sticky top-0 z-20 p-6 bg-gradient-to-br from-slate-50/95 to-slate-100/95 border-b border-slate-200/70 backdrop-blur-sm",
   headerContent: "flex items-center justify-between relative z-10",
   logoContainer: "flex items-center space-x-3",
   logoIcon: "p-2 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl shadow-lg",
@@ -543,9 +548,9 @@ export const sidebarStyles = {
   techCountBadge: "text-xs bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-3 py-1 rounded-full",
   
   // Technology buttons
-  techButton: "w-full flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border backdrop-blur-sm",
-  techButtonSelected: "border-blue-400 cursor-pointer  shadow-lg transform scale-[1.02]",
-  techButtonUnselected: "border-white/50  hover:border-blue-300 cursor-pointer hover:shadow-md hover:bg-white/50",
+  techButton: "w-full flex items-center justify-between p-4 rounded-3xl transition-all duration-300 border bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md",
+  techButtonSelected: "border-blue-400 cursor-pointer shadow-xl scale-[1.01] bg-gradient-to-r from-blue-50 to-indigo-50",
+  techButtonUnselected: "border-white/60 hover:border-blue-300 cursor-pointer hover:shadow-md hover:bg-white/80",
   techIconContainer: "flex items-center space-x-3",
   techIcon: "p-2 rounded-lg shadow-sm",
   techName: "font-medium text-slate-800",
@@ -553,9 +558,9 @@ export const sidebarStyles = {
   
   // Level selection container
   levelContainer: "mt-3 ml-2 p-3 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/50 shadow-sm",
-  levelButton: "w-full p-3 my-2 rounded-xl border transition-all backdrop-blur-sm",
-  levelButtonSelected: "border-current shadow-md font-bold",
-  levelButtonUnselected: "border-white/50 hover:bg-white/60",
+  levelButton: "w-full p-4 my-2 rounded-3xl border transition-all backdrop-blur-sm bg-white/95 shadow-sm hover:shadow-md",
+  levelButtonSelected: "border-current shadow-lg font-semibold",
+  levelButtonUnselected: "border-white/60 hover:bg-slate-50",
   levelContent: "flex items-center justify-between w-full mb-1",
   levelInfo: "flex items-center space-x-2",
   levelIconContainer: "p-1.5 rounded-lg shadow-sm",
@@ -574,15 +579,21 @@ export const sidebarStyles = {
   footerText2: "mt-1 text-blue-600/80 font-medium",
   
   // Main content header
-  mainContent: "flex-1 font-mono min-h-screen p-4 md:p-8 ml-0 md:ml-0 overflow-y-auto",
-  mobileHeader: "flex items-center justify-between mb-4",
+  mainContent: "flex-1 font-mono min-h-screen p-4 md:p-8 overflow-y-auto",
+  mobileHeader: "flex flex-col gap-4 mb-4",
+  mobileHeaderTop: "flex items-center justify-between w-full gap-3",
+  mobileHeaderTitle: "text-sm font-semibold text-slate-700",
   hamburgerButton: "p-2 rounded-xl lg:hidden bg-white/80 backdrop-blur-sm shadow-lg",
-  
+  mobileActionCard: "w-full rounded-[2rem] bg-white/95 border border-slate-200/70 shadow-xl backdrop-blur-xl p-3",
+  mobileActionRow: "flex items-center justify-between gap-3",
+  mobileActionButton: "flex-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-semibold py-3 shadow-lg transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-xl",
+  mobileActionButtonSecondary: "flex-1 rounded-2xl bg-slate-100 text-slate-700 text-sm font-semibold py-3 shadow-sm transition-all duration-300 hover:bg-slate-200",
+
   // Mobile level selection
   mobileLevelContainer: "lg:hidden mb-4",
-  mobileLevelScroll: "flex gap-2 overflow-x-auto pb-2",
-  mobileLevelButton: "flex-none px-4 py-3 rounded-2xl border border-white/50 bg-white/80 backdrop-blur-sm shadow-lg min-w-[140px]",
-  mobileLevelContent: "flex flex-col items-center space-y-1",
+  mobileLevelScroll: "flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory",
+  mobileLevelButton: "flex-none px-4 py-4 rounded-[1.75rem] border border-white/70 bg-white/90 backdrop-blur-sm shadow-lg min-w-[170px] snap-center",
+  mobileLevelContent: "flex flex-col items-center space-y-2",
   mobileLevelName: "font-medium text-sm text-slate-800",
   mobileLevelStats: "flex items-center space-x-2",
   
@@ -621,7 +632,7 @@ export const sidebarStyles = {
   
   // Tech selected, no level
   techSelectedState: "h-full font-serif flex items-center justify-center py-20",
-  techSelectedCard: "text-center bg-white/90 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-2xl border border-white/30 max-w-md",
+  techSelectedCard: "text-center bg-white/95 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] shadow-2xl border border-slate-200/70 max-w-md mx-auto",
   techSelectedIcon: "p-5 rounded-2xl shadow-xl inline-flex mb-6",
   techSelectedTitle: "text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2",
   techSelectedSubtitle: "text-slate-600 mb-6",
@@ -633,7 +644,7 @@ export const sidebarStyles = {
   
   // Results screen
   resultsScreen: "h-full mt-20 md:pb-20 lg:mt-40 mb-30 font-serif flex items-center justify-center py-10",
-  resultsCard: "bg-white/90 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-2xl border border-white/30 max-w-2xl w-full",
+  resultsCard: "bg-white/95 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] shadow-2xl border border-slate-200/70 max-w-2xl w-full",
   resultsHeader: "text-center",
   resultsIconContainer: "p-5 rounded-2xl shadow-lg inline-flex mb-6",
   resultsTitle: "text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2",
@@ -670,7 +681,7 @@ export const sidebarStyles = {
   
   // Start quiz screen
   startQuizScreen: "h-full font-serif flex items-center overflow-y-hidden justify-center py-10",
-  startQuizCard: "bg-white/90 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/30 max-w-2xl w-full",
+  startQuizCard: "bg-white/95 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-slate-200/70 max-w-2xl w-full shadow-2xl",
   startQuizHeader: "text-center",
   startQuizIconContainer: "p-5 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 shadow-xl inline-flex mb-6",
   startQuizTitle: "text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2",
@@ -733,7 +744,7 @@ export const sidebarStyles = {
   warningIcon: "mr-2",
   
   // Question card
-  questionCard: "bg-white/90 backdrop-blur-xl p-6 md:p-8 rounded-3xl shadow-2xl border border-white/30 mb-6",
+  questionCard: "bg-white/95 backdrop-blur-xl p-6 md:p-8 rounded-[2rem] shadow-2xl border border-slate-200/70 mb-6",
   questionHeader: "mb-6 flex justify-between items-center",
   questionIconContainer: "flex items-center",
   questionIcon: "bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-600 p-3 rounded-2xl mr-3 shadow-sm",
@@ -835,6 +846,41 @@ export const cssStyles = `
   
   main::-webkit-scrollbar-thumb:hover {
     background-color: rgba(99,102,241,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-content {
+      padding-right: 1rem;
+    }
+
+    .sidebar {
+      width: min(100%, 320px);
+    }
+
+    .featureCardsGrid,
+    .scoreCardsGrid,
+    .resultsButtonsContainer,
+    .navButtonsContainer {
+      grid-template-columns: 1fr !important;
+      flex-direction: column !important;
+    }
+
+    .questionHeader,
+    .quizInfoHeader {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 1rem !important;
+    }
+
+    .mobileLevelScroll {
+      padding-bottom: 0.5rem !important;
+    }
+
+    .questionCard,
+    .resultsCard,
+    .startQuizCard {
+      padding: 1.5rem !important;
+    }
   }
 `;
 

@@ -1646,13 +1646,20 @@ ${
         <main className={sidebarStyles.mainContent}>
           {/* Mobile/Header with hamburger - now visible on tablet (md) and mobile */}
           <div className={sidebarStyles.mobileHeader}>
-            <button
-              onClick={toggleSidebar}
-              className={sidebarStyles.hamburgerButton}
-              aria-label="Toggle sidebar"
-            >
-              <Menu size={20} className="text-slate-700" />
-            </button>
+            <div className={sidebarStyles.mobileHeaderTop}>
+              <button
+                onClick={toggleSidebar}
+                className={sidebarStyles.hamburgerButton}
+                aria-label="Toggle sidebar"
+              >
+                <Menu size={20} className="text-slate-700" />
+              </button>
+              <span className={sidebarStyles.mobileHeaderTitle}>
+                {selectedTech
+                  ? `${selectedTechObj?.name || "Tech"} Quiz`
+                  : "Choose a technology"}
+              </span>
+            </div>
           </div>
 
           {/* Mobile/Tablet Level Selection */}

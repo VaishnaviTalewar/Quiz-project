@@ -6,7 +6,7 @@ import {
 } from "../assets/dummyStyles.js";
 import { useNavigate } from "react-router-dom";
 import { useUser, SignInButton, SignOutButton, UserButton } from "@clerk/react";
-import { X, Menu, User } from "lucide-react";
+import { X, Menu } from "lucide-react";
 
 const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
   const navigate = useNavigate();
@@ -163,51 +163,55 @@ const NavbarCompo = ({ logoSrc, quizType = "default" }) => {
           {/**Mobile menu */}
           {menuOpen && (
             <div ref={menuRef} className={navbarStyles.mobileMenuWrapper}>
-              {!isSignedIn && (
-                <SignInButton mode="modal">
-                  <button
-                    className={navbarStyles.buttonBase(design.accentColor)}
-                  >
-                    My Results
-                  </button>
-                </SignInButton>
-              )}
-
-              {isSignedIn && (
+              <div className={navbarStyles.mobileMenuHeader}>
+                <span className={navbarStyles.mobileMenuTitle}>
+                  Quick Actions
+                </span>
                 <button
-                  onClick={() => goTo("/result")}
-                  className={navbarStyles.buttonBase(design.accentColor)}
+                  onClick={() => setMenuOpen(false)}
+                  className={navbarStyles.closeButton}
+                  aria-label="Close menu"
                 >
-                  My Results
+                  <X size={18} className="text-slate-600" />
                 </button>
-              )}
+              </div>
+              <div className={navbarStyles.mobileMenuContent}>
+                {isSignedIn && (
+                  <div className={navbarStyles.mobileMenuUserRow}>
+                    <UserButton />
+                    <span className="text-sm font-medium text-slate-700">
+                      Signed in
+                    </span>
+                  </div>
+                )}
 
-              {!isSignedIn && (
-                <SignInButton mode="modal">
-                  <button
-                    className={navbarStyles.buttonBase(design.accentColor)}
-                  >
-                    Login
-                  </button>
-                </SignInButton>
-              )}
-
-              {isSignedIn ? (
-                <div className="flex items-center gap-2">
-                  <UserButton />
-                  <SignOutButton>
+                {isSignedIn ? (
+                  <>
                     <button
-                      className={navbarStyles.buttonBase(design.accentColor)}
+                      onClick={() => goTo("/result")}
+                      className={navbarStyles.mobileMenuActionButton}
                     >
-                      Logout
+                      My Results
                     </button>
-                  </SignOutButton>
-                </div>
-              ) : (
-                <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center">
-                  👤
-                </div>
-              )}
+                    <SignOutButton>
+                      <button
+                        onClick={() => setMenuOpen(false)}
+                        className={navbarStyles.mobileMenuActionButtonSecondary}
+                      >
+                        Logout
+                      </button>
+                    </SignOutButton>
+                  </>
+                ) : (
+                  <SignInButton mode="modal">
+                    <button
+                      className={navbarStyles.mobileMenuActionButton}
+                    >
+                      Login / My Results
+                    </button>
+                  </SignInButton>
+                )}
+              </div>
             </div>
           )}
         </div>
