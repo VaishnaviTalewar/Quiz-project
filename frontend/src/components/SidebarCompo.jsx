@@ -290,35 +290,7 @@ const SidebarCompo = () => {
 
   // ─── Core timer: start ─────────────────────────────────────────────────────
   // `initialTime` is always passed explicitly so we never read stale state.
-  const startTimer = useCallback(
-    (initialTime) => {
-      // Never double-start
-      if (timerRef.current) return;
-      if (isSubmitted || reviewMode) return;
-      if (!initialTime || initialTime <= 0) return;
-
-      setIsTimerRunning(true);
-      setTimerStartedAt(Date.now());
-
-      timerRef.current = setInterval(() => {
-        setTimeLeft((prev) => {
-          if (prev <= 1) {
-            clearInterval(timerRef.current);
-            timerRef.current = null;
-            return 0;
-          }
-          return prev - 1;
-        });
-        setElapsedTime((prev) => prev + 1);
-      }, 1000);
-    },
-    // NOTE: intentionally minimal deps — we never want this recreated mid-quiz
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
-
-  // ─── Core timer: stop ─────────────────────────────────────────────────────
- const startTimer = useCallback((initialTime) => {
+  const startTimer = useCallback((initialTime) => {
   // clear existing timer first
   if (timerRef.current) {
     clearInterval(timerRef.current);
@@ -342,6 +314,16 @@ const SidebarCompo = () => {
 
     setElapsedTime((prev) => prev + 1);
   }, 1000);
+}, []);
+
+
+const stopTimer = useCallback(() => {
+  if (timerRef.current) {
+    clearInterval(timerRef.current);
+    timerRef.current = null;
+  }
+
+  setIsTimerRunning(false);
 }, []);
 
   // ─── Auto-submit when time runs out ───────────────────────────────────────
@@ -743,6 +725,8 @@ const SidebarCompo = () => {
 
   // ─── Start quiz ────────────────────────────────────────────────────────────
   // This is the SOLE owner of the timer for fresh quiz starts.
+
+
   const handleStartQuiz = () => {
     if (!isSignedIn) {
       setShowLoginModal(true);
@@ -1973,4 +1957,4 @@ const SidebarCompo = () => {
   );
 };
 
-export default SidebarCompo;
+export default SidebarCompo
