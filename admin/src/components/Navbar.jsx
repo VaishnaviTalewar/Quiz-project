@@ -58,7 +58,7 @@ const Navbar = ({ logoSrc = null, siteName = "Tech Quiz Master" }) => {
   }, [isSignedIn, getToken]);
 
   return (
-    <nav className={navbarStyles.nav}>
+    <nav className={navbarStyles.nav} ref={navRef}>
       <div className={navbarStyles.container}>
         <div className={navbarStyles.innerContainer}>
           

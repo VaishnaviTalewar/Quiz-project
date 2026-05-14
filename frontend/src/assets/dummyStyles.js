@@ -998,7 +998,7 @@ export const getQuestionStatusColor = (status, reviewMode) => {
 };
 
 // Helper function for option button styling
-export const getOptionButtonStyle = (isSelected, isCorrect, showFeedback, index, correctIndex) => {
+export const getOptionButtonStyle = (isSelected, isCorrect, showFeedback) => {
   if (!showFeedback) {
     if (isSelected) {
       return {

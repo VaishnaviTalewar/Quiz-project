@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import {
   BookOpen,
   Code,
@@ -33,7 +32,7 @@ import {
   Brain,
 } from "lucide-react";
 import { useApi } from "../services/api.js";
-import { useUser, useClerk } from "@clerk/react"
+import { useUser, useClerk } from "@clerk/react";
 import {
   sidebarStyles,
   cssStyles,
@@ -44,7 +43,7 @@ import {
 } from "../assets/dummyStyles.js";
 
 const STORAGE_KEY = "techQuizMasterProgress";
-// Mapping of technology to icons (using lucide-react icons as placeholders; replace with actual tech icons as needed)
+
 const techIconMap = {
   html: Code,
   css: Layout,
@@ -55,57 +54,42 @@ const techIconMap = {
   java: Coffee,
   python: Globe,
 };
-// For , Basic , Intermediate , Advance icon
+
 const levelIconMap = {
   basic: Target,
   intermediate: Zap,
   advanced: Trophy,
 };
-// color
+
 const levelColorMap = {
   basic: "bg-gradient-to-r from-green-50 to-emerald-50 border-green-200",
   intermediate: "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200",
   advanced: "bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200",
 };
+
 const SidebarCompo = () => {
-  // Auth & User
   const { request } = useApi();
   const { isSignedIn } = useUser();
-  const { openSignIn, signOut } = useClerk();
+  const { openSignIn } = useClerk();
   const [showLoginModal, setShowLoginModal] = useState(false);
-  // Api call
-  // Variables and state
+
   const [questionsData, setQuestionsData] = useState({});
   const [technologies, setTechnologies] = useState([]);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [showRestartModal, setShowRestartModal] = useState(false);
+
+  // ─── Timer refs ────────────────────────────────────────────────────────────
   const timerRef = useRef(null);
   const hasAutoSubmittedRef = useRef(false);
-  // handle book button
-  const handleHomeClick = () => {
-    // Reset all states to show the initial "Select Technology" screen
-    setSelectedTech(null);
-    setSelectedLevel(null);
-    setCurrentQuestion(0);
-    setUserAnswers({});
-    setShowResults(false);
-    setIsQuizStarted(false);
-    setReviewMode(false);
+  // Tracks whether the current quiz session was freshly started (vs page-reload resume)
+  const isFreshStartRef = useRef(false);
 
-    // Stop timer if it's running
-    if (isTimerRunning) {
-      stopTimer();
-    }
-  };
-
-  // Load saved state from localStorage (with migration support)
+  // ─── Helpers ───────────────────────────────────────────────────────────────
   const loadSavedState = () => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-
-        // Migrate old structure to new structure if needed
         if (parsed && !parsed.progressByTech) {
           if (parsed.selectedTech && parsed.selectedLevel) {
             const migrated = {
@@ -142,96 +126,24 @@ const SidebarCompo = () => {
 
   const savedState = loadSavedState();
 
-  // track window width for responsive behavior
+  // ─── Window width ──────────────────────────────────────────────────────────
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1024,
+    typeof window !== "undefined" ? window.innerWidth : 1024
   );
 
-  // Selected tech & level
-  const [selectedTech, setSelectedTech] = useState(
-    savedState?.currentTech || null,
+  // ─── Tech / level selection ────────────────────────────────────────────────
+  const [selectedTech, setSelectedTech] = useState(savedState?.currentTech || null);
+  const [selectedLevel, setSelectedLevel] = useState(savedState?.currentLevel || null);
+
+  const selectedTechObj = React.useMemo(
+    () => technologies.find((t) => t.id === selectedTech) || {},
+    [technologies, selectedTech]
   );
 
-  const [selectedLevel, setSelectedLevel] = useState(
-    savedState?.currentLevel || null,
-  );
-
-  const selectedTechObj = React.useMemo(() => {
-    return technologies.find((t) => t.id === selectedTech) || {};
-  }, [technologies, selectedTech]);
-
-  // Timer states
-  const [timeLeft, setTimeLeft] = useState(
-    savedState?.progressByTech?.[savedState?.currentTech]?.[
-      savedState?.currentLevel
-    ]?.timeLeft || 0,
-  );
-  const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const [timerStartedAt, setTimerStartedAt] = useState(
-    savedState?.progressByTech?.[savedState?.currentTech]?.[
-      savedState?.currentLevel
-    ]?.timerStartedAt || null,
-  );
-  const [elapsedTime, setElapsedTime] = useState(
-    savedState?.progressByTech?.[savedState?.currentTech]?.[
-      savedState?.currentLevel
-    ]?.elapsedTime || 0,
-  );
-
-  // Quiz start state
-  const [isQuizStarted, setIsQuizStarted] = useState(
-    savedState?.progressByTech?.[savedState?.currentTech]?.[
-      savedState?.currentLevel
-    ]?.isQuizStarted || false,
-  );
-
-  // Helper for level
-  const getLevelsForTech = (tech) => {
-    if (!questionsData[tech]) return [];
-
-    // Get all level keys for this tech
-    const levelKeys = Object.keys(questionsData[tech]);
-
-    // Map each level to an object with its details
-    const levels = levelKeys.map((level) => {
-      const levelData = questionsData[tech][level]; // ← this line was missing
-      const LevelIcon = levelIconMap[level?.toLowerCase()] || HelpCircle;
-
-      return {
-        id: level,
-        name: level.charAt(0).toUpperCase() + level.slice(1),
-        questions: levelData.questions?.length || 0,
-        time: levelData.timeLimit ? `${levelData.timeLimit}m` : "",
-        icon: (
-          <LevelIcon
-            size={16}
-            className={`${level === selectedLevel ? "text-indigo-600" : "text-gray-600"}`}
-          />
-        ),
-        color: colorSchemes[tech?.toUpperCase()] || "",
-      };
-    });
-
-    // Reverse so that oldest level appears first
-    return levels.reverse();
-  };
-
-  // Initialize progress for current tech/level
-  const getInitialProgressForTechLevel = (tech, level) => {
-    if (!tech || !level)
-      return {
-        currentQuestion: 0,
-        userAnswers: {},
-        showResults: false,
-        completedQuestions: [],
-        isSubmitted: false,
-        reviewMode: false,
-        timeLeft: 0,
-        timerStartedAt: null,
-        elapsedTime: 0,
-        isQuizStarted: false,
-      };
-
+  // ─── Timer state ───────────────────────────────────────────────────────────
+  const initialProgress = (() => {
+    const tech = savedState?.currentTech;
+    const level = savedState?.currentLevel;
     return (
       savedState?.progressByTech?.[tech]?.[level] || {
         currentQuestion: 0,
@@ -246,47 +158,31 @@ const SidebarCompo = () => {
         isQuizStarted: false,
       }
     );
-  };
+  })();
 
-  const initialProgress = getInitialProgressForTechLevel(
-    savedState?.currentTech,
-    savedState?.currentLevel,
-  );
+  const [timeLeft, setTimeLeft] = useState(initialProgress.timeLeft || 0);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const [timerStartedAt, setTimerStartedAt] = useState(initialProgress.timerStartedAt || null);
+  const [elapsedTime, setElapsedTime] = useState(initialProgress.elapsedTime || 0);
+  const [isQuizStarted, setIsQuizStarted] = useState(initialProgress.isQuizStarted || false);
 
-  const [currentQuestion, setCurrentQuestion] = useState(
-    initialProgress.currentQuestion || 0,
-  );
-  const [userAnswers, setUserAnswers] = useState(
-    initialProgress.userAnswers || {},
-  );
-  const [showResults, setShowResults] = useState(
-    initialProgress.showResults || false,
-  );
+  // ─── Quiz state ────────────────────────────────────────────────────────────
+  const [currentQuestion, setCurrentQuestion] = useState(initialProgress.currentQuestion || 0);
+  const [userAnswers, setUserAnswers] = useState(initialProgress.userAnswers || {});
+  const [showResults, setShowResults] = useState(initialProgress.showResults || false);
   const [isLoggedIn, setIsLoggedIn] = useState(isSignedIn);
   const [completedQuestions, setCompletedQuestions] = useState(
-    new Set(initialProgress.completedQuestions || []),
+    new Set(initialProgress.completedQuestions || [])
   );
-  const [progressByTech, setProgressByTech] = useState(
-    savedState?.progressByTech || {},
-  );
+  const [progressByTech, setProgressByTech] = useState(savedState?.progressByTech || {});
+  const [isSubmitted, setIsSubmitted] = useState(initialProgress.isSubmitted || false);
+  const [reviewMode, setReviewMode] = useState(initialProgress.reviewMode || false);
 
-  // IMPORTANT: keep submission & review state per-level and mirrored to local state for quick checks
-  const [isSubmitted, setIsSubmitted] = useState(
-    initialProgress.isSubmitted || false,
-  );
-  const [reviewMode, setReviewMode] = useState(
-    initialProgress.reviewMode || false,
-  );
-
-  // Sidebar responsive
-  // NOTE: changed default breakpoint: sidebar is open by default on large screens >= 1024 (lg)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(
-    // default open on larger screens (lg+), closed on md/tablet & mobile
-    windowWidth >= 1024,
-  );
+  // ─── Sidebar ───────────────────────────────────────────────────────────────
+  const [isSidebarOpen, setIsSidebarOpen] = useState(windowWidth >= 1024);
   const asideRef = useRef(null);
 
-  // Helpers
+  // ─── Derived helpers ───────────────────────────────────────────────────────
   const findFirstUnansweredIndex = (answersObj = {}, total = 0) => {
     for (let i = 0; i < total; i++) {
       if (answersObj[i] === undefined) return i;
@@ -294,45 +190,29 @@ const SidebarCompo = () => {
     return -1;
   };
 
-  const findLastCompletedQuestion = (answersObj = {}, total = 0) => {
-    for (let i = total - 1; i >= 0; i--) {
-      if (answersObj[i] !== undefined) return i;
-    }
-    return -1;
-  };
-
-  const getTimeLimit = (tech, level) => {
-    if (!tech || !level) return 0;
-
-    const time = questionsData?.[tech]?.[level]?.timeLimit;
-
-    return time ? time * 60 : 0;
-  };
+  const getTimeLimit = useCallback(
+    (tech, level) => {
+      if (!tech || !level) return 0;
+      const time = questionsData?.[tech]?.[level]?.timeLimit;
+      return time ? time * 60 : 0;
+    },
+    [questionsData]
+  );
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, "0")}:${secs
-      .toString()
-      .padStart(2, "0")}`;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
-  // NEW: Format elapsed time for display (HH:MM:SS or MM:SS)
   const formatElapsedTime = (seconds) => {
     const hours = Math.floor(seconds / 3600);
     const mins = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
-
     if (hours > 0) {
-      return `${hours
-        .toString()
-        .padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs
-        .toString()
-        .padStart(2, "0")}`;
+      return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     }
-    return `${mins.toString().padStart(2, "0")}:${secs
-      .toString()
-      .padStart(2, "0")}`;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
   const calculateElapsedTime = () => {
@@ -342,190 +222,548 @@ const SidebarCompo = () => {
     return elapsedTime + elapsedSeconds;
   };
 
-  // Persist helper: update progressByTech for a specific tech/level and save to localStorage immediately
-  const persistProgressForLevel = (tech, level, levelProgress) => {
-    if (!tech || !level) return;
-    const updatedProgress = {
-      ...progressByTech,
-      [tech]: {
-        ...(progressByTech[tech] || {}),
-        [level]: {
-          ...(progressByTech[tech]?.[level] || {}),
-          ...levelProgress,
+  // ─── Persist progress ──────────────────────────────────────────────────────
+  const persistProgressForLevel = useCallback(
+    (tech, level, levelProgress) => {
+      if (!tech || !level) return;
+      const updatedProgress = {
+        ...progressByTech,
+        [tech]: {
+          ...(progressByTech[tech] || {}),
+          [level]: {
+            ...(progressByTech[tech]?.[level] || {}),
+            ...levelProgress,
+          },
         },
-      },
-    };
-    setProgressByTech(updatedProgress);
-
-    // Save to localStorage
-    try {
-      const stateToSave = {
-        currentTech: tech,
-        currentLevel: level,
-        progressByTech: updatedProgress,
-        timestamp: new Date().toISOString(),
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
-    } catch (err) {
-      console.error("Failed saving state:", err);
-    }
-  };
-
-  const saveTimerState = () => {
-    if (selectedTech && selectedLevel) {
-      const currentElapsed = calculateElapsedTime();
-      // Persist per-level immediately (so other levels remain untouched)
-      persistProgressForLevel(selectedTech, selectedLevel, {
-        currentQuestion,
-        userAnswers,
-        showResults,
-        completedQuestions: Array.from(completedQuestions),
-        isSubmitted,
-        reviewMode,
-        timeLeft,
-        timerStartedAt: isTimerRunning ? Date.now() : null,
-        elapsedTime: currentElapsed,
-        isQuizStarted,
-      });
-    }
-  };
-
-  const startTimer = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    if (isSubmitted || reviewMode) return;
-
-    setIsTimerRunning(true);
-
-    const startTime = Date.now();
-    setTimerStartedAt(startTime);
-
-    timerRef.current = setInterval(() => {
-      setTimeLeft((prev) => Math.max(prev - 1, 0));
-    }, 1000);
-  };
-
-  const stopTimer = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-
-    setIsTimerRunning(false);
-    saveTimerState();
-  };
-
-  const resetTimer = () => {
-    stopTimer();
-    if (selectedLevel && !isSubmitted && !reviewMode && !showResults) {
-      const fullTime = getTimeLimit(selectedTech, selectedLevel);
-      setTimeLeft(fullTime);
-      setTimerStartedAt(null);
-      setElapsedTime(0);
-
-      // Update progress immediately
-      if (selectedTech && selectedLevel) {
-        persistProgressForLevel(selectedTech, selectedLevel, {
-          ...progressByTech[selectedTech]?.[selectedLevel],
-          timeLeft: fullTime,
-          timerStartedAt: null,
-          elapsedTime: 0,
-        });
+      setProgressByTech(updatedProgress);
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({
+            currentTech: tech,
+            currentLevel: level,
+            progressByTech: updatedProgress,
+            timestamp: new Date().toISOString(),
+          })
+        );
+      } catch (err) {
+        console.error("Failed saving state:", err);
       }
-    }
-  };
-  // Manage Time Up: Auto-submit quiz, calculate score, save result, and update UI state
-  const handleTimeUp = async () => {
-    // 🛑 Step 1: Lock Redundancy - Ensure auto-submit ek hi baar trigger ho
+    },
+    [progressByTech]
+  );
+
+  const saveTimerState = useCallback(() => {
+    if (!selectedTech || !selectedLevel) return;
+    const currentElapsed = timerStartedAt
+      ? elapsedTime + Math.floor((Date.now() - timerStartedAt) / 1000)
+      : elapsedTime;
+    persistProgressForLevel(selectedTech, selectedLevel, {
+      currentQuestion,
+      userAnswers,
+      showResults,
+      completedQuestions: Array.from(completedQuestions),
+      isSubmitted,
+      reviewMode,
+      timeLeft,
+      timerStartedAt: isTimerRunning ? timerStartedAt || Date.now() : null,
+      elapsedTime: currentElapsed,
+      isQuizStarted,
+    });
+  }, [
+    selectedTech,
+    selectedLevel,
+    currentQuestion,
+    userAnswers,
+    showResults,
+    completedQuestions,
+    isSubmitted,
+    reviewMode,
+    timeLeft,
+    timerStartedAt,
+    elapsedTime,
+    isTimerRunning,
+    isQuizStarted,
+    persistProgressForLevel,
+  ]);
+
+  // ─── Core timer: start ─────────────────────────────────────────────────────
+  // `initialTime` is always passed explicitly so we never read stale state.
+  const startTimer = useCallback(
+    (initialTime) => {
+      // Never double-start
+      if (timerRef.current) return;
+      if (isSubmitted || reviewMode) return;
+      if (!initialTime || initialTime <= 0) return;
+
+      setIsTimerRunning(true);
+      setTimerStartedAt(Date.now());
+
+      timerRef.current = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            timerRef.current = null;
+            return 0;
+          }
+          return prev - 1;
+        });
+        setElapsedTime((prev) => prev + 1);
+      }, 1000);
+    },
+    // NOTE: intentionally minimal deps — we never want this recreated mid-quiz
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
+  // ─── Core timer: stop ─────────────────────────────────────────────────────
+ const startTimer = useCallback((initialTime) => {
+  // clear existing timer first
+  if (timerRef.current) {
+    clearInterval(timerRef.current);
+  }
+
+  if (!initialTime || initialTime <= 0) return;
+
+  setIsTimerRunning(true);
+
+  timerRef.current = setInterval(() => {
+    setTimeLeft((prev) => {
+      if (prev <= 1) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+        setIsTimerRunning(false);
+        return 0;
+      }
+
+      return prev - 1;
+    });
+
+    setElapsedTime((prev) => prev + 1);
+  }, 1000);
+}, []);
+
+  // ─── Auto-submit when time runs out ───────────────────────────────────────
+  const handleTimeUp = useCallback(async () => {
     if (hasAutoSubmittedRef.current) return;
     hasAutoSubmittedRef.current = true;
-
-    // Step 2: Stop UI Timer
     stopTimer();
-
     try {
-      const questions = getQuestions();
-      if (!questions || questions.length === 0) return;
+      const questions = questionsData[selectedTech]?.[selectedLevel]?.questions || [];
+      if (!questions.length) return;
 
-      // 📝 Step 3: Preparation - Jo unanswered hain unhe -1 mark karo (Auto-submit behavior)
-      let newAnswers = { ...userAnswers };
+      const newAnswers = { ...userAnswers };
       questions.forEach((_, index) => {
         if (newAnswers[index] === undefined || newAnswers[index] === null) {
           newAnswers[index] = -1;
         }
       });
-
       setUserAnswers(newAnswers);
 
-      // Time taken will be the full limit since time is up
-      const finalElapsedTime = getTimeLimit(selectedTech, selectedLevel);
+      const timeLimitMinutes = questionsData[selectedTech]?.[selectedLevel]?.timeLimit || 0;
+      const finalElapsedTime = timeLimitMinutes * 60;
 
-      // 📊 Step 4: Calculate Final Score
       let correct = 0;
       let wrong = 0;
       questions.forEach((q, index) => {
         const userAns = newAnswers[index];
         if (userAns !== -1) {
-          if (userAns === q.correctAnswer) {
-            correct++;
-          } else {
-            wrong++;
-          }
+          if (userAns === q.correctAnswer) correct++;
+          else wrong++;
         }
       });
 
-      // 🚀 Step 5: Backend Call (Direct hit as Token is managed by useApi)
-      // Note: Isme isSignedIn check isliye nahi hai kyunki quiz start hi tab hua tha jab user logged in tha
       await request("/result/save-result", "POST", {
         technology: selectedTech,
         level: selectedLevel,
         totalQuestions: questions.length,
-        correct: correct,
-        wrong: wrong,
+        correct,
+        wrong,
         timeTaken: finalElapsedTime,
         startDate: new Date(),
       });
 
-      // ✅ Step 6: Final UI State Update
       setIsSubmitted(true);
       setIsQuizStarted(false);
       setShowResults(true);
       setTimeLeft(0);
       setTimerStartedAt(null);
       setElapsedTime(finalElapsedTime);
-
-      // 💾 Step 7: Persist State
-      saveTimerState();
     } catch (err) {
       console.error("AUTO SUBMIT BACKEND ERROR:", err);
-      // Even if API fails, we show results to user so they don't get stuck
       setShowResults(true);
       setIsSubmitted(true);
       setIsQuizStarted(false);
     }
+  }, [questionsData, selectedTech, selectedLevel, userAnswers, request, stopTimer]);
+
+  // ─── Watch timeLeft → auto-submit ─────────────────────────────────────────
+  useEffect(() => {
+    const hasTimer = getTimeLimit(selectedTech, selectedLevel) > 0;
+    if (hasTimer && timeLeft === 0 && isQuizStarted && !isSubmitted && !reviewMode) {
+      handleTimeUp();
+    }
+  }, [timeLeft, isQuizStarted, isSubmitted, reviewMode, handleTimeUp, selectedTech, selectedLevel, getTimeLimit]);
+
+  // ─── Page-reload resume (ONLY when elapsedTime > 0, NOT on fresh starts) ──
+  useEffect(() => {
+    if (
+      !selectedLevel ||
+      !selectedTech ||
+      showResults ||
+      isSubmitted ||
+      reviewMode ||
+      !isQuizStarted
+    )
+      return;
+
+    // Fresh start: handleStartQuiz already owns the timer — skip this effect
+    if (isFreshStartRef.current) return;
+
+    const savedProgress = progressByTech[selectedTech]?.[selectedLevel];
+    const fullTime = getTimeLimit(selectedTech, selectedLevel);
+    const hasTimer = fullTime > 0;
+
+    if (!hasTimer) return;
+
+    // Only resume when there is real saved elapsed time (page reload scenario)
+    if (savedProgress && (savedProgress.elapsedTime || 0) > 0) {
+      const currentElapsed = savedProgress.elapsedTime;
+      const remainingTime = Math.max(fullTime - currentElapsed, 0);
+
+      if (remainingTime > 0) {
+        setTimeLeft(remainingTime);
+        setElapsedTime(currentElapsed);
+        setTimerStartedAt(Date.now());
+        startTimer(remainingTime);
+      } else {
+        handleTimeUp();
+      }
+    }
+    // If elapsedTime === 0 and it's not a fresh start, something is off — let handleStartQuiz handle it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLevel, selectedTech, isQuizStarted]);
+
+  // ─── Cleanup on unmount ────────────────────────────────────────────────────
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, []);
+
+  // ─── Visibility / unload → save timer state ────────────────────────────────
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden && isTimerRunning) saveTimerState();
+    };
+    const handleBeforeUnload = () => {
+      if (isTimerRunning) saveTimerState();
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isTimerRunning, saveTimerState]);
+
+  // ─── Persist tech/level selection ─────────────────────────────────────────
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          currentTech: selectedTech,
+          currentLevel: selectedLevel,
+          progressByTech,
+          timestamp: new Date().toISOString(),
+        })
+      );
+    } catch (err) {
+      console.error("Failed saving state:", err);
+    }
+  }, [selectedTech, selectedLevel, progressByTech]);
+
+  // ─── Window resize ─────────────────────────────────────────────────────────
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth >= 1024) setIsSidebarOpen(true);
+      else setIsSidebarOpen(false);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // ─── Body overflow when mobile sidebar open ────────────────────────────────
+  useEffect(() => {
+    if (isSidebarOpen && windowWidth < 1024) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSidebarOpen, windowWidth]);
+
+  // ─── Close sidebar on outside click ───────────────────────────────────────
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (
+        asideRef.current &&
+        !asideRef.current.contains(e.target) &&
+        isSidebarOpen &&
+        windowWidth < 1024
+      ) {
+        setIsSidebarOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [isSidebarOpen, windowWidth]);
+
+  // ─── Clerk sign-in state sync ──────────────────────────────────────────────
+  useEffect(() => {
+    setIsLoggedIn(isSignedIn);
+    if (!isSignedIn) {
+      stopTimer();
+      setSelectedTech(null);
+      setSelectedLevel(null);
+      setCurrentQuestion(0);
+      setUserAnswers({});
+      setShowResults(false);
+      setCompletedQuestions(new Set());
+      setIsSubmitted(false);
+      setReviewMode(false);
+      setIsQuizStarted(false);
+      setTimeLeft(0);
+      setElapsedTime(0);
+      setTimerStartedAt(null);
+    }
+  }, [isSignedIn, stopTimer]);
+
+  // ─── Derived: questions for current tech/level ────────────────────────────
+  const getQuestions = (tech = selectedTech, level = selectedLevel) => {
+    if (!tech || !level) return [];
+    return questionsData[tech]?.[level]?.questions || [];
   };
 
-  // Start Quiz Function
+  const getLevelsForTech = (tech) => {
+    if (!questionsData[tech]) return [];
+    return Object.keys(questionsData[tech])
+      .map((level) => {
+        const levelData = questionsData[tech][level];
+        const LevelIcon = levelIconMap[level?.toLowerCase()] || HelpCircle;
+        return {
+          id: level,
+          name: level.charAt(0).toUpperCase() + level.slice(1),
+          questions: levelData.questions?.length || 0,
+          time: levelData.timeLimit ? `${levelData.timeLimit}m` : "",
+          icon: (
+            <LevelIcon
+              size={16}
+              className={`${level === selectedLevel ? "text-indigo-600" : "text-gray-600"}`}
+            />
+          ),
+          color: colorSchemes[tech?.toUpperCase()] || "",
+        };
+      })
+      .reverse();
+  };
+
+  const getProgressForTechLevel = (techId, levelId) => {
+    const progress = progressByTech?.[techId]?.[levelId];
+    if (!progress || !progress.userAnswers) return { answered: 0, total: 0 };
+    const questions = questionsData[techId]?.[levelId]?.questions || [];
+    const answered = Object.keys(progress.userAnswers).filter(
+      (key) => progress.userAnswers[key] !== undefined && progress.userAnswers[key] !== -1
+    ).length;
+    return { answered, total: questions.length };
+  };
+
+  const isTechLevelCompleted = (techId, levelId) => {
+    const progress = progressByTech?.[techId]?.[levelId];
+    if (!progress || !progress.userAnswers) return false;
+    const questions = questionsData[techId]?.[levelId]?.questions || [];
+    return questions.every(
+      (_, index) =>
+        progress.userAnswers[index] !== undefined && progress.userAnswers[index] !== -1
+    );
+  };
+
+  // ─── Load quizzes from API ─────────────────────────────────────────────────
+  useEffect(() => {
+    const loadQuizzes = async () => {
+      try {
+        const data = await request("/admin/quizzes");
+        const formatted = {};
+        const techList = [];
+        data.forEach((q) => {
+          const tech = q.technology?.toLowerCase();
+          const level = q.level;
+          if (!formatted[tech]) {
+            formatted[tech] = {};
+            const IconComponent = techIconMap[tech?.toLowerCase()] || Cpu;
+            const formatTechName = (name) => name.charAt(0).toUpperCase() + name.slice(1);
+            techList.push({
+              id: tech,
+              name: formatTechName(q.technology),
+              color: colorSchemes[tech?.toUpperCase()] || "",
+              icon: IconComponent,
+            });
+          }
+          formatted[tech][level] = {
+            questions: q.questions.map((question) => {
+              let correctIndex = question.answerKey;
+              if (typeof correctIndex === "string") {
+                correctIndex = ["A", "B", "C", "D"].indexOf(correctIndex.toUpperCase());
+              }
+              return { ...question, correctAnswer: correctIndex };
+            }),
+            timeLimit: q.timeLimit,
+          };
+        });
+        setQuestionsData(formatted);
+        setTechnologies(techList.reverse());
+      } catch (err) {
+        console.log("FETCH ERROR:", err);
+      }
+    };
+    loadQuizzes();
+  }, [request]);
+
+  // ─── Navigation helpers ────────────────────────────────────────────────────
+  const handleHomeClick = () => {
+    stopTimer();
+    setSelectedTech(null);
+    setSelectedLevel(null);
+    setCurrentQuestion(0);
+    setUserAnswers({});
+    setShowResults(false);
+    setIsQuizStarted(false);
+    setReviewMode(false);
+  };
+
+  const toggleSidebar = () => setIsSidebarOpen((p) => !p);
+
+  const handleTechSelect = (techId) => {
+    if (isTimerRunning) saveTimerState();
+    stopTimer();
+
+    if (selectedTech === techId) {
+      setSelectedTech(null);
+    } else {
+      setSelectedTech(techId);
+    }
+    setSelectedLevel(null);
+    setCurrentQuestion(0);
+    setUserAnswers({});
+    setShowResults(false);
+    setCompletedQuestions(new Set());
+    setIsSubmitted(false);
+    setReviewMode(false);
+    setIsQuizStarted(false);
+    setTimeLeft(0);
+    setTimerStartedAt(null);
+    setElapsedTime(0);
+
+    setTimeout(() => {
+      const el = asideRef.current?.querySelector(`[data-tech="${techId}"]`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 120);
+  };
+
+  const handleLevelSelect = (levelId) => {
+    if (isTimerRunning) {
+      saveTimerState();
+      stopTimer();
+    }
+    isFreshStartRef.current = false;
+    setSelectedLevel(levelId);
+    setIsQuizStarted(false);
+
+    const progress = progressByTech?.[selectedTech]?.[levelId];
+    if (progress) {
+      const questions = getQuestions(selectedTech, levelId);
+      const firstUnanswered = findFirstUnansweredIndex(
+        progress.userAnswers || {},
+        questions.length
+      );
+      setCurrentQuestion(firstUnanswered >= 0 ? firstUnanswered : progress.currentQuestion || 0);
+      setUserAnswers(progress.userAnswers || {});
+      setShowResults(progress.showResults || false);
+      setCompletedQuestions(new Set(progress.completedQuestions || []));
+      setIsSubmitted(progress.isSubmitted || false);
+      setReviewMode(progress.reviewMode || false);
+      setIsQuizStarted(progress.isQuizStarted || false);
+      setElapsedTime(progress.elapsedTime || 0);
+
+      // If the quiz was in progress on last save, resume timer
+      if (
+        progress.isQuizStarted &&
+        !progress.isSubmitted &&
+        !progress.reviewMode &&
+        (progress.elapsedTime || 0) > 0
+      ) {
+        const totalTime = getTimeLimit(selectedTech, levelId);
+        const remainingTime = Math.max(totalTime - (progress.elapsedTime || 0), 0);
+        setTimeLeft(remainingTime);
+        setTimerStartedAt(Date.now());
+        if (remainingTime > 0) startTimer(remainingTime);
+        else handleTimeUp();
+      } else {
+        setTimeLeft(progress.timeLeft || getTimeLimit(selectedTech, levelId));
+        setTimerStartedAt(null);
+      }
+    } else {
+      setCurrentQuestion(0);
+      setUserAnswers({});
+      setShowResults(false);
+      setCompletedQuestions(new Set());
+      setIsSubmitted(false);
+      setReviewMode(false);
+      setIsQuizStarted(false);
+      setTimeLeft(getTimeLimit(selectedTech, levelId));
+      setTimerStartedAt(null);
+      setElapsedTime(0);
+    }
+
+    if (windowWidth < 1024) setIsSidebarOpen(false);
+  };
+
+  // ─── Start quiz ────────────────────────────────────────────────────────────
+  // This is the SOLE owner of the timer for fresh quiz starts.
   const handleStartQuiz = () => {
-    //  Step 1: Check if user is logged in
     if (!isSignedIn) {
       setShowLoginModal(true);
       return;
     }
-
-    // ✅ Step 2: If logged in, continue with original logic
-    hasAutoSubmittedRef.current = false;
-
     if (!selectedTech || !selectedLevel) return;
 
-    const now = Date.now();
-    const fullTime = getTimeLimit(selectedTech, selectedLevel);
+    hasAutoSubmittedRef.current = false;
+    isFreshStartRef.current = true; // Signal: resume effect must stay out
 
+    // Stop any lingering timer first
+    stopTimer();
+
+    const fullTime = getTimeLimit(selectedTech, selectedLevel);
+    const hasTimer = fullTime > 0;
+    const now = Date.now();
+
+    // Set all state synchronously before starting the interval
     setIsQuizStarted(true);
     setTimeLeft(fullTime);
-    setTimerStartedAt(now);
+    setTimerStartedAt(hasTimer ? now : null);
     setElapsedTime(0);
     setCurrentQuestion(0);
     setUserAnswers({});
@@ -542,522 +780,25 @@ const SidebarCompo = () => {
       isSubmitted: false,
       reviewMode: false,
       timeLeft: fullTime,
-      timerStartedAt: now,
+      timerStartedAt: hasTimer ? now : null,
       elapsedTime: 0,
       isQuizStarted: true,
     });
 
-    startTimer();
-  };
-
-  // Time
-  useEffect(() => {
-    if (timeLeft === 0 && isQuizStarted && !isSubmitted && !reviewMode) {
-      handleTimeUp();
-    }
-  }, [timeLeft, isQuizStarted, isSubmitted, reviewMode]);
-
-  // Show real data from db
-  useEffect(() => {
-    const loadQuizzes = async () => {
-      try {
-        const data = await request("/admin/quizzes");
-
-        console.log("REAL DB:", data);
-
-        const formatted = {};
-        const techList = [];
-
-        data.forEach((q) => {
-          const tech = q.technology?.toLowerCase();
-          const level = q.level;
-
-          if (!formatted[tech]) {
-            formatted[tech] = {};
-
-            const IconComponent = techIconMap[tech?.toLowerCase()] || Cpu;
-
-            const formatTechName = (name) =>
-              name.charAt(0).toUpperCase() + name.slice(1);
-
-            techList.push({
-              id: tech,
-              name: formatTechName(q.technology),
-              color: colorSchemes[tech?.toUpperCase()] || "",
-              icon: IconComponent,
-            });
-          }
-
-          formatted[tech][level] = {
-            questions: q.questions.map((question) => {
-              let correctIndex = question.answerKey; // DB me answerKey hai
-
-              if (typeof correctIndex === "string") {
-                correctIndex = ["A", "B", "C", "D"].indexOf(
-                  correctIndex.toUpperCase(),
-                );
-              }
-
-              return {
-                ...question,
-                correctAnswer: correctIndex,
-              };
-            }),
-            timeLimit: q.timeLimit,
-          };
-        });
-
-        setQuestionsData(formatted);
-        // Inside the useEffect after the data.forEach loop
-        setTechnologies(techList.reverse()); // ← add .reverse()
-      } catch (err) {
-        console.log("FETCH ERROR:", err);
-      }
-    };
-
-    loadQuizzes();
-  }, []);
-
-  // Persist to localStorage whenever relevant state changes (global progressByTech managed by persist helper)
-  useEffect(() => {
-    try {
-      const stateToSave = {
-        currentTech: selectedTech,
-        currentLevel: selectedLevel,
-        progressByTech: progressByTech,
-        timestamp: new Date().toISOString(),
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
-    } catch (err) {
-      console.error("Failed saving state:", err);
-    }
-  }, [selectedTech, selectedLevel, progressByTech]);
-
-  // Initialize timer when level is selected or on refresh - ONLY if quiz was already started
-  useEffect(() => {
-    if (
-      selectedLevel &&
-      selectedTech &&
-      !showResults &&
-      !isSubmitted &&
-      !reviewMode &&
-      isQuizStarted
-    ) {
-      // Get saved progress for this tech/level
-      const savedProgress = progressByTech[selectedTech]?.[selectedLevel];
-
-      if (savedProgress) {
-        const {
-          timeLeft: savedTimeLeft,
-          elapsedTime: savedElapsedTime,
-          timerStartedAt: savedTimerStartedAt,
-        } = savedProgress;
-
-        if (savedTimerStartedAt && !isSubmitted && !reviewMode) {
-          // Calculate actual time left considering elapsed time
-          const totalTime = getTimeLimit(selectedTech, selectedLevel);
-          const currentElapsed = savedElapsedTime || 0;
-          const remainingTime = Math.max(totalTime - currentElapsed, 0);
-
-          setTimeLeft(remainingTime);
-          setElapsedTime(currentElapsed);
-
-          if (remainingTime > 0 && !isSubmitted && !reviewMode) {
-            // Resume timer from where it left off
-            setTimerStartedAt(Date.now() - currentElapsed * 1000);
-            startTimer();
-          } else {
-            // Time's up
-            handleTimeUp();
-          }
-        } else {
-          // Start fresh timer
-          const fullTime = getTimeLimit(selectedTech, selectedLevel);
-          setTimeLeft(fullTime);
-          setTimerStartedAt(Date.now());
-          setElapsedTime(0);
-          startTimer();
-        }
-      } else {
-        // Start fresh timer
-        const fullTime = getTimeLimit(selectedTech, selectedLevel);
-        setTimeLeft(fullTime);
-        setTimerStartedAt(Date.now());
-        setElapsedTime(0);
-        startTimer();
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLevel, selectedTech, isQuizStarted]);
-
-  // Clean up timer on unmount
-
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-
-      if (isTimerRunning) {
-        saveTimerState();
-      }
-    };
-  }, [isTimerRunning]);
-
-  // Save timer state when component loses focus (user navigates away)
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden && isTimerRunning) {
-        saveTimerState();
-      }
-    };
-
-    const handleBeforeUnload = (e) => {
-      if (isTimerRunning) {
-        saveTimerState();
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [
-    isTimerRunning,
-    selectedTech,
-    selectedLevel,
-    timeLeft,
-    timerStartedAt,
-    elapsedTime,
-  ]);
-
-  // Responsive sidebar open by default on lg+; also track window width
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      // change threshold to 1024 (lg) so tablet (md) behaves like mobile
-      if (window.innerWidth >= 1024) setIsSidebarOpen(true);
-      else setIsSidebarOpen(false);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Prevent background scroll when overlay shown on small & medium screens (now < 1024)
-  useEffect(() => {
-    // we'll hide body scroll when sidebar is open on widths < 1024 to prevent layout shift
-    if (isSidebarOpen && windowWidth < 1024) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isSidebarOpen, windowWidth]);
-
-  // Click outside to close sidebar (works on all sizes)
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (
-        asideRef.current &&
-        !asideRef.current.contains(e.target) &&
-        isSidebarOpen &&
-        // only close when screen is smaller than lg (so tablet+mobile) - keep normal desktop behaviour intact
-        windowWidth < 1024
-      ) {
-        setIsSidebarOpen(false);
-      }
-    };
-
-    const handleTouchStart = (e) => handleOutsideClick(e);
-
-    document.addEventListener("mousedown", handleOutsideClick);
-    document.addEventListener("touchstart", handleTouchStart);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-      document.removeEventListener("touchstart", handleTouchStart);
-    };
-  }, [isSidebarOpen, windowWidth]);
-
-  // Prevent background scroll when overlay shown on small screens
-  useEffect(() => {
-    if (windowWidth < 1024) {
-      if (isSidebarOpen) document.body.style.overflow = "hidden";
-      else document.body.style.overflow = "";
-    }
-    // don't clear here; separate overflow effect handles restoring
-  }, [isSidebarOpen, windowWidth]);
-
-  //  AutoSubmit when timeLeft reaches 0
-  useEffect(() => {
-    if (timeLeft === 0 && isQuizStarted && !isSubmitted && !reviewMode) {
-      handleTimeUp();
-    }
-  }, [timeLeft, isQuizStarted, isSubmitted, reviewMode]);
-
-  const toggleSidebar = () => setIsSidebarOpen((p) => !p);
-
-  const handleLogout = async () => {
-    try {
-      // Save current state before logging out
-      saveTimerState();
-      await signOut();
-    } catch (error) {
-      console.error("Logout failed:", error);
+    // Start the interval using the local variable — NOT state (state hasn't flushed yet)
+    if (hasTimer) {
+      startTimer(fullTime);
     }
   };
 
-  useEffect(() => {
-    setIsLoggedIn(isSignedIn);
-
-    if (!isSignedIn) {
-      setSelectedTech(null);
-      setSelectedLevel(null);
-      setCurrentQuestion(0);
-      setUserAnswers({});
-      setShowResults(false);
-      setCompletedQuestions(new Set());
-      setIsSubmitted(false);
-      setReviewMode(false);
-      setIsQuizStarted(false);
-      setTimeLeft(0);
-      setElapsedTime(0);
-      setTimerStartedAt(null);
-    }
-  }, [isSignedIn]);
-
-  const handleLogin = () => {
-    const saved = loadSavedState();
-    if (saved) {
-      setProgressByTech(saved.progressByTech || {});
-
-      if (saved.currentTech && saved.currentLevel) {
-        setSelectedTech(saved.currentTech);
-        setSelectedLevel(saved.currentLevel);
-
-        const progress = saved.progressByTech?.[saved.currentTech]?.[
-          saved.currentLevel
-        ] || {
-          currentQuestion: 0,
-          userAnswers: {},
-          showResults: false,
-          completedQuestions: [],
-          isSubmitted: false,
-          reviewMode: false,
-          timeLeft: 0,
-          timerStartedAt: null,
-          elapsedTime: 0,
-          isQuizStarted: false,
-        };
-
-        setIsQuizStarted(progress.isQuizStarted || false);
-
-        const questions =
-          questionsData?.[saved.currentTech]?.[saved.currentLevel] || [];
-        const firstUnanswered = findFirstUnansweredIndex(
-          progress.userAnswers || {},
-          questions.length,
-        );
-
-        if (firstUnanswered >= 0) setCurrentQuestion(firstUnanswered);
-        else setCurrentQuestion(progress.currentQuestion || 0);
-
-        setUserAnswers(progress.userAnswers || {});
-        setShowResults(progress.showResults || false);
-        setCompletedQuestions(new Set(progress.completedQuestions || []));
-        setIsSubmitted(progress.isSubmitted || false);
-        setReviewMode(progress.reviewMode || false);
-        setElapsedTime(progress.elapsedTime || 0);
-
-        // Restore timer state if quiz was started
-        if (
-          progress.isQuizStarted &&
-          progress.timeLeft > 0 &&
-          !progress.isSubmitted &&
-          !progress.reviewMode
-        ) {
-          const totalTime = getTimeLimit(saved.currentTech, saved.currentLevel);
-          const remainingTime = Math.max(
-            totalTime - (progress.elapsedTime || 0),
-            0,
-          );
-          setTimeLeft(remainingTime);
-          setTimerStartedAt(Date.now() - (progress.elapsedTime || 0) * 1000);
-          startTimer();
-        } else {
-          setTimeLeft(progress.timeLeft || 0);
-          setTimerStartedAt(progress.timerStartedAt || null);
-        }
-      }
-
-      setIsLoggedIn(true);
-    }
-  };
-
-  const getQuestions = (tech = selectedTech, level = selectedLevel) => {
-    if (!tech || !level) return [];
-    return questionsData[tech]?.[level]?.questions || [];
-  };
-
-  const getProgressForTechLevel = (techId, levelId) => {
-    const progress = progressByTech?.[techId]?.[levelId];
-    if (!progress || !progress.userAnswers) return { answered: 0, total: 0 };
-    const questions = questionsData[techId]?.[levelId]?.questions || [];
-
-    const answered = Object.keys(progress.userAnswers).filter(
-      (key) =>
-        progress.userAnswers[key] !== undefined &&
-        progress.userAnswers[key] !== -1,
-    ).length;
-    return {
-      answered,
-      total: questions.length,
-    };
-  };
-
-  const isTechLevelCompleted = (techId, levelId) => {
-    const progress = progressByTech?.[techId]?.[levelId];
-    if (!progress || !progress.userAnswers) return false;
-
-    const questions = questionsData[techId]?.[levelId]?.questions || [];
-
-    return questions.every(
-      (_, index) =>
-        progress.userAnswers[index] !== undefined &&
-        progress.userAnswers[index] !== -1,
-    );
-  };
-
-  const handleTechSelect = (techId) => {
-    // Save current timer state before switching
-    if (isTimerRunning) {
-      saveTimerState();
-    }
-
-    if (selectedTech === techId) {
-      setSelectedTech(null);
-      setSelectedLevel(null);
-      setCurrentQuestion(0);
-      setUserAnswers({});
-      setShowResults(false);
-      setCompletedQuestions(new Set());
-      setIsSubmitted(false);
-      setReviewMode(false);
-      setIsQuizStarted(false);
-      setTimeLeft(0);
-      setTimerStartedAt(null);
-      setElapsedTime(0);
-      stopTimer();
-    } else {
-      setSelectedTech(techId);
-      setSelectedLevel(null);
-      setCurrentQuestion(0);
-      setUserAnswers({});
-      setShowResults(false);
-      setCompletedQuestions(new Set());
-      setIsSubmitted(false);
-      setReviewMode(false);
-      setIsQuizStarted(false);
-      setTimeLeft(0);
-      setTimerStartedAt(null);
-      setElapsedTime(0);
-      stopTimer();
-    }
-
-    setTimeout(() => {
-      const el = asideRef.current?.querySelector(`[data-tech="${techId}"]`);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 120);
-  };
-
-  const handleLevelSelect = (levelId) => {
-    // Save current timer state before switching
-    if (isTimerRunning) {
-      saveTimerState();
-      stopTimer();
-    }
-
-    setSelectedLevel(levelId);
-    setIsQuizStarted(false); // Reset quiz start state when selecting new level
-
-    const progress = progressByTech?.[selectedTech]?.[levelId];
-    if (progress) {
-      const questions = getQuestions(selectedTech, levelId);
-      const firstUnanswered = findFirstUnansweredIndex(
-        progress.userAnswers || {},
-        questions.length,
-      );
-      if (firstUnanswered >= 0) setCurrentQuestion(firstUnanswered);
-      else setCurrentQuestion(progress.currentQuestion || 0);
-
-      setUserAnswers(progress.userAnswers || {});
-      setShowResults(progress.showResults || false);
-      setCompletedQuestions(new Set(progress.completedQuestions || []));
-      // IMPORTANT: set local isSubmitted/reviewMode from stored per-level progress
-      setIsSubmitted(progress.isSubmitted || false);
-      setReviewMode(progress.reviewMode || false);
-      setIsQuizStarted(progress.isQuizStarted || false);
-      setElapsedTime(progress.elapsedTime || 0);
-
-      // Restore timer if quiz was active
-      if (
-        progress.isQuizStarted &&
-        !progress.isSubmitted &&
-        !progress.reviewMode &&
-        progress.timeLeft > 0
-      ) {
-        const totalTime = getTimeLimit(selectedTech, levelId);
-        const remainingTime = Math.max(
-          totalTime - (progress.elapsedTime || 0),
-          0,
-        );
-        setTimeLeft(remainingTime);
-        setTimerStartedAt(Date.now() - (progress.elapsedTime || 0) * 1000);
-        startTimer();
-      } else {
-        setTimeLeft(progress.timeLeft || 0);
-        setTimerStartedAt(progress.timerStartedAt || null);
-      }
-    } else {
-      setCurrentQuestion(0);
-      setUserAnswers({});
-      setShowResults(false);
-      setCompletedQuestions(new Set());
-      setIsSubmitted(false);
-      setReviewMode(false);
-      setIsQuizStarted(false);
-      const fullTime = getTimeLimit(selectedTech, levelId);
-      setTimeLeft(fullTime);
-      setTimerStartedAt(null);
-      setElapsedTime(0);
-    }
-
-    // For tablet & mobile (now < 1024) close sidebar to show full content
-    if (windowWidth < 1024) setIsSidebarOpen(false);
-  };
-
+  // ─── Answer selection ──────────────────────────────────────────────────────
   const handleAnswerSelect = (answerIndex) => {
     if (!isQuizStarted || isSubmitted || reviewMode) return;
-
-    const newAnswers = {
-      ...userAnswers,
-      [currentQuestion]: answerIndex,
-    };
-
+    const newAnswers = { ...userAnswers, [currentQuestion]: answerIndex };
     setUserAnswers(newAnswers);
-
     const newCompleted = new Set(completedQuestions);
     newCompleted.add(currentQuestion);
     setCompletedQuestions(newCompleted);
-
-    // ✅ REALTIME UPDATE (IMPORTANT)
     persistProgressForLevel(selectedTech, selectedLevel, {
       ...progressByTech[selectedTech]?.[selectedLevel],
       userAnswers: newAnswers,
@@ -1065,204 +806,117 @@ const SidebarCompo = () => {
     });
   };
 
+  // ─── Question navigation ───────────────────────────────────────────────────
   const handleQuestionNavigation = (direction) => {
-    if (!isQuizStarted && !reviewMode) return; // Prevent navigation if quiz not started and not in review mode
-
-    if (isSubmitted || reviewMode) {
-      // Allow free navigation in review/submitted mode
-      if (direction === "prev" && currentQuestion > 0)
-        setCurrentQuestion(currentQuestion - 1);
-      else if (direction === "next" && currentQuestion < questions.length - 1)
-        setCurrentQuestion(currentQuestion + 1);
-      return;
-    }
-
+    if (!isQuizStarted && !reviewMode) return;
     const questions = getQuestions();
-    if (direction === "prev" && currentQuestion > 0)
-      setCurrentQuestion(currentQuestion - 1);
-    else if (direction === "next" && currentQuestion < questions.length - 1) {
+    if (direction === "prev" && currentQuestion > 0) setCurrentQuestion(currentQuestion - 1);
+    else if (direction === "next" && currentQuestion < questions.length - 1)
       setCurrentQuestion(currentQuestion + 1);
-    }
   };
 
   const handleDirectQuestionClick = (questionIndex) => {
-    if (!isQuizStarted && !reviewMode) return; // Prevent clicking if quiz not started and not in review mode
-
-    if (isSubmitted || reviewMode) {
-      setCurrentQuestion(questionIndex);
-      return;
-    }
-
+    if (!isQuizStarted && !reviewMode) return;
     setCurrentQuestion(questionIndex);
   };
 
+  // ─── Score calculation ─────────────────────────────────────────────────────
   const calculateScore = () => {
     const questions = getQuestions();
-    let correct = 0;
-    let incorrect = 0;
-    let unattempted = 0;
-
+    let correct = 0, incorrect = 0, unattempted = 0;
     questions.forEach((question, index) => {
       const userAnswer = userAnswers[index];
-
-      if (userAnswer === undefined || userAnswer === -1) {
-        unattempted++;
-      } else if (userAnswer === question.correctAnswer) {
-        correct++;
-      } else {
-        incorrect++;
-      }
+      if (userAnswer === undefined || userAnswer === -1) unattempted++;
+      else if (userAnswer === question.correctAnswer) correct++;
+      else incorrect++;
     });
-
     const total = questions.length;
     const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
-
-    return {
-      correct,
-      incorrect,
-      unattempted,
-      total,
-      percentage,
-    };
+    return { correct, incorrect, unattempted, total, percentage };
   };
 
+  // ─── Submit ────────────────────────────────────────────────────────────────
   const handleSubmitQuiz = () => {
     if (!isQuizStarted && !reviewMode) return;
-
-    // already submitted → just show results
     if (isSubmitted) {
       setShowResults(true);
       setReviewMode(false);
       return;
     }
-
-    // open professional modal instead of window.confirm
     setShowSubmitModal(true);
   };
-  // if (isSubmitted) return null;
 
   const confirmSubmit = async () => {
-    // 🛑 Step 1: Security Guard - Agar user login nahi hai toh hit nahi hone dena
     if (!isSignedIn) {
-      setShowSubmitModal(false); // Modal band karo
-      openSignIn(); // Clerk login popup dikhao
+      setShowSubmitModal(false);
+      openSignIn();
       return;
     }
-
     try {
-      // 🛑 Step 2: Validation - Check karo questions load huye hain ya nahi
       const questions = getQuestions();
-      if (!questions || questions.length === 0) {
-        console.error("No questions found to submit.");
-        return;
-      }
+      if (!questions.length) return;
 
-      // 📝 Step 3: Answers Preparation - Jo attempt nahi huye unhe -1 mark karo
-      let newAnswers = { ...userAnswers };
+      const newAnswers = { ...userAnswers };
       questions.forEach((_, index) => {
-        if (newAnswers[index] === undefined || newAnswers[index] === null) {
-          newAnswers[index] = -1;
-        }
+        if (newAnswers[index] === undefined || newAnswers[index] === null) newAnswers[index] = -1;
       });
 
-      // Step 4: Logic - Timer stop karo aur total time calculate karo
       stopTimer();
       const finalElapsedTime = calculateElapsedTime();
 
-      // 📊 Step 5: Score Calculation - Frontend par results dikhane ke liye
-      let correct = 0;
-      let wrong = 0;
+      let correct = 0, wrong = 0;
       questions.forEach((q, index) => {
         const userAns = newAnswers[index];
         if (userAns !== -1) {
-          if (userAns === q.correctAnswer) {
-            correct++;
-          } else {
-            wrong++;
-          }
+          if (userAns === q.correctAnswer) correct++;
+          else wrong++;
         }
       });
 
-      const totalQuestions = questions.length;
-
-      // 🚀 Step 6: Backend Call - Axios useApi hook ke through
-      // Payload wahi hai jo aapka backend save-result endpoint mang raha hai
       await request("/result/save-result", "POST", {
         technology: selectedTech,
         level: selectedLevel,
-        totalQuestions: totalQuestions,
-        correct: correct,
-        wrong: wrong,
+        totalQuestions: questions.length,
+        correct,
+        wrong,
         timeTaken: finalElapsedTime,
         startDate: new Date(),
       });
 
-      // ✅ Step 7: UI Update - Quiz state ko results screen par le jao
-      setUserAnswers(newAnswers); // Final marked answers set karo
+      setUserAnswers(newAnswers);
       setShowResults(true);
       setIsSubmitted(true);
       setIsQuizStarted(false);
       setTimeLeft(0);
       setElapsedTime(finalElapsedTime);
-      setShowSubmitModal(false); // Confirmation modal band karo
-
-      // 💾 Step 8: Persistence - LocalStorage mein progress save karo taaki refresh par result na jaye
+      setShowSubmitModal(false);
       saveTimerState();
     } catch (err) {
-      // Error handling - Axios error log dikhayega
       console.error("MANUAL SUBMIT ERROR:", err);
       alert(err.message || "Failed to submit quiz. Please try again.");
     }
   };
 
-  // FIXED: Handle Review Mode properly
+  // ─── Review mode ───────────────────────────────────────────────────────────
   const handleReviewMode = () => {
     const questions = getQuestions();
-
     if (!questions.length) return;
-
-    setCurrentQuestion(0); // FIRST reset index
-
+    setCurrentQuestion(0);
     setReviewMode(true);
     setShowResults(false);
-
     stopTimer();
   };
 
-  const resetQuiz = () => {
-    const questions = getQuestions();
-    const lastCompleted = findLastCompletedQuestionLocal();
-    if (lastCompleted >= 0 && lastCompleted + 1 < questions.length)
-      setCurrentQuestion(lastCompleted + 1);
-    else setCurrentQuestion(0);
-    setShowResults(false);
-    setReviewMode(false);
-
-    if (!isSubmitted) {
-      resetTimer();
-      startTimer();
-    }
-  };
-
-  const findLastCompletedQuestionLocal = () => {
-    const questions = getQuestions();
-    for (let i = questions.length - 1; i >= 0; i--) {
-      if (userAnswers[i] !== undefined) return i;
-    }
-    return -1;
-  };
-
+  // ─── Restart ───────────────────────────────────────────────────────────────
   const restartQuiz = () => {
     if (!selectedTech || !selectedLevel) return;
-
     setShowRestartModal(true);
   };
 
   const confirmRestart = () => {
-    // Stop and clear current timer
     stopTimer();
-
-    // Reset all quiz states
+    isFreshStartRef.current = false;
+    const fullTime = getTimeLimit(selectedTech, selectedLevel);
     setCurrentQuestion(0);
     setUserAnswers({});
     setShowResults(false);
@@ -1270,59 +924,28 @@ const SidebarCompo = () => {
     setIsSubmitted(false);
     setReviewMode(false);
     setIsQuizStarted(false);
-
-    // Reset timer states with fresh start
-    const fullTime = getTimeLimit(selectedTech, selectedLevel);
     setTimeLeft(fullTime);
-    setTimerStartedAt(Date.now());
+    setTimerStartedAt(null);
     setElapsedTime(0);
-
-    // Don't start timer automatically - wait for user to click Start Quiz
-    // Update progressByTech immediately for this level
-    if (selectedTech && selectedLevel) {
-      persistProgressForLevel(selectedTech, selectedLevel, {
-        currentQuestion: 0,
-        userAnswers: {},
-        showResults: false,
-        completedQuestions: [],
-        isSubmitted: false,
-        reviewMode: false,
-        timeLeft: fullTime,
-        timerStartedAt: Date.now(),
-        elapsedTime: 0,
-        isQuizStarted: false,
-      });
-    }
+    persistProgressForLevel(selectedTech, selectedLevel, {
+      currentQuestion: 0,
+      userAnswers: {},
+      showResults: false,
+      completedQuestions: [],
+      isSubmitted: false,
+      reviewMode: false,
+      timeLeft: fullTime,
+      timerStartedAt: null,
+      elapsedTime: 0,
+      isQuizStarted: false,
+    });
   };
 
-  const clearAllProgress = () => {
-    if (
-      window.confirm(
-        "Are you sure you want to clear ALL progress?\n\nThis will delete all saved quiz data for all technologies and levels.",
-      )
-    ) {
-      localStorage.removeItem(STORAGE_KEY);
-      setSelectedTech(null);
-      setSelectedLevel(null);
-      setCurrentQuestion(0);
-      setUserAnswers({});
-      setShowResults(false);
-      setCompletedQuestions(new Set());
-      setIsSubmitted(false);
-      setReviewMode(false);
-      setIsQuizStarted(false);
-      setProgressByTech({});
-      setTimeLeft(0);
-      setTimerStartedAt(null);
-      setElapsedTime(0);
-      stopTimer();
-      setIsLoggedIn(false);
-    }
-  };
-
+  // ─── Derived display values ────────────────────────────────────────────────
   const questions = getQuestions();
   const currentQ = questions[currentQuestion];
   const score = calculateScore();
+
   const getPerformanceStatus = () => {
     if (score.percentage >= 90)
       return {
@@ -1355,75 +978,49 @@ const SidebarCompo = () => {
 
   const performance = getPerformanceStatus();
 
-  // Get time color based on remaining time
   const timeColor = getTimeColor(
     timeLeft,
     getTimeLimit(selectedTech, selectedLevel),
     isSubmitted,
-    reviewMode,
+    reviewMode
   );
 
-  // Get question status
   const getQuestionStatus = (index) => {
     const question = questions[index];
-
     if (!question) return "unattempted";
-
     const answer = userAnswers[index];
-
-    if (answer === undefined || answer === -1) {
-      return "unattempted";
-    }
-
-    if (answer === question.correctAnswer) {
-      return "correct";
-    }
-
+    if (answer === undefined || answer === -1) return "unattempted";
+    if (answer === question.correctAnswer) return "correct";
     return "incorrect";
   };
 
-  // Get answer feedback for current question
   const getAnswerFeedback = () => {
     if (!currentQ) return null;
-
     const userAnswer = userAnswers[currentQuestion];
     const isCorrect = userAnswer === currentQ.correctAnswer;
     const isUnattempted = userAnswer === undefined || userAnswer === -1;
-
     return {
       userAnswer,
       isCorrect,
       isUnattempted,
       correctAnswer: currentQ.correctAnswer,
       explanation:
-        currentQ.explanation ||
-        `The correct answer is option ${currentQ.correctAnswer + 1}`,
+        currentQ.explanation || `The correct answer is option ${currentQ.correctAnswer + 1}`,
     };
   };
 
   const answerFeedback = getAnswerFeedback();
-
-  // compute boolean for "is mobile" usage in markup
-  // NOTE: treat widths < 1024 (lg) as mobile/tablet for layout/overlay behavior
   const isMobile = windowWidth < 1024;
-
-  // ======= New small UI additions (non-functional) =======
-  // Determine if current question is filled (answered) so we can show blue light
   const isCurrentAnswered =
-    userAnswers[currentQuestion] !== undefined &&
-    userAnswers[currentQuestion] !== -1;
+    userAnswers[currentQuestion] !== undefined && userAnswers[currentQuestion] !== -1;
 
-  // Additional CSS to append to existing styles (non-invasive)
   const extraCss = `
-    /* subtle blue highlight for answered question card */
     .filled-question {
       transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
       box-shadow: 0 10px 30px rgba(59,130,246,0.10), 0 0 0 6px rgba(96,165,250,0.03);
       border: 1px solid rgba(59,130,246,0.12) !important;
       transform: translateY(-2px);
     }
-
-    /* question number indicator when that question is answered */
     .filled-indicator {
       transition: box-shadow 220ms ease, background 220ms ease, transform 220ms ease;
       box-shadow: 0 0 0 6px rgba(59,130,246,0.06);
@@ -1431,34 +1028,22 @@ const SidebarCompo = () => {
       border-radius: 8px;
       transform: translateY(-1px);
     }
-
-    /* small focus ring for current + answered indicator */
     .question-indicator.filled-indicator:focus {
       outline: none;
       box-shadow: 0 0 0 10px rgba(59,130,246,0.06);
     }
-
-    /* mobile: ensure highlight remains subtle */
     @media (max-width: 1024px) {
       .filled-question { box-shadow: 0 6px 18px rgba(59,130,246,0.08); }
     }
-      @keyframes scaleIn {
-  from {
-     opacity:0;
-     transform:scale(.95);
-  }
-  to {
-     opacity:1;
-     transform:scale(1);
-  }
-}
-
+    @keyframes scaleIn {
+      from { opacity:0; transform:scale(.95); }
+      to { opacity:1; transform:scale(1); }
+    }
   `;
-  
-  // UI PART
+
+  // ─── Render ────────────────────────────────────────────────────────────────
   return (
     <div className={sidebarStyles.container}>
-      {/* overlay when sidebar open on small/medium screens */}
       {isSidebarOpen && windowWidth < 1024 && (
         <div
           onClick={() => setIsSidebarOpen(false)}
@@ -1468,18 +1053,12 @@ const SidebarCompo = () => {
       )}
 
       <div className={sidebarStyles.flexContainer}>
-        {/* Sidebar */}
+        {/* ── Sidebar ── */}
         <aside
           ref={asideRef}
-          className={`${sidebarStyles.sidebar} ${
-            isSidebarOpen
-              ? sidebarStyles.sidebarOpen
-              : sidebarStyles.sidebarClosed
-          }`}
+          className={`${sidebarStyles.sidebar} ${isSidebarOpen ? sidebarStyles.sidebarOpen : sidebarStyles.sidebarClosed}`}
           aria-hidden={!isSidebarOpen && isMobile}
         >
-          {/* Sidebar Header */}
-
           <div className={sidebarStyles.sidebarHeader}>
             <div className={sidebarStyles.headerContent}>
               <div
@@ -1494,8 +1073,6 @@ const SidebarCompo = () => {
                   <p className={sidebarStyles.subtitle}>Test • Learn • Grow</p>
                 </div>
               </div>
-
-              {/* Close button for small/tablet screens */}
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => setIsSidebarOpen(false)}
@@ -1508,21 +1085,17 @@ const SidebarCompo = () => {
             </div>
           </div>
 
-          {/* Sidebar Content */}
           <div className={sidebarStyles.sidebarContent}>
             <div className={sidebarStyles.techSectionHeader}>
               <h2 className={sidebarStyles.techTitle}>
                 <span className={sidebarStyles.techTitleAccent}></span>
                 Technologies
               </h2>
-              <span className={sidebarStyles.techCountBadge}>
-                {technologies.length} Techs
-              </span>
+              <span className={sidebarStyles.techCountBadge}>{technologies.length} Techs</span>
             </div>
 
             {technologies.map((tech) => {
               const Icon = tech.icon;
-
               return (
                 <div key={tech.id} className="mb-3" data-tech={tech.id}>
                   <button
@@ -1534,16 +1107,11 @@ const SidebarCompo = () => {
                     }`}
                   >
                     <div className={sidebarStyles.techIconContainer}>
-                      <span
-                        className={`${sidebarStyles.techIcon} ${tech.color || ""}`}
-                      >
+                      <span className={`${sidebarStyles.techIcon} ${tech.color || ""}`}>
                         {Icon && <Icon size={20} />}
                       </span>
-                      <span className={sidebarStyles.techName}>
-                        {tech.name}
-                      </span>
+                      <span className={sidebarStyles.techName}>{tech.name}</span>
                     </div>
-
                     {selectedTech === tech.id ? (
                       <ChevronDown size={18} />
                     ) : (
@@ -1551,75 +1119,46 @@ const SidebarCompo = () => {
                     )}
                   </button>
 
-                  {/* 🔥 ADD THIS LEVEL BLOCK BACK */}
-
                   {selectedTech === tech.id && (
                     <div className={sidebarStyles.levelContainer}>
                       {getLevelsForTech(tech.id).map((level) => {
-                        const progress = getProgressForTechLevel(
-                          tech.id,
-                          level.id,
-                        );
-                        const isCompleted = isTechLevelCompleted(
-                          tech.id,
-                          level.id,
-                        );
-
+                        const progress = getProgressForTechLevel(tech.id, level.id);
+                        const isCompleted = isTechLevelCompleted(tech.id, level.id);
                         return (
                           <button
                             key={level.id}
                             onClick={() => handleLevelSelect(level.id)}
-                            className={`${sidebarStyles.levelButton}
-${
-  selectedLevel === level.id
-    ? levelColorMap[level.id.toLowerCase()] || "bg-white"
-    : "bg-white"
-}
-`}
+                            className={`${sidebarStyles.levelButton} ${
+                              selectedLevel === level.id
+                                ? levelColorMap[level.id.toLowerCase()] || "bg-white"
+                                : "bg-white"
+                            }`}
                             style={{
-                              color:
-                                colorSchemes[selectedTech?.toUpperCase()] || "",
+                              color: colorSchemes[selectedTech?.toUpperCase()] || "",
                               boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
                               border: "1px solid rgba(0,0,0,0.08)",
                             }}
                           >
-                            {/* ROW 1 */}
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
                                 <div
-                                  className={`w-9 h-9 rounded-lg shadow-sm flex items-center justify-center
-  ${
-    selectedLevel === level.id
-      ? "bg-white text-indigo-600"
-      : "bg-gray-100 text-gray-600"
-  }`}
+                                  className={`w-9 h-9 rounded-lg shadow-sm flex items-center justify-center ${selectedLevel === level.id ? "bg-white text-indigo-600" : "bg-gray-100 text-gray-600"}`}
                                 >
                                   {level.icon}
                                 </div>
-
-                                <span className="font-medium text-gray-800">
-                                  {level.name}
-                                </span>
+                                <span className="font-medium text-gray-800">{level.name}</span>
                               </div>
-
                               <span className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-medium">
                                 {level.questions} Qs
                               </span>
                             </div>
-
-                            {/* ROW 2 (time right aligned) */}
                             <div className="flex justify-end mt-2">
                               <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-600 font-medium flex items-center gap-1">
                                 <Clock size={12} />
                                 {level.time}
                               </span>
                             </div>
-
-                            {/* ROW 3 (answered LEFT) */}
-
-                            {/* ROW 3 */}
                             <div className="flex items-center justify-between mt-2">
-                              {/* LEFT SIDE — answered */}
                               {progress.answered > 0 ? (
                                 <span className="text-xs px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 font-medium">
                                   {progress.answered}/{progress.total} answered
@@ -1627,8 +1166,6 @@ ${
                               ) : (
                                 <span></span>
                               )}
-
-                              {/* RIGHT SIDE — optional completed badge */}
                               {isCompleted && (
                                 <span className="text-xs px-2 py-1 rounded-full bg-indigo-100 text-indigo-600 font-medium">
                                   Completed
@@ -1644,34 +1181,30 @@ ${
               );
             })}
 
-            {/* Sidebar Footer */}
             <div className={sidebarStyles.sidebarFooter}>
               <div className="flex flex-col space-y-3">
                 <div className={sidebarStyles.footerTextContainer}>
-                  <p className={sidebarStyles.footerText1}>
-                    Master your skills one quiz at a time
-                  </p>
-                  <p className={sidebarStyles.footerText2}>
-                    Keep Learning, Keep Growing!
-                  </p>
+                  <p className={sidebarStyles.footerText1}>Master your skills one quiz at a time</p>
+                  <p className={sidebarStyles.footerText2}>Keep Learning, Keep Growing!</p>
                 </div>
               </div>
             </div>
           </div>
         </aside>
 
-        {/* Main Content */}
+        {/* ── Main Content ── */}
         <main className={sidebarStyles.mainContent}>
-          {/* Mobile/Header with hamburger - now visible on tablet (md) and mobile */}
           <div className={sidebarStyles.mobileHeader}>
             <div className={sidebarStyles.mobileHeaderTop}>
-              <button
-                onClick={toggleSidebar}
-                className={sidebarStyles.hamburgerButton}
-                aria-label="Toggle sidebar"
-              >
-                <Menu size={20} className="text-slate-700" />
-              </button>
+              {!showResults && !reviewMode && (
+                <button
+                  onClick={toggleSidebar}
+                  className={sidebarStyles.hamburgerButton}
+                  aria-label="Toggle sidebar"
+                >
+                  <Menu size={20} className="text-slate-700" />
+                </button>
+              )}
               <span className={sidebarStyles.mobileHeaderTitle}>
                 {selectedTech
                   ? `${selectedTechObj?.name || "Tech"} Quiz`
@@ -1680,14 +1213,12 @@ ${
             </div>
           </div>
 
-          {/* Mobile/Tablet Level Selection */}
           {selectedTech && !selectedLevel && (
             <div className={sidebarStyles.mobileLevelContainer}>
               <div className={sidebarStyles.mobileLevelScroll}>
                 {getLevelsForTech(selectedTech).map((l) => {
                   const progress = getProgressForTechLevel(selectedTech, l.id);
                   const isCompleted = isTechLevelCompleted(selectedTech, l.id);
-
                   return (
                     <button
                       key={l.id}
@@ -1695,26 +1226,18 @@ ${
                       className={sidebarStyles.mobileLevelButton}
                     >
                       <div className={sidebarStyles.mobileLevelContent}>
-                        <span className={sidebarStyles.mobileLevelName}>
-                          {l.name}
-                        </span>
-
+                        <span className={sidebarStyles.mobileLevelName}>{l.name}</span>
                         <div className={sidebarStyles.mobileLevelStats}>
                           <span className={sidebarStyles.questionCountBadge}>
                             {l.questions} Qs
                           </span>
                         </div>
-
                         <div className="flex items-center space-x-1 mt-1">
                           {progress.answered > 0 && (
-                            <span className={sidebarStyles.answeredBadge}>
-                              {progress.answered}
-                            </span>
+                            <span className={sidebarStyles.answeredBadge}>{progress.answered}</span>
                           )}
                           {isCompleted && (
-                            <span className={sidebarStyles.completedBadge}>
-                              ✓
-                            </span>
+                            <span className={sidebarStyles.completedBadge}>✓</span>
                           )}
                         </div>
                       </div>
@@ -1725,147 +1248,100 @@ ${
             </div>
           )}
 
+          {/* ── Screen routing ── */}
           {!selectedTech ? (
+            /* Home / landing */
             <div className={sidebarStyles.emptyState}>
               <div className={sidebarStyles.emptyStateCard}>
                 <div className={sidebarStyles.emptyStateHeader}>
                   <div className={sidebarStyles.emptyStateIconContainer}>
                     <Brain className="w-6 h-6 text-rose-600" />
                   </div>
-                  <h2 className={sidebarStyles.emptyStateTitle}>
-                    Tech Quiz Master
-                  </h2>
+                  <h2 className={sidebarStyles.emptyStateTitle}>Tech Quiz Master</h2>
                   <p className={sidebarStyles.emptyStateSubtitle}>
-                    Select a technology from the sidebar to begin your quiz
-                    journey
+                    Select a technology from the sidebar to begin your quiz journey
                   </p>
                 </div>
 
                 <div className={sidebarStyles.featureCardsGrid}>
-                  {/* Card 1 */}
                   <div className={sidebarStyles.featureCard}>
                     <div
                       className={`${sidebarStyles.featureCardGlow} bg-linear-to-r from-rose-300 to-orange-300`}
                     ></div>
-                    <div
-                      className={`${sidebarStyles.featureCardBody} border-rose-100/60`}
-                    >
+                    <div className={`${sidebarStyles.featureCardBody} border-rose-100/60`}>
                       <div
                         className={`${sidebarStyles.featureCardIconContainer} bg-linear-to-br from-rose-50 to-orange-50 ring-rose-100`}
                       >
                         <Star className="w-5 h-5 text-rose-600" />
                       </div>
-                      <h3 className={sidebarStyles.featureCardTitle}>
-                        Multiple Technologies
-                      </h3>
+                      <h3 className={sidebarStyles.featureCardTitle}>Multiple Technologies</h3>
                       <div className={sidebarStyles.featureCardList}>
                         <div className={sidebarStyles.featureListItem}>
-                          <div
-                            className={`${sidebarStyles.listDot} bg-rose-400`}
-                          ></div>
-                          <span>HTML & CSS Fundamentals</span>
+                          <div className={`${sidebarStyles.listDot} bg-rose-400`}></div>
+                          <span>HTML &amp; CSS Fundamentals</span>
                         </div>
                         <div className={sidebarStyles.featureListItem}>
-                          <div
-                            className={`${sidebarStyles.listDot} bg-orange-400`}
-                          ></div>
-                          <span>JavaScript & React</span>
+                          <div className={`${sidebarStyles.listDot} bg-orange-400`}></div>
+                          <span>JavaScript &amp; React</span>
                         </div>
                         <div className={sidebarStyles.featureListItem}>
-                          <div
-                            className={`${sidebarStyles.listDot} bg-amber-400`}
-                          ></div>
+                          <div className={`${sidebarStyles.listDot} bg-amber-400`}></div>
                           <span>And many more technologies</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Card 2 */}
                   <div className={sidebarStyles.featureCard}>
                     <div
                       className={`${sidebarStyles.featureCardGlow} bg-linear-to-r from-amber-300 to-yellow-300`}
                     ></div>
-                    <div
-                      className={`${sidebarStyles.featureCardBody} border-amber-100/60`}
-                    >
+                    <div className={`${sidebarStyles.featureCardBody} border-amber-100/60`}>
                       <div
                         className={`${sidebarStyles.featureCardIconContainer} bg-linear-to-br from-amber-50 to-yellow-50 ring-amber-100`}
                       >
                         <Zap className="w-5 h-5 text-amber-600" />
                       </div>
-                      <h3 className={sidebarStyles.featureCardTitle}>
-                        Timed Challenges
-                      </h3>
-
+                      <h3 className={sidebarStyles.featureCardTitle}>Timed Challenges</h3>
                       <div className="space-y-2 grow">
                         <div className={sidebarStyles.levelStatRow}>
-                          <span
-                            className={`${sidebarStyles.levelStatBadge} text-amber-700 bg-amber-50`}
-                          >
-                            Basic
-                          </span>
-                          <span className={sidebarStyles.levelStatTime}>
-                            5 minutes
-                          </span>
+                          <span className={`${sidebarStyles.levelStatBadge} text-amber-700 bg-amber-50`}>Basic</span>
+                          <span className={sidebarStyles.levelStatTime}>5 minutes</span>
                         </div>
                         <div className={sidebarStyles.levelStatRow}>
-                          <span
-                            className={`${sidebarStyles.levelStatBadge} text-orange-700 bg-orange-50`}
-                          >
-                            Intermediate
-                          </span>
-                          <span className={sidebarStyles.levelStatTime}>
-                            10 minutes
-                          </span>
+                          <span className={`${sidebarStyles.levelStatBadge} text-orange-700 bg-orange-50`}>Intermediate</span>
+                          <span className={sidebarStyles.levelStatTime}>10 minutes</span>
                         </div>
                         <div className={sidebarStyles.levelStatRow}>
-                          <span
-                            className={`${sidebarStyles.levelStatBadge} text-rose-700 bg-rose-50`}
-                          >
-                            Advanced
-                          </span>
-                          <span className={sidebarStyles.levelStatTime}>
-                            15 minutes
-                          </span>
+                          <span className={`${sidebarStyles.levelStatBadge} text-rose-700 bg-rose-50`}>Advanced</span>
+                          <span className={sidebarStyles.levelStatTime}>15 minutes</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Card 3 */}
                   <div className={sidebarStyles.featureCard}>
                     <div
                       className={`${sidebarStyles.featureCardGlow} bg-linear-to-r from-teal-300 to-emerald-300`}
                     ></div>
-                    <div
-                      className={`${sidebarStyles.featureCardBody} border-teal-100/60`}
-                    >
+                    <div className={`${sidebarStyles.featureCardBody} border-teal-100/60`}>
                       <div
                         className={`${sidebarStyles.featureCardIconContainer} bg-linear-to-br from-teal-50 to-emerald-50 ring-teal-100`}
                       >
                         <Target className="w-5 h-5 text-teal-600" />
                       </div>
-                      <h3 className={sidebarStyles.featureCardTitle}>
-                        Progress Tracking
-                      </h3>
+                      <h3 className={sidebarStyles.featureCardTitle}>Progress Tracking</h3>
                       <div className="space-y-2 grow">
                         <div className={sidebarStyles.featureCheckItem}>
-                          <CheckCircle
-                            className={`${sidebarStyles.checkIcon} text-teal-500`}
-                          />
+                          <CheckCircle className={`${sidebarStyles.checkIcon} text-teal-500`} />
                           <span>Auto-save per technology</span>
                         </div>
                         <div className={sidebarStyles.featureCheckItem}>
-                          <CheckCircle
-                            className={`${sidebarStyles.checkIcon} text-teal-500`}
-                          />
+                          <CheckCircle className={`${sidebarStyles.checkIcon} text-teal-500`} />
                           <span>Track level completion</span>
                         </div>
                         <div className={sidebarStyles.featureCheckItem}>
-                          <CheckCircle
-                            className={`${sidebarStyles.checkIcon} text-teal-500`}
-                          />
+                          <CheckCircle className={`${sidebarStyles.checkIcon} text-teal-500`} />
                           <span>Detailed performance stats</span>
                         </div>
                       </div>
@@ -1885,11 +1361,10 @@ ${
               </div>
             </div>
           ) : !selectedLevel ? (
+            /* Tech selected, no level yet */
             <div className={sidebarStyles.techSelectedState}>
               <div className={sidebarStyles.techSelectedCard}>
-                <div
-                  className={`${sidebarStyles.techSelectedIcon} ${selectedTechObj?.color || ""}`}
-                >
+                <div className={`${sidebarStyles.techSelectedIcon} ${selectedTechObj?.color || ""}`}>
                   {(() => {
                     const Icon = selectedTechObj.icon;
                     return Icon ? <Icon size={28} /> : null;
@@ -1903,30 +1378,6 @@ ${
                 <p className={sidebarStyles.techSelectedSubtitle}>
                   Select a difficulty level to begin your challenge
                 </p>
-
-                {isLoggedIn && selectedLevel && (
-                  <div className={sidebarStyles.progressList}>
-                    {(() => {
-                      const progress = getProgressForTechLevel(
-                        selectedTech,
-                        selectedLevel,
-                      );
-                      if (progress.answered > 0) {
-                        return (
-                          <div className={sidebarStyles.progressItem}>
-                            <p className={sidebarStyles.progressText}>
-                              {selectedLevel.charAt(0).toUpperCase() +
-                                selectedLevel.slice(1)}
-                              : {progress.answered}/{progress.total} answered
-                            </p>
-                          </div>
-                        );
-                      }
-                      return null;
-                    })()}
-                  </div>
-                )}
-
                 <div className={sidebarStyles.readyMessage}>
                   <p className={sidebarStyles.readyText}>
                     Get ready to test your{" "}
@@ -1938,19 +1389,16 @@ ${
               </div>
             </div>
           ) : showResults ? (
+            /* Results screen */
             <div className={sidebarStyles.resultsScreen}>
               <div className={sidebarStyles.resultsCard}>
                 <div className={sidebarStyles.resultsHeader}>
-                  <div
-                    className={`${sidebarStyles.resultsIconContainer} ${performance.color}`}
-                  >
+                  <div className={`${sidebarStyles.resultsIconContainer} ${performance.color}`}>
                     {performance.icon}
                   </div>
-                  <h2 className={sidebarStyles.resultsTitle}>
-                    Quiz Completed!
-                  </h2>
+                  <h2 className={sidebarStyles.resultsTitle}>Quiz Completed!</h2>
                   <p className={sidebarStyles.resultsSubtitle}>
-                    You've completed the {selectedLevel} level of{" "}
+                    You&apos;ve completed the {selectedLevel} level of{" "}
                     {selectedTechObj?.name?.charAt(0).toUpperCase() +
                       selectedTechObj?.name?.slice(1)}
                   </p>
@@ -1960,13 +1408,9 @@ ${
                     {performance.text}
                   </div>
 
-                  {/* ADDED: Time Taken Display */}
                   <div className={sidebarStyles.timeTakenContainer}>
                     <div className={sidebarStyles.timeTakenHeader}>
-                      <Clock
-                        size={20}
-                        className={sidebarStyles.timeTakenIcon}
-                      />
+                      <Clock size={20} className={sidebarStyles.timeTakenIcon} />
                       <span className={sidebarStyles.timeTakenText}>
                         Time Taken: {formatElapsedTime(elapsedTime)}
                       </span>
@@ -1985,18 +1429,13 @@ ${
                       >
                         <CheckCircle size={24} />
                       </div>
-                      <p
-                        className={`${sidebarStyles.scoreCardNumber} text-emerald-600`}
-                      >
+                      <p className={`${sidebarStyles.scoreCardNumber} text-emerald-600`}>
                         {score.correct}
                       </p>
-                      <p
-                        className={`${sidebarStyles.scoreCardLabel} text-emerald-700`}
-                      >
+                      <p className={`${sidebarStyles.scoreCardLabel} text-emerald-700`}>
                         Correct Answers
                       </p>
                     </div>
-
                     <div
                       className={`${sidebarStyles.scoreCard} bg-linear-to-br from-rose-50/80 to-pink-50/80 border-rose-200/50`}
                     >
@@ -2005,18 +1444,13 @@ ${
                       >
                         <XCircle size={24} />
                       </div>
-                      <p
-                        className={`${sidebarStyles.scoreCardNumber} text-rose-600`}
-                      >
+                      <p className={`${sidebarStyles.scoreCardNumber} text-rose-600`}>
                         {score.incorrect}
                       </p>
-                      <p
-                        className={`${sidebarStyles.scoreCardLabel} text-rose-700`}
-                      >
+                      <p className={`${sidebarStyles.scoreCardLabel} text-rose-700`}>
                         Incorrect Answers
                       </p>
                     </div>
-
                     <div
                       className={`${sidebarStyles.scoreCard} bg-orange-100 border-gray-200/50`}
                     >
@@ -2025,25 +1459,17 @@ ${
                       >
                         <AlertCircle size={24} />
                       </div>
-                      <p
-                        className={`${sidebarStyles.scoreCardNumber} text-gray-600`}
-                      >
+                      <p className={`${sidebarStyles.scoreCardNumber} text-gray-600`}>
                         {score.unattempted}
                       </p>
-                      <p className={sidebarStyles.scoreCardLabel}>
-                        Unattempted
-                      </p>
+                      <p className={sidebarStyles.scoreCardLabel}>Unattempted</p>
                     </div>
                   </div>
 
                   <div className={sidebarStyles.overallScoreContainer}>
                     <div className={sidebarStyles.overallScoreHeader}>
-                      <span className={sidebarStyles.overallScoreLabel}>
-                        Overall Score
-                      </span>
-                      <span className={sidebarStyles.overallScoreValue}>
-                        {score.percentage}%
-                      </span>
+                      <span className={sidebarStyles.overallScoreLabel}>Overall Score</span>
+                      <span className={sidebarStyles.overallScoreValue}>{score.percentage}%</span>
                     </div>
                     <div className={sidebarStyles.progressBarContainer}>
                       <div
@@ -2051,31 +1477,23 @@ ${
                           score.percentage >= 80
                             ? "bg-linear-to-r from-emerald-400 to-teal-400"
                             : score.percentage >= 60
-                              ? "bg-linear-to-r from-amber-400 to-orange-400"
-                              : "bg-linear-to-r from-rose-400 to-pink-400"
+                            ? "bg-linear-to-r from-amber-400 to-orange-400"
+                            : "bg-linear-to-r from-rose-400 to-pink-400"
                         }`}
                         style={{ width: `${score.percentage}%` }}
                       />
                     </div>
                     <div className={sidebarStyles.scoreDescription}>
-                      Score based on {score.correct} correct out of{" "}
-                      {score.total} questions
+                      Score based on {score.correct} correct out of {score.total} questions
                     </div>
                   </div>
 
                   <div className={sidebarStyles.resultsButtonsContainer}>
-                    <button
-                      onClick={handleReviewMode}
-                      className={sidebarStyles.reviewButton}
-                    >
+                    <button onClick={handleReviewMode} className={sidebarStyles.reviewButton}>
                       <Eye size={18} />
                       <span>Review Questions</span>
                     </button>
-
-                    <button
-                      onClick={restartQuiz}
-                      className={sidebarStyles.restartButton}
-                    >
+                    <button onClick={restartQuiz} className={sidebarStyles.restartButton}>
                       <RotateCcw size={18} />
                       <span>Restart Quiz</span>
                     </button>
@@ -2084,16 +1502,14 @@ ${
               </div>
             </div>
           ) : !isQuizStarted && !reviewMode && selectedTech && selectedLevel ? (
-            // Start Quiz Screen
+            /* Start quiz screen */
             <div className={sidebarStyles.startQuizScreen}>
               <div className={sidebarStyles.startQuizCard}>
                 <div className={sidebarStyles.startQuizHeader}>
                   <div className={sidebarStyles.startQuizIconContainer}>
                     <PlayCircle size={48} className="text-blue-600" />
                   </div>
-                  <h2 className={sidebarStyles.startQuizTitle}>
-                    Ready to Start?
-                  </h2>
+                  <h2 className={sidebarStyles.startQuizTitle}>Ready to Start?</h2>
                   <p className={sidebarStyles.startQuizSubtitle}>
                     Get ready for the {selectedLevel} level of{" "}
                     {selectedTechObj?.name?.charAt(0).toUpperCase() +
@@ -2113,93 +1529,61 @@ ${
                           })()}
                         </div>
                         <div className={sidebarStyles.techDisplayText}>
-                          <p className={sidebarStyles.techDisplayName}>
-                            {selectedTechObj.name}
-                          </p>
+                          <p className={sidebarStyles.techDisplayName}>{selectedTechObj.name}</p>
                           <p className={sidebarStyles.techDisplayLevel}>
-                            {selectedLevel.charAt(0).toUpperCase() +
-                              selectedLevel.slice(1)}{" "}
-                            Level
+                            {selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)} Level
                           </p>
                         </div>
                       </div>
-
                       <div className={sidebarStyles.quizStats}>
                         <div className={sidebarStyles.statItem}>
-                          <div className={sidebarStyles.statNumber}>
-                            {questions.length}
-                          </div>
-                          <div className={sidebarStyles.statLabel}>
-                            Questions
-                          </div>
+                          <div className={sidebarStyles.statNumber}>{questions.length}</div>
+                          <div className={sidebarStyles.statLabel}>Questions</div>
                         </div>
-
                         <div className={sidebarStyles.statItem}>
                           <div className={sidebarStyles.statNumber}>
                             <Clock size={16} className="mr-1" />
                             {getTimeLimit(selectedTech, selectedLevel) / 60} min
                           </div>
-                          <div className={sidebarStyles.statLabel}>
-                            Time Limit
-                          </div>
+                          <div className={sidebarStyles.statLabel}>Time Limit</div>
                         </div>
                       </div>
                     </div>
 
                     <div className={sidebarStyles.instructionsContainer}>
-                      <h4 className={sidebarStyles.instructionsTitle}>
-                        Quiz Instructions:
-                      </h4>
+                      <h4 className={sidebarStyles.instructionsTitle}>Quiz Instructions:</h4>
                       <ul className={sidebarStyles.instructionsList}>
                         <li className={sidebarStyles.instructionItem}>
-                          <CheckCircle
-                            size={14}
-                            className={sidebarStyles.instructionCheck}
-                          />
+                          <CheckCircle size={14} className={sidebarStyles.instructionCheck} />
                           Answer all questions within the time limit
                         </li>
-
                         <li className={sidebarStyles.instructionItem}>
-                          <CheckCircle
-                            size={14}
-                            className={sidebarStyles.instructionCheck}
-                          />
-                          Timer starts immediately when you click "Start Quiz"
+                          <CheckCircle size={14} className={sidebarStyles.instructionCheck} />
+                          Timer starts immediately when you click &quot;Start Quiz&quot;
                         </li>
                         <li className={sidebarStyles.instructionItem}>
-                          <CheckCircle
-                            size={14}
-                            className={sidebarStyles.instructionCheck}
-                          />
+                          <CheckCircle size={14} className={sidebarStyles.instructionCheck} />
                           Your progress is saved automatically
                         </li>
                       </ul>
                     </div>
                   </div>
 
-                  {getProgressForTechLevel(selectedTech, selectedLevel)
-                    .answered > 0 && (
+                  {getProgressForTechLevel(selectedTech, selectedLevel).answered > 0 && (
                     <div className={sidebarStyles.progressWarning}>
                       <p className={sidebarStyles.warningText}>
                         You have previously answered{" "}
-                        {
-                          getProgressForTechLevel(selectedTech, selectedLevel)
-                            .answered
-                        }{" "}
-                        questions. Starting fresh will reset your progress.
+                        {getProgressForTechLevel(selectedTech, selectedLevel).answered} questions.
+                        Starting fresh will reset your progress.
                       </p>
                     </div>
                   )}
 
                   <div className={sidebarStyles.startButtonsContainer}>
-                    <button
-                      onClick={handleStartQuiz}
-                      className={sidebarStyles.startButton}
-                    >
+                    <button onClick={handleStartQuiz} className={sidebarStyles.startButton}>
                       <PlayCircle size={20} />
                       <span className="font-bold">Start Quiz</span>
                     </button>
-
                     <button
                       onClick={() => {
                         setSelectedLevel(null);
@@ -2214,53 +1598,43 @@ ${
               </div>
             </div>
           ) : currentQ && (isQuizStarted || reviewMode) ? (
-            // Quiz in progress OR Review Mode
+            /* Active quiz / review */
             <div className={sidebarStyles.quizContainer}>
-              {/* Timer and progress bar */}
               <div className={sidebarStyles.quizHeaderCard}>
                 <div className={sidebarStyles.quizHeader}>
                   <h1 className={sidebarStyles.quizTitle}>
                     {selectedTechObj?.name?.charAt(0).toUpperCase() +
                       selectedTechObj?.name?.slice(1)}{" "}
                     -{" "}
-                    {selectedLevel.charAt(0).toUpperCase() +
-                      selectedLevel.slice(1)}{" "}
+                    {selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)}{" "}
                     {reviewMode && (
-                      <span className={sidebarStyles.reviewModeBadge}>
-                        Review Mode
-                      </span>
+                      <span className={sidebarStyles.reviewModeBadge}>Review Mode</span>
                     )}
                   </h1>
                   <div className={sidebarStyles.statsGrid}>
-                    {/* Timer display */}
-                    <div
-                      className={`${sidebarStyles.timerDisplay} ${timeColor}`}
-                    >
-                      <Clock size={16} />
-                      <span className={sidebarStyles.timerText}>
-                        {isSubmitted || reviewMode
-                          ? "00:00"
-                          : formatTime(timeLeft)}
-                      </span>
-                    </div>
+                    {getTimeLimit(selectedTech, selectedLevel) > 0 && (
+                      <div className={`${sidebarStyles.timerDisplay} ${timeColor}`}>
+                        <Clock size={16} />
+                        <span className={sidebarStyles.timerText}>
+                          {isSubmitted || reviewMode
+                            ? formatElapsedTime(calculateElapsedTime())
+                            : formatTime(timeLeft)}
+                        </span>
+                      </div>
+                    )}
                     <span className={sidebarStyles.questionBadge}>
                       Question {currentQuestion + 1} of {questions.length}
                     </span>
                     {isLoggedIn && selectedLevel && (
                       <div className={sidebarStyles.progressList}>
                         {(() => {
-                          const progress = getProgressForTechLevel(
-                            selectedTech,
-                            selectedLevel,
-                          );
+                          const progress = getProgressForTechLevel(selectedTech, selectedLevel);
                           if (progress.answered > 0) {
                             return (
                               <div className={sidebarStyles.progressItem}>
                                 <p className={sidebarStyles.progressText}>
-                                  {selectedLevel.charAt(0).toUpperCase() +
-                                    selectedLevel.slice(1)}
-                                  : {progress.answered}/{progress.total}{" "}
-                                  questions answered
+                                  {selectedLevel.charAt(0).toUpperCase() + selectedLevel.slice(1)}
+                                  : {progress.answered}/{progress.total} questions answered
                                 </p>
                               </div>
                             );
@@ -2281,51 +1655,25 @@ ${
                   />
                 </div>
 
-                {/* Question status indicators */}
                 <div className={sidebarStyles.questionIndicators}>
                   {questions.map((_, index) => {
                     const isCurrent = index === currentQuestion;
                     const status = getQuestionStatus(index);
-
                     let statusColors;
-
-                    // REVIEW MODE COLORS
                     if (reviewMode) {
-                      if (status === "correct") {
-                        statusColors = {
-                          bgColor: "bg-green-100",
-                          textColor: "text-green-700",
-                        };
-                      } else if (status === "incorrect") {
-                        statusColors = {
-                          bgColor: "bg-red-600",
-                          textColor: "text-red-600",
-                        };
-                      } else {
-                        statusColors = {
-                          bgColor: "bg-amber-100",
-                          textColor: "text-amber-600",
-                        };
-                      }
+                      if (status === "correct")
+                        statusColors = { bgColor: "bg-green-100", textColor: "text-green-700" };
+                      else if (status === "incorrect")
+                        statusColors = { bgColor: "bg-red-600", textColor: "text-red-600" };
+                      else
+                        statusColors = { bgColor: "bg-amber-100", textColor: "text-amber-600" };
                     } else {
-                      // normal quiz mode
                       statusColors = getQuestionStatusColor(status, false);
                     }
-
                     const isAnswered =
-                      userAnswers[index] !== undefined &&
-                      userAnswers[index] !== -1;
-
-                    let borderColor = "";
-                    if (isCurrent) {
-                      borderColor = sidebarStyles.currentQuestion;
-                    }
-
-                    // Add our subtle filled indicator class when question answered
-                    const indicatorExtraClass = isAnswered
-                      ? "filled-indicator"
-                      : "";
-
+                      userAnswers[index] !== undefined && userAnswers[index] !== -1;
+                    const borderColor = isCurrent ? sidebarStyles.currentQuestion : "";
+                    const indicatorExtraClass = isAnswered ? "filled-indicator" : "";
                     return (
                       <button
                         key={index}
@@ -2340,84 +1688,70 @@ ${
                   })}
                 </div>
 
-                {/* Time warning */}
                 {!isSubmitted && !reviewMode && timeLeft < 60 && (
                   <div className={sidebarStyles.timeWarning}>
-                    <AlertCircle
-                      size={16}
-                      className={sidebarStyles.warningIcon}
-                    />
+                    <AlertCircle size={16} className={sidebarStyles.warningIcon} />
                     Less than 1 minute remaining!
                   </div>
                 )}
               </div>
 
-              {/* Question Card */}
-              {/* Add the filled-question class when the current question is answered */}
-              <div
-                className={`${sidebarStyles.questionCard} ${isCurrentAnswered ? "filled-question" : ""}`}
-              >
-                {/* Question status badge */}
+              <div className={`${sidebarStyles.questionCard} ${isCurrentAnswered ? "filled-question" : ""}`}>
                 <div className={sidebarStyles.questionHeader}>
                   <div className={sidebarStyles.questionIconContainer}>
                     <div className={sidebarStyles.questionIcon}>
                       <Target size={24} />
                     </div>
                     <div>
-                      <h2 className={sidebarStyles.questionTextContainer}>
-                        {currentQ.question}
-                      </h2>
+                      <h2 className={sidebarStyles.questionTextContainer}>{currentQ.question}</h2>
                     </div>
                   </div>
-
-                  {/* Show status badge only in review mode */}
-                  {reviewMode ? (
+                  {reviewMode && (
                     <div
                       className={`${sidebarStyles.statusBadge} ${
                         answerFeedback.isCorrect
                           ? "bg-linear-to-r from-emerald-100 to-teal-100 text-emerald-700"
                           : answerFeedback.userAnswer !== undefined &&
-                              answerFeedback.userAnswer !== -1
-                            ? "bg-linear-to-r from-rose-100 to-pink-100 text-rose-700"
-                            : "bg-linear-to-r from-amber-100 to-orange-100 text-amber-700"
+                            answerFeedback.userAnswer !== -1
+                          ? "bg-linear-to-r from-rose-100 to-pink-100 text-rose-700"
+                          : "bg-linear-to-r from-amber-100 to-orange-100 text-amber-700"
                       }`}
                     >
                       {answerFeedback.isCorrect
                         ? " Correct"
                         : answerFeedback.userAnswer !== undefined &&
-                            answerFeedback.userAnswer !== -1
-                          ? " Incorrect"
-                          : " Unattempted"}
+                          answerFeedback.userAnswer !== -1
+                        ? " Incorrect"
+                        : " Unattempted"}
                     </div>
-                  ) : null}
+                  )}
                 </div>
 
-                {/* Options */}
                 <div className={sidebarStyles.optionsContainer}>
                   {currentQ?.options?.map((option, index) => {
                     const isSelected = userAnswers[currentQuestion] === index;
                     const isCorrect = index === currentQ.correctAnswer;
-                    const showFeedback = reviewMode || isSubmitted; // Only in review mode
-
+                    const showFeedback = reviewMode || isSubmitted;
                     const optionStyle = getOptionButtonStyle(
                       isSelected,
                       isCorrect,
                       showFeedback,
                       index,
-                      currentQ.correctAnswer,
+                      currentQ.correctAnswer
                     );
-
                     return (
                       <button
                         key={index}
                         onClick={() => handleAnswerSelect(index)}
                         disabled={!isQuizStarted || isSubmitted || reviewMode}
-                        className={`${sidebarStyles.optionButton} ${optionStyle.buttonClass} ${(isQuizStarted || reviewMode) && !isSubmitted && !reviewMode ? `${sidebarStyles.optionButtonHover}` : sidebarStyles.optionButtonDisabled}`}
+                        className={`${sidebarStyles.optionButton} ${optionStyle.buttonClass} ${
+                          (isQuizStarted || reviewMode) && !isSubmitted && !reviewMode
+                            ? sidebarStyles.optionButtonHover
+                            : sidebarStyles.optionButtonDisabled
+                        }`}
                       >
                         <div className={sidebarStyles.optionContent}>
-                          <div
-                            className={`${sidebarStyles.optionRadio} ${optionStyle.radioClass}`}
-                          >
+                          <div className={`${sidebarStyles.optionRadio} ${optionStyle.radioClass}`}>
                             {!showFeedback && isSelected && (
                               <div className="w-2 h-2 rounded-full bg-white" />
                             )}
@@ -2428,16 +1762,11 @@ ${
                                 <XCircle size={16} className="text-white" />
                               ) : null)}
                           </div>
-                          <span
-                            className={`${sidebarStyles.optionText} ${optionStyle.textClass}`}
-                          >
+                          <span className={`${sidebarStyles.optionText} ${optionStyle.textClass}`}>
                             {option}
                           </span>
-
                           {showFeedback && isCorrect && (
-                            <span className={sidebarStyles.correctAnswerBadge}>
-                              Correct Answer
-                            </span>
+                            <span className={sidebarStyles.correctAnswerBadge}>Correct Answer</span>
                           )}
                         </div>
                       </button>
@@ -2445,39 +1774,34 @@ ${
                   })}
                 </div>
 
-                {/* Explanation for review mode */}
                 {reviewMode && (
                   <div className={sidebarStyles.explanationContainer}>
                     <div className={sidebarStyles.explanationHeader}>
-                      <BarChart3
-                        size={20}
-                        className={sidebarStyles.explanationIcon}
-                      />
-                      <span className={sidebarStyles.explanationTitle}>
-                        Explanation
-                      </span>
+                      <BarChart3 size={20} className={sidebarStyles.explanationIcon} />
+                      <span className={sidebarStyles.explanationTitle}>Explanation</span>
                     </div>
                     <div className={sidebarStyles.explanationContent}>
                       <p className={sidebarStyles.explanationText}>
                         {answerFeedback.isCorrect
                           ? " Your answer is correct!"
                           : answerFeedback.userAnswer !== undefined &&
-                              answerFeedback.userAnswer !== -1
-                            ? ` Your answer was incorrect. The correct answer is option ${answerFeedback.correctAnswer + 1}.`
-                            : ` This question was unattempted. The correct answer is option ${answerFeedback.correctAnswer + 1}.`}
+                            answerFeedback.userAnswer !== -1
+                          ? ` Your answer was incorrect. The correct answer is option ${
+                              answerFeedback.correctAnswer + 1
+                            }.`
+                          : ` This question was unattempted. The correct answer is option ${
+                              answerFeedback.correctAnswer + 1
+                            }.`}
                       </p>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Navigation Buttons */}
               <div className={sidebarStyles.navButtonsContainer}>
                 <button
                   onClick={() => handleQuestionNavigation("prev")}
-                  disabled={
-                    currentQuestion === 0 || (!isQuizStarted && !reviewMode)
-                  }
+                  disabled={currentQuestion === 0 || (!isQuizStarted && !reviewMode)}
                   className={`${sidebarStyles.prevButton} ${
                     currentQuestion === 0 || (!isQuizStarted && !reviewMode)
                       ? sidebarStyles.prevButtonDisabled
@@ -2489,40 +1813,25 @@ ${
                 </button>
 
                 <div className={sidebarStyles.navRightContainer}>
-                  {!isSubmitted &&
-                    !reviewMode &&
-                    isQuizStarted &&
-                    currentQuestion < questions.length - 1 && (
-                      <button
-                        onClick={() => {
-                          setCurrentQuestion(currentQuestion + 1);
-                        }}
-                        className={sidebarStyles.nextButton}
-                      >
-                        <span>Next Question</span>
-                        <ArrowRight size={18} />
-                      </button>
-                    )}
-
-                  {/* Submit/Results button - Only show in quiz mode, not review mode */}
-                  {questions.length > 0 && isQuizStarted && !reviewMode && (
+                  {!isSubmitted && !reviewMode && isQuizStarted && currentQuestion < questions.length - 1 && (
                     <button
-                      onClick={!isSignedIn ? openSignIn : handleSubmitQuiz} // Agar login nahi toh login modal, varna submit modal
-                      className={`${sidebarStyles.submitButton} ${
-                        isSubmitted
-                          ? sidebarStyles.submitButtonResults
-                          : sidebarStyles.submitButtonQuiz
-                      } ${!isSignedIn ? "bg-amber-500" : ""}`}
+                      onClick={() => setCurrentQuestion(currentQuestion + 1)}
+                      className={sidebarStyles.nextButton}
                     >
-                      {!isSignedIn
-                        ? "Login to Submit"
-                        : isSubmitted
-                          ? "See Results"
-                          : "Submit Quiz"}
+                      <span>Next Question</span>
+                      <ArrowRight size={18} />
                     </button>
                   )}
-
-                  {/* In review mode, show "Back to Results" button */}
+                  {questions.length > 0 && isQuizStarted && !reviewMode && (
+                    <button
+                      onClick={!isSignedIn ? openSignIn : handleSubmitQuiz}
+                      className={`${sidebarStyles.submitButton} ${
+                        isSubmitted ? sidebarStyles.submitButtonResults : sidebarStyles.submitButtonQuiz
+                      } ${!isSignedIn ? "bg-amber-500" : ""}`}
+                    >
+                      {!isSignedIn ? "Login to Submit" : isSubmitted ? "See Results" : "Submit Quiz"}
+                    </button>
+                  )}
                   {reviewMode && (
                     <button
                       onClick={() => {
@@ -2538,12 +1847,11 @@ ${
               </div>
             </div>
           ) : (
+            /* Loading */
             <div className={sidebarStyles.loadingState}>
               <div className={sidebarStyles.loadingCard}>
                 <div className={sidebarStyles.loadingSpinner} />
-                <h3 className={sidebarStyles.loadingText}>
-                  Preparing Your Quiz
-                </h3>
+                <h3 className={sidebarStyles.loadingText}>Preparing Your Quiz</h3>
                 <p className={sidebarStyles.loadingSubtext}>
                   Loading questions and setting up timer...
                 </p>
@@ -2552,28 +1860,23 @@ ${
           )}
         </main>
       </div>
+
+      {/* ── Submit Modal ── */}
       {showSubmitModal && (
         <div className="fixed inset-0 z-9999 flex items-center justify-center">
-          {/* BACKDROP */}
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setShowSubmitModal(false)}
           />
-
-          {/* MODAL */}
           <div className="relative bg-white rounded-2xl shadow-2xl p-8 w-105 animate-[scaleIn_0.25s_ease]">
             <div className="flex items-center gap-3 mb-4">
               <AlertCircle className="text-orange-500" size={26} />
-              <h3 className="text-xl font-semibold text-slate-800">
-                Submit Quiz?
-              </h3>
+              <h3 className="text-xl font-semibold text-slate-800">Submit Quiz?</h3>
             </div>
-
             <p className="text-slate-600 text-sm leading-relaxed">
-              Once submitted, you cannot change your answers. Unattempted
-              questions will be marked as incomplete.
+              Once submitted, you cannot change your answers. Unattempted questions will be marked
+              as incomplete.
             </p>
-
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowSubmitModal(false)}
@@ -2581,8 +1884,6 @@ ${
               >
                 Cancel
               </button>
-
-              {/* ✅ FIXED BUTTON: Seedha confirmSubmit call hoga yahan */}
               <button
                 onClick={confirmSubmit}
                 className="px-5 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition font-semibold shadow-md"
@@ -2593,29 +1894,23 @@ ${
           </div>
         </div>
       )}
-      {/* restart attention */}
+
+      {/* ── Restart Modal ── */}
       {showRestartModal && (
         <div className="fixed inset-0 z-9999 flex items-center justify-center">
-          {/* backdrop */}
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setShowRestartModal(false)}
           />
-
-          {/* modal */}
           <div className="relative bg-white rounded-2xl shadow-2xl p-8 w-105 animate-[scaleIn_0.25s_ease]">
             <div className="flex items-center gap-3 mb-4">
               <AlertCircle className="text-red-500" size={26} />
-              <h3 className="text-xl font-semibold text-slate-800">
-                Restart Quiz ?
-              </h3>
+              <h3 className="text-xl font-semibold text-slate-800">Restart Quiz?</h3>
             </div>
-
             <p className="text-slate-600 text-sm leading-relaxed">
-              All your progress for this technology/level will be lost. Timer
-              will start fresh from the beginning.
+              All your progress for this technology/level will be lost. Timer will start fresh from
+              the beginning.
             </p>
-
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowRestartModal(false)}
@@ -2623,7 +1918,6 @@ ${
               >
                 Cancel
               </button>
-
               <button
                 onClick={() => {
                   setShowRestartModal(false);
@@ -2637,28 +1931,22 @@ ${
           </div>
         </div>
       )}
-      {/* login required for start quiz */}
+
+      {/* ── Login Modal ── */}
       {showLoginModal && (
         <div className="fixed inset-0 z-9999 flex items-center justify-center">
-          {/* backdrop */}
           <div
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setShowLoginModal(false)}
           />
-
-          {/* modal */}
           <div className="relative bg-white rounded-2xl shadow-2xl p-8 w-105 animate-[scaleIn_0.25s_ease]">
             <div className="flex items-center gap-3 mb-4">
               <AlertCircle className="text-amber-500" size={26} />
-              <h3 className="text-xl font-semibold text-slate-800">
-                Login Required
-              </h3>
+              <h3 className="text-xl font-semibold text-slate-800">Login Required</h3>
             </div>
-
             <p className="text-slate-600 text-sm leading-relaxed">
               Please login to start the quiz.
             </p>
-
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowLoginModal(false)}
@@ -2666,7 +1954,6 @@ ${
               >
                 Cancel
               </button>
-
               <button
                 onClick={() => {
                   setShowLoginModal(false);
@@ -2681,7 +1968,6 @@ ${
         </div>
       )}
 
-      {/* append existing cssStyles and our lightweight extraCss */}
       <style>{cssStyles + extraCss}</style>
     </div>
   );

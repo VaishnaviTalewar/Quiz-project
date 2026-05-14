@@ -7,7 +7,6 @@ import {
   getBadgeText,
 } from "../assets/dummyStyles.js";
 import { useApi } from "../services/api.js";
-import { resultPageAnimations } from './../assets/dummyStyles';
 
 // Badge Component
 const Badge = ({ percent }) => {
@@ -174,7 +173,7 @@ const MyResult = () => {
     };
 
     loadResults();
-  }, []);
+  }, [request]);
 
   const grouped = useMemo(() => {
     const map = {};
@@ -209,7 +208,6 @@ const MyResult = () => {
           </section>
         ))}
       </div>
-      <style jsx>{resultPageAnimations}</style>
     </div>
   );
 };

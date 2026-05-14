@@ -28,7 +28,7 @@ const ListCompo = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("All"); //all level will shown
-  const [animateBorder, setAnimateBorder] = useState(false);
+  const [animateBorder, setAnimateBorder] = useState(true);
   const [toast, setToast] = useState({
     visible: false,
     message: "",
@@ -59,14 +59,7 @@ const ListCompo = () => {
       }
     };
     loadQuizzes();
-  }, []);
-
-  useEffect(() => {
-    setAnimateBorder(true);
-    return () => {
-      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
-    };
-  }, []); //for ui
+  }, [request]);
 
   //to delete a technology
   const deleteTechnology = async (id) => {

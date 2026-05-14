@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
 
-function ClerkWithRouter() {
+export function ClerkWithRouter() {
   const navigate = useNavigate();
 
   return (

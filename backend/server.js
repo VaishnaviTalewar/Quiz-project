@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { clerkMiddleware } from "@clerk/express";
 import { connectDb } from "./config/db.js";
 import userRoute from "./routes/userRoute.js";
 import adminRoute from "./routes/adminRoute.js";
@@ -42,8 +43,8 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+app.use(clerkMiddleware());
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 app.use(express.json());
 
 // mongodb
