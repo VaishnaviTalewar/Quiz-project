@@ -44,9 +44,10 @@ export const navbarStyles = {
   xIcon: "h-6 w-6",
 
   // Mobile overlay menu
-  mobileOverlay: "md:hidden fixed inset-0 z-40",
+  mobileOverlay: "md:hidden fixed inset-0 z-[999]",
   mobileBackdrop: "absolute inset-0 bg-black/40 backdrop-blur-sm",
-  mobilePanel: "absolute inset-x-4 top-16 bg-white rounded-2xl shadow-2xl p-6 mx-4",
+  mobilePanel:
+  "absolute inset-x-4 top-16 bg-white rounded-2xl shadow-2xl p-6 mx-4 pointer-events-auto",
   mobileNav: "flex flex-col gap-4",
 
   // Mobile navigation items
