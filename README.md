@@ -25,11 +25,13 @@ A full-stack quiz application with admin panel to create and manage quizzes. Bui
 
 **Frontend:** React.js, Tailwind CSS, React Router, Axios  
 **Backend:** Node.js, Express.js, MongoDB, Mongoose  
-**Auth:** Clerk Authentication  
-**Deployment:**
-**Frontend:** Vercel
-**Admin:**Vercel
-**Backend:**Render
+**Auth:** Clerk Authentication 
+
+## 🚀 Deployment
+
+**Frontend:** Deployed on Vercel  
+**Admin Panel:** Deployed on Vercel  
+**Backend API:** Deployed on Render
 
 ## 🔑 Demo Credentials
 
