@@ -36,5 +36,5 @@ A full-stack quiz application with admin panel to create and manage quizzes. Bui
 ## 🔑 Demo Credentials
 
 **Admin Access:**
-email : demo123@gmail.com
+email : demo.admin@quizapp.com
 password: demo123
