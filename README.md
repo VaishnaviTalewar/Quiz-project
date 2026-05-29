@@ -1,40 +1,75 @@
 # Quiz App - MERN Stack
 
-A full-stack quiz application with admin panel to create and manage quizzes. Built with MERN stack and Clerk authentication.
+A full-stack Quiz Application built using the MERN stack with secure authentication and an admin dashboard for quiz management.
 
-**Live Demo:** [Quiz App](https://quiz-project-ivory-iota.vercel.app/)  
-**Admin Panel:** [Admin Dashboard](https://quiz-project-zx4w.vercel.app/)
+## 🚀 Live Links
 
-## 🚀 Features
+* **User App:** https://quiz-project-ivory-iota.vercel.app/
+* **Admin Dashboard:** https://quiz-project-zx4w.vercel.app/
 
-### **User Side**
-- Take quizzes by category/difficulty
-- Real-time score calculation & results
-- User profile with quiz history
-- Responsive UI with Tailwind CSS
-- Secure authentication via Clerk
+---
 
-### **Admin Side**
-- Create, edit, delete quizzes
-- Add multiple choice questions with timer
-- View user stats and quiz analytics
-- Manage categories and difficulty levels
-- Protected admin routes
+## ✨ Features
 
-## 🛠️ Tech Stack
+### 👨‍💻 User Features
 
-**Frontend:** React.js, Tailwind CSS, React Router, Axios  
-**Backend:** Node.js, Express.js, MongoDB, Mongoose  
-**Auth:** Clerk Authentication 
+* Attempt quizzes by category and difficulty
+* Real-time score calculation
+* Quiz result and history tracking
+* Responsive UI using Tailwind CSS
+* Secure authentication with Clerk
+
+### 🛠️ Admin Features
+
+* Create, update, and delete quizzes
+* Upload multiple-choice questions
+* Set difficulty levels and quiz timers
+* View platform statistics and analytics
+* Protected admin routes
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+
+* React.js
+* Tailwind CSS
+* React Router
+* Axios
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+
+### Authentication
+
+* Clerk Authentication
+
+---
 
 ## 🚀 Deployment
 
-**Frontend:** Deployed on Vercel  
-**Admin Panel:** Deployed on Vercel  
-**Backend API:** Deployed on Render
+* **Frontend:** Vercel
+* **Admin Panel:** Vercel
+* **Backend API:** Render
 
-## 🔑 Demo Credentials
+---
 
-**Admin Access:**
-email : demo.admin@quizapp.com
-password: demo123
+## 🔐 Demo Admin Credentials
+
+### Admin Access
+
+* **Email:** [demo.adminquiz@gmail.com](mailto:demo.adminquiz@gmail.com)
+* **Password:** QuizAdmin@2026
+
+---
+
+## 📌 Notes
+
+* This project follows role-based authentication.
+* Admin access is provided only for demo/testing purposes.
+* Personal credentials have been removed for security reasons.
